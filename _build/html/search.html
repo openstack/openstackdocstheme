@@ -319,10 +319,10 @@ class="sign-in-btn">Sign In</a>
 
     <!-- Begin Page Content -->
         <div class="container docs-book-wrapper">
-        <!-- Row with title and buttons-->
         <div class="row">
-        <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
-            <div class="row">
+            <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
+                <!-- Row with title and buttons-->
+                <div class="row">
                 <div class="col-lg-8">
                 <h2>Search</h2>
                 </div>
@@ -349,8 +349,8 @@ class="sign-in-btn">Sign In</a>
                     <h5>Contents</h5>
                     
                     </div>
-                    <div class="docs-body">
-    
+                <div class="docs-body">
+
   <h1 id="search-documentation">Search</h1>
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>
@@ -375,14 +375,15 @@ class="sign-in-btn">Sign In</a>
   
   </div>
 
-    </div>
-    </div>
-    <div class="docs-tags">
+              </div>
+          </div>
+          </div>
+          <div class="docs-tags">
                 <a href="#" class="docs-tag">Network Time Protocol (NTP)</a>
                 <a href="#" class="docs-tag">Security</a>
                 <a href="#" class="docs-tag">Conceptual architecture</a>
             </div>
-<div class="row docs-byline bottom">
+                <div class="row docs-byline bottom">
                 <div class="docs-updated">
                 updated: None | release: 1.0
                 </div>
@@ -390,9 +391,9 @@ class="sign-in-btn">Sign In</a>
                     <i class="fa fa-pencil"></i> suggest edits
                 </a>
 </div>
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
-                    <img src="_static/images/docs/license.jpg" alt="Creative Commons Attribution Share Alike 3.0 License">
+    <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
+                    <img src="_static/images/docs/license.jpg" alt="Creative Commons Attribution Share Alike 3.0 License"/>
                     <p>
                         Except where otherwise noted, this document is licensed under Creative Commons Attribution Share Alike 3.0 License
                         <a href="#">http://creativecommons.org/licenses/by-sa/3.0/legalcode</a>.
@@ -400,8 +401,8 @@ class="sign-in-btn">Sign In</a>
                     <p>
                         <a href="http://www.openstack.org/legal">See All Legal Notices</a>
                     </p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
                     <a href="#" class="docs-footer-actions">
                         <i class="fa fa-bug"></i>found an error? report a bug
                     </a>
@@ -409,11 +410,9 @@ class="sign-in-btn">Sign In</a>
                         <i class="fa fa-question-circle"></i>questions? <a href="http://ask.openstack.org/">ask.openstack.org</a>
                     </a>
                 </div>
-            </div>
-        </div>
-<!-- Docs Sidebar -->
-                <p>This is docs sidebar!</p>
-                
+     </div>
+     </div>
+            <!-- Docs Sidebar --><!-- Docs Sidebar -->
                 <div class="col-lg-3 col-md-4 col-sm-4 col-lg-pull-9 col-md-pull-8 col-sm-pull-8 docs-sidebar">
             <div class="docs-sidebar-search">
                 <form class='docs-main-search-form' method='post'><input type='hidden' name='form-name' value='form 1' />
@@ -423,7 +422,7 @@ class="sign-in-btn">Sign In</a>
             </div>
             <div class="btn-group docs-sidebar-releases">
                 <button onclick="location.href='/docs/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
-                <button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">Release: 1.0<i class="fa fa-caret-down"></i></button>
+                <button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">Release: Icehouse (May 2014)<i class="fa fa-caret-down"></i></button>
                 <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
                     <li role="presentation" class="dropdown-header">Releases</li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">In progress (master branch)</a></li>
@@ -437,7 +436,7 @@ class="sign-in-btn">Sign In</a>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">한국의 (Korean)</a></li>
                 </ul>
             </div>
-            <div class="docs-sidebar-toc">
+                <div class="docs-sidebar-toc">
                     <div class="docs-sidebar-section" id="install-guides">
                         <a class="docs-sidebar-section-title"><h4>Install Guides</h4></a>
                         <ol>
@@ -475,7 +474,46 @@ class="sign-in-btn">Sign In</a>
                                 <ul>
                                     <li>
                                         <a href="#">Conventions</a>
-                            </ul>
+                                        <ul>
+                                            <li><a href="#">Notices</a></li>
+                                            <li><a href="#">Command prompts</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Document change history</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Architecture</a>
+                                <ul>
+                                    <li><a href="#">Overview</a></li>
+                                    <li><a href="#">Conceptual architecture</a></li>
+                                    <li><a href="#">Example architectures</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Basic environment</a>
+                                <ul>
+                                    <li><a href="#">Before you begin</a></li>
+                                    <li><a href="#">Security</a></li>
+                                    <li>
+                                        <a href="#">Networking</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">OpenStack Networking (neutron)</a>
+                                                <ul>
+                                                    <li><a href="#">Controller node</a></li>
+                                                    <li><a href="#">Network node</a></li>
+                                                    <li><a href="#">Compute node</a></li>
+                                                    <li><a href="#">Verify connectivity</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Legacy Networking (nova-network)</a>
+                                                <ul>
+                                                    <li><a href="#">Controller node</a></li>
+                                                    <li><a href="#">Compute node</a></li>
+                                                    <li><a href="#">Verify connectivity</a></li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     </li>
@@ -537,6 +575,98 @@ class="sign-in-btn">Sign In</a>
                             </li>
                         </ol>
                     </div>
+                    <div class="docs-sidebar-section" id="user-guides">
+                        <a class="docs-sidebar-section-title"><h4>User Guides</h4></a>
+                        <ol> <!-- Add .active to show -->
+                            <lh><a href="#" title="API Quick Start">API Quick Start</a></lh>
+                            <li> <!-- Add .active to show -->
+                                <a href="#">OpenStack APIs</a>
+                                <ul> <!-- Add .active to show -->
+                                    <li><a href="#">Authenticate</a></li>
+                                    <li><a href="#">Send API requests</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">OpenStack command-line clients</a>
+                                <ul> <!-- Add .active to show -->
+                                    <li><a href="#">Install the clients</a></li>
+                                    <li><a href="#">Launch an instance</a></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="docs-sidebar-section" id="configuration-guides">
+                        <a class="docs-sidebar-section-title"><h4>Configuration Guides</h4></a>
+                        <ol>
+                            <lh><a href="#" title="Installation Guide for Debian 7.0 and more">Installation Guide for Debian 7.0 and more</a></lh>
+                            <li>
+                                <a href="#">Architecture</a>
+                                <ul>
+                                    <li><a href="#">Overview</a></li>
+                                    <li><a href="#">Conceptual architecture</a></li>
+                                    <li><a href="#">Example architectures</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Basic environment</a></li>
+                            <li><a href="#">Configure OpenStack with debconf</a></li>
+                        </ol>
+                    </div>
+                    <div class="docs-sidebar-section" id="operations-guides">
+                        <a class="docs-sidebar-section-title"><h4>Operations Guides</h4></a>
+                        <ol>
+                            <lh><a href="#" title="Installation Guide for Debian 7.0 and more">Installation Guide for Debian 7.0 and more</a></lh>
+                            <li>
+                                <a href="#">Architecture</a>
+                                <ul>
+                                    <li><a href="#">Overview</a></li>
+                                    <li><a href="#">Conceptual architecture</a></li>
+                                    <li><a href="#">Example architectures</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Basic environment</a></li>
+                            <li><a href="#">Configure OpenStack with debconf</a></li>
+                        </ol>
+                    </div>
+                    <div class="docs-sidebar-section" id="api-guides">
+                        <a class="docs-sidebar-section-title"><h4>API Guides</h4></a>
+                        <ol>
+                            <lh><a href="#" title="Installation Guide for Debian 7.0 and more">Installation Guide for Debian 7.0 and more</a></lh>
+                            <li>
+                                <a href="#">Architecture</a>
+                                <ul>
+                                    <li><a href="#">Overview</a></li>
+                                    <li><a href="#">Conceptual architecture</a></li>
+                                    <li><a href="#">Example architectures</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Basic environment</a></li>
+                            <li><a href="#">Configure OpenStack with debconf</a></li>
+                        </ol>
+                    </div>
+                    <div class="docs-sidebar-section" id="contributor-guides">
+                        <a class="docs-sidebar-section-title"><h4>Contributor Guides</h4></a>
+                        <ol>
+                            <lh><a href="#" title="Installation Guide for Debian 7.0 and more">Installation Guide for Debian 7.0 and more</a></lh>
+                            <li>
+                                <a href="#">Architecture</a>
+                                <ul>
+                                    <li><a href="#">Overview</a></li>
+                                    <li><a href="#">Conceptual architecture</a></li>
+                                    <li><a href="#">Example architectures</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Basic environment</a></li>
+                            <li><a href="#">Configure OpenStack with debconf</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+    
+</div>
+</div>
+    <!-- End Page Content -->
+
+    <!-- Footer -->
     <!-- Footer -->
         <footer>
         <div class="container">
