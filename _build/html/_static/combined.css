@@ -4032,7 +4032,7 @@ a.docs-sidebar-section-title {
   color: #2A4E68; }
 
 a.docs-sidebar-section-title:hover {
-  text-decoration: none; }
+  text-decoration: #BCCFDE; }
 
 .docs-sidebar-section.active a.docs-sidebar-section-title:hover {
   cursor: default; }
