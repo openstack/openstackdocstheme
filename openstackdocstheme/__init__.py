@@ -17,7 +17,7 @@ import os
 
 def builder_inited(app):
     theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
-    app.info('Using openstack theme from %s' % theme_dir)
+    app.info('Using openstackdocs theme from %s' % theme_dir)
     # Insert our theme directory at the front of the search path and
     # force the theme setting to use the one in the package unless
     # another openstack theme is already selected. This is done here,
@@ -28,7 +28,7 @@ def builder_inited(app):
     app.config.html_theme_path.insert(0, theme_dir)
     # Set the theme name
     if not app.config.html_theme.startswith('openstack'):
-        app.config.html_theme = 'openstackdocstheme'
+        app.config.html_theme = 'openstackdocs'
     # Re-initialize the builder, if it has the method for setting up
     # the templates and theme.
     if hasattr(app.builder, 'init_templates'):

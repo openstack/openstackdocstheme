@@ -4,3 +4,4 @@ _build/
 /dist/
 /openstackdocstheme.egg-info/
 *.pyc
+doc/build
