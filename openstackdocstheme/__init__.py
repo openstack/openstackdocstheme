@@ -17,6 +17,5 @@ import os
 
 def get_html_theme_path():
     """Return the directory containing our HTML theme."""
-    cur_dir = os.path.abspath(os.path.dirname(__file__))
-    d = os.path.join(cur_dir, 'theme')
-    return d
+    pkg_dir = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(pkg_dir, 'theme')
