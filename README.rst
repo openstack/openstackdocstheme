@@ -8,3 +8,4 @@ docs.openstack.org. Intended for use by OpenStack projects.
 * Documentation: http://docs.openstack.org/developer/openstackdocstheme
 * Source: http://git.openstack.org/cgit/openstack/openstackdocstheme
 * Bugs: http://bugs.launchpad.net/openstack-manuals
+
