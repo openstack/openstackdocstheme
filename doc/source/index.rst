@@ -24,7 +24,9 @@ Here's an example configuration::
 
 .. note:: Here's an example note.
 
-Developer Guide
-===============
 
-Information on Nova's lower level programming APIs.
+.. toctree::
+    :maxdepth: 1
+
+    section_dashboard_access_and_security
+
