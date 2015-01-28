@@ -24,7 +24,6 @@ Here's an example configuration::
 
 .. note:: Here's an example note.
 
-
 .. toctree::
     :maxdepth: 1
 
