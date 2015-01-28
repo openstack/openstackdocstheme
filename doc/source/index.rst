@@ -6,8 +6,7 @@
 Demo documentation
 ==================
 
-The project is an open source cloud computing platform that supports all types
-of cloud environments.
+The demo documentation provides example markup for looking at the expected output.
 
 The project aims for simple implementation, massive scalability, and a rich set
 of features. Cloud computing experts from around the world contribute to the project.
