@@ -793,7 +793,7 @@ h1 {
   font-size: 34px;
   font-weight: 300;
   margin-bottom: 25px;
-  text-align: center; }
+  text-align: left; }
 
 h2 {
   color: #2A4E68;
@@ -4211,6 +4211,12 @@ a.docs-edit i {
 
 .docs-body a {
   text-decoration: underline;
+  color: #30739C; }
+
+a.headerlink {
+  color: #fff; }
+
+a.headerlink:hover {
   color: #30739C; }
 
 a.gloss {
