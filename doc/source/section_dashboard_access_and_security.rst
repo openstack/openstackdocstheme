@@ -12,7 +12,8 @@ group with rules.
 Key pairs are SSH credentials that are injected into an instance when it
 is launched. To use key pair injection, the image that the instance is
 based on must contain the ``cloud-init`` package. Each project should
-have at least one key pair. For more information, see ? (TODO!).
+have at least one key pair. For more information, see `import a key
+pair <#import-a-key-pair>`__.
 
 If you have generated a key pair with an external tool, you can import
 it into OpenStack. The key pair can be used for multiple instances that

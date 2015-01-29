@@ -4233,6 +4233,7 @@ a.gloss.off {
 
 pre {
   background-color: #333;
+  color: #fff;
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px; }
