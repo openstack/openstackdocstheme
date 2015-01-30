@@ -71,7 +71,7 @@ from the CURRENT PROJECT list at the top of the tab.
 
 **Figure: Project tab**
 
-.. image: figures/dashboard-project-tab.png
+  .. image:: figures/dashboard-project-tab.png
 
 -----------
 Project tab
@@ -146,8 +146,7 @@ quotas.
 
 **Figure: Admin tab**
 
-.. image: figures/dashboard_admin_project_tab.png
-
+  .. image:: figures/dashboard_admin_project_tab.png
 
 ---------
 Admin tab
@@ -191,9 +190,9 @@ images.
 :guilabel:`System Info`: Use the following tabs to view the service
 information:
 
- * :guilabel:`Services`: View a list of the services.
+* :guilabel:`Services`: View a list of the services.
 
- * :guilabel:`Compute Services`: View a list of all Compute services.
+* :guilabel:`Compute Services`: View a list of all Compute services.
 
 :guilabel:`Network Agents`: View the network agents.
 
