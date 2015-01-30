@@ -27,4 +27,4 @@ Here's an example configuration::
     :maxdepth: 1
 
     section_dashboard_access_and_security
-
+    dashboard_demo
