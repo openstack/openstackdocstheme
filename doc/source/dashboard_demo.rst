@@ -53,8 +53,9 @@ server role.
 
    * If you are logged in as an end user, the :guilabel:`Project` tab is displayed.
 
-   * If you are logged in as an administrator, the :guilabel:`Project` tab and
-     :guilabel:`Admin` tab are displayed.
+   * If you are logged in as an administrator, the :guilabel:`Project` tab
+     (:ref:`dashboard-project-tab`) and :guilabel:`Admin` tab
+     (:ref:`dashboard-admin-tab`) are displayed.
 
 .. _dashboard-project-tab:
 
@@ -135,7 +136,6 @@ reboot instances, or connect to them through VNC.
  applications.
 
 .. _dashboard-admin-tab:
-
 
 OpenStack dashboard—Admin tab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
