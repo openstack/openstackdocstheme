@@ -28,3 +28,5 @@ Here's an example configuration::
 
     section_dashboard_access_and_security
     dashboard_demo
+    configure_access_and_security_for_instances
+    create_and_manage_databases

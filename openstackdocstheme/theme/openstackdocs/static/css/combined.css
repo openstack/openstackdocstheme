@@ -4268,55 +4268,55 @@ pre .cl {
 .popover {
   color: #2A4E68; }
 
-.attention {
+.admonition {
   background: #eee;
   border-left: 4px solid;
   border-radius: 4px;
   padding: 20px;
   margin: 30px 0; }
 
-.attention h3 {
+.admonition h3 {
   font-size: 18px;
   font-weight: 600; }
 
-.attention h3 i {
+.admonition h3 i {
   margin-right: 5px;
   font-size: 22px; }
 
-.attention.docs-note {
+.admonition.note {
   background: #edf2f7;
   border-color: #2A4E68;
   color: #2A4E68; }
 
-.attention.docs-note a {
+.admonition.note a {
   color: #2A4E68; }
 
-.attention.docs-important {
+.admonition.docs-important {
   background: #FEFFBE;
   border-color: #D7AA16;
   color: #D7AA16; }
 
-.attention.docs-important a {
+.admonition.docs-important a {
   color: #e8be15; }
 
-.attention.docs-important h3 {
+.admonition.docs-important h3 {
   color: #e8be15; }
 
-.attention.docs-important h3 i {
+.admonition.docs-important h3 i {
   color: #e8be15; }
 
-.attention.docs-warning {
+.admonition.docs-warning {
   background: #FED3D9;
   border-color: #DA422F;
   color: #DA422F; }
 
-.attention.docs-warning h3 {
+.admonition.docs-warning h3 {
   color: #DA422F; }
 
-.attention.docs-warning h3 i {
+.admonition.docs-warning h3 i {
   color: #DA422F; }
 
-.attention.docs-warning a {
+.admonition.docs-warning a {
   color: #DA422F; }
 
 .docs-tags {
