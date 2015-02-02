@@ -124,7 +124,7 @@ Import a key pair
 #. To change its permissions so that only you can read and write to the
    file, run the following command:
 
-   .. code::
+   .. code:: bash
 
        $ chmod 0600 yourPrivateKey.pem
 
@@ -135,7 +135,7 @@ Import a key pair
 
 #. To make the key pair known to SSH, run the **ssh-add** command.
 
-   .. code::
+   .. code:: bash
 
        $ ssh-add yourPrivateKey.pem
 

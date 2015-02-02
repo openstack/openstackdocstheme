@@ -24,7 +24,7 @@ flavor for the type of database instance you want.
 
    #. Add the following line to ``/etc/trove/trove.conf``:
 
-      .. code::
+      .. code:: ini
 
           default_datastore = DATASTORE_NAME
 
@@ -36,13 +36,13 @@ flavor for the type of database instance you want.
       For example, if your MySQL datastore name is set to ``mysql``,
       your entry would look like this:
 
-      .. code::
+      .. code:: ini
 
           default_datastore = mysql
 
    #. Restart Database services on the controller node:
 
-      .. code::
+      .. code:: bash
 
           # service trove-api restart
           # service trove-taskmanager restart
