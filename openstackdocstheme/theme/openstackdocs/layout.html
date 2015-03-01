@@ -2,10 +2,11 @@
 <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+{% block header %}{% endblock %}
   <title>OpenStack Docs: {{ title }}</title>
     <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS references are in the css.html template -->
 {% include 'css.html' %}
   {# FAVICON #}
@@ -46,26 +47,21 @@
                 <a href="#" class="docs-tag">Conceptual architecture</a>
             </div> -->
                 <div class="row docs-byline bottom">
-                <div class="docs-browse">
-                {% if next or prev %}
-                    {% if next %}
-                    <a class="docs-edit" href="{{ next.link|e }}">&nbsp;next</a>
-                    {% endif %}
-                    {% if prev %}
-                    <a class="docs-edit" href="{{ prev.link|e }}">previous | </a>
-                    {% endif %}
-                {% endif %}
+                <div class="docs-updated">
+                updated: {{ last_updated }} | release: {{ release }}
                 </div>
                 <a href="http://git.openstack.org/" class="docs-edit">
                     <i class="fa fa-pencil"></i> suggest edits
                 </a>
-                </div>
+</div>
     <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
            {% include 'license_cc.html' %}
          </div>
          <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
-                    <a href="#" class="docs-footer-actions">
+                    <!-- ID buglinkbottom added so that pre-filled doc bugs
+                    are sent to Launchpad projects related to the document -->
+                    <a href="#" id="logABugLink2" class="docs-footer-actions">
                         <i class="fa fa-bug"></i>found an error? report a bug
                     </a>
                     <a href="http://ask.openstack.org" class="docs-footer-actions">
@@ -82,7 +78,9 @@
 
     <!-- Footer -->
 {% include 'footer.html' %}
+
 <!-- Scripts in: static directory-->
 {% include 'script_footer.html' %}
+
  </body>
 </html>

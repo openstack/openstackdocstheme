@@ -5,3 +5,4 @@ _build/
 /openstackdocstheme.egg-info/
 *.pyc
 doc/build
+doc/source/BBresult

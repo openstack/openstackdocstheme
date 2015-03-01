@@ -33,7 +33,7 @@ $(".docs-sidebar-section ol > li > a").click(function () {
 });
 
 /* Bug #1417291
-   The rule below creates a shaded plus sign next to 
+   The rule below creates a shaded plus sign next to
    a numbered sublist of a bulleted list.
    It's probably there to implement expand/collapse of
    list items, but unfortunately it affects also those
@@ -94,7 +94,7 @@ $.getJSON('common/js/doc-characters.json', function(data) {
 });
 
 /* BB 150310
-   openstackdocstheme provides three types of admonitions, important, note 
+   openstackdocstheme provides three types of admonitions, important, note
    and warning. We decorate their title paragraphs with Font Awesome icons
    by adding the appropriate FA classes.                               */
 
@@ -103,14 +103,14 @@ $('div.note > p.admonition-title').addClass('fa fa-check-circle');
 $('div.warning > p.admonition-title').addClass('fa fa-exclamation-triangle');
 
 /* BB 150310
-   We also insert a space between the icon and the admonition title 
-   ("Note", "Warning", "Important" or their i18n equivalents).    
+   We also insert a space between the icon and the admonition title
+   ("Note", "Warning", "Important" or their i18n equivalents).
 
-   This could be done with a single clause $('p.admonition-title')...., 
-   affecting all types of admonitions. I play it safe here and explicitly 
-   work on the three openstackdocstheme admonitions.                           
-   
-   The first parameter of the text() callback is not needed here (it's 
+   This could be done with a single clause $('p.admonition-title')....,
+   affecting all types of admonitions. I play it safe here and explicitly
+   work on the three openstackdocstheme admonitions.
+
+   The first parameter of the text() callback is not needed here (it's
    the index of the HTML element that we are modifying)                 */
 
 $('div.important > p.admonition-title').text(function(ignored_para,original) {
@@ -123,3 +123,13 @@ $('div.warning > p.admonition-title').text(function(ignored_para,original) {
     return " "+original
 });
 
+// Gives the log a bug icon the information it needs to generate the bug in
+// Launchpad with pre-filled information such as git SHA, git.openstack.org
+// source URL, and published document URL.
+function logABug(bugTitle, fieldComment) {
+    var lineFeed = "%0A";
+    var urlBase = "https://bugs.launchpad.net/openstack-manuals/+filebug?field.title="
+    var bugLink = urlBase  + encodeURIComponent(bugTitle) + "&field.comment=" + lineFeed + lineFeed + "-----------------------------------" + lineFeed + fieldComment;
+   document.getElementById("logABugLink1").href=bugLink;
+   document.getElementById("logABugLink2").href=bugLink;
+}
