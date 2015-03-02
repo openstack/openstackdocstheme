@@ -2,9 +2,16 @@
 $(".docs-sidebar-section-title").click(function () {
     $('.docs-sidebar-section').not(this).closest('.docs-sidebar-section').removeClass('active');
     $(this).closest('.docs-sidebar-section').toggleClass('active');
-    event.preventDefault();
+// Bug #1422454
+// Commenting out next line, the default behavior which was preventing links
+// from working.
+//    event.preventDefault();
 });
 
+/* Bug #1422454
+   The toggle functions below enable the expand/collapse, but for now
+   there's no easy way to get deeper links from other guides. So,
+   commenting both toggle functions out.
 // Toggle 1st sub-sections
 $(".docs-sidebar-section ol lh").click(function () {
     $('.docs-sidebar-section ol').not(this).closest('.docs-sidebar-section ol').removeClass('active');

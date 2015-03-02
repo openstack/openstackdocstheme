@@ -14,10 +14,7 @@ The demo documentation provides example markup for looking at the expected outpu
 The project aims for simple implementation, massive scalability, and a rich set
 of features. Cloud computing experts from around the world contribute to the project.
 
-Here's an example configuration.
-
-.. code-block:: ini
-   :linenos:
+Here's an example configuration::
 
    [DEFAULT]
    ...
