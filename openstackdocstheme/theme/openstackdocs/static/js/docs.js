@@ -86,7 +86,33 @@ $.getJSON('common/js/doc-characters.json', function(data) {
   $('<p>' + item.caption + '<strong>OpenStack Operator</strong></p>').appendTo('#superuser-img');
 });
 
+/* BB 150310
+   openstackdocstheme provides three types of admonitions, important, note 
+   and warning. We decorate their title paragraphs with Font Awesome icons
+   by adding the appropriate FA classes.                               */
 
+$('div.important > p.admonition-title').addClass('fa fa-info-circle');
+$('div.note > p.admonition-title').addClass('fa fa-check-circle');
+$('div.warning > p.admonition-title').addClass('fa fa-exclamation-triangle');
 
+/* BB 150310
+   We also insert a space between the icon and the admonition title 
+   ("Note", "Warning", "Important" or their i18n equivalents).    
 
+   This could be done with a single clause $('p.admonition-title')...., 
+   affecting all types of admonitions. I play it safe here and explicitly 
+   work on the three openstackdocstheme admonitions.                           
+   
+   The first parameter of the text() callback is not needed here (it's 
+   the index of the HTML element that we are modifying)                 */
+
+$('div.important > p.admonition-title').text(function(ignored_para,original) {
+    return " "+original
+});
+$('div.note > p.admonition-title').text(function(ignored_para,original) {
+    return " "+original
+});
+$('div.warning > p.admonition-title').text(function(ignored_para,original) {
+    return " "+original
+});
 

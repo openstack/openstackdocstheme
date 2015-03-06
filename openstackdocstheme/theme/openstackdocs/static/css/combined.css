@@ -318,11 +318,13 @@ input.action {
   color: #33730a;
   text-decoration: underline; }
 
+/* BB: Removed because it looks ugly
 .note p {
   margin-left: 8px;
   padding: 10px;
   margin-bottom: 0px;
   border-bottom: 1px solid #b5c8a8; }
+*/
 
 a#CitrixVideo {
   display: block;
@@ -4291,33 +4293,41 @@ pre .cl {
 .admonition.note a {
   color: #2A4E68; }
 
-.admonition.docs-important {
+/* BB: The following eight rules, four "important" and four "warning",
+   originally had names "docs-important" and "docs-warning" */
+
+.admonition.important {
   background: #FEFFBE;
   border-color: #D7AA16;
   color: #D7AA16; }
 
-.admonition.docs-important a {
+.admonition.important a {
   color: #e8be15; }
 
-.admonition.docs-important h3 {
+.admonition.important h3 {
   color: #e8be15; }
 
-.admonition.docs-important h3 i {
+.admonition.important h3 i {
   color: #e8be15; }
 
-.admonition.docs-warning {
+.admonition.warning {
   background: #FED3D9;
   border-color: #DA422F;
   color: #DA422F; }
 
-.admonition.docs-warning h3 {
+.admonition.warning h3 {
   color: #DA422F; }
 
-.admonition.docs-warning h3 i {
+.admonition.warning h3 i {
   color: #DA422F; }
 
-.admonition.docs-warning a {
+.admonition.warning a {
   color: #DA422F; }
+
+/* BB: added the adminition-title rule to bolden the adminition title */
+.admonition-title {
+  font-weight: 600;
+}
 
 .docs-tags {
   width: 100%;
