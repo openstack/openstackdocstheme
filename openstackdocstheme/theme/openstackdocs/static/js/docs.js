@@ -25,7 +25,17 @@ $(".docs-sidebar-section ol > li > a").click(function () {
     event.preventDefault();
 });
 
-$('ol > li:has(ul)').addClass('docs-has-sub');
+/* Bug #1417291
+   The rule below creates a shaded plus sign next to 
+   a numbered sublist of a bulleted list.
+   It's probably there to implement expand/collapse of
+   list items, but unfortunately it affects also those
+   lists where expand/collapse is not intended.
+
+   I am commenting it out to fix this bug. If it causes
+   problems elsewhere, they have to be fixed elsewhere. */
+
+// $('ol > li:has(ul)').addClass('docs-has-sub');
 
 // webui popover
 $(document).ready(function() {
