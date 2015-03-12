@@ -47,13 +47,20 @@
                 <a href="#" class="docs-tag">Conceptual architecture</a>
             </div> -->
                 <div class="row docs-byline bottom">
-                <div class="docs-updated">
-                updated: {{ last_updated }} | release: {{ release }}
+                <div class="docs-browse">
+                {% if next or prev %}
+                    {% if next %}
+                    <a class="docs-edit" href="{{ next.link|e }}">| next</i></a>
+                    {% endif %}
+                    {% if prev %}
+                    <a class="docs-edit" href="{{ prev.link|e }}"> previous </a>
+                    {% endif %}
+                {% endif %}
                 </div>
                 <a href="http://git.openstack.org/" class="docs-edit">
                     <i class="fa fa-pencil"></i> suggest edits
                 </a>
-</div>
+                </div>
     <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 docs-license">
            {% include 'license_cc_by_sa_30.html' %}
