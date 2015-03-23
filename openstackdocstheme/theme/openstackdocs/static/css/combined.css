@@ -758,7 +758,7 @@ span.message {
   padding: 0px !important; }
 
 #gcse {
-  width: 100%;
+  width: 80%;
   height: 60px; }
 
 input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
@@ -3747,7 +3747,7 @@ a.overview-btn.docs-btn i {
 
 .docs-main-search-form {
   width: 98%;
-  margin-top: 10px;
+  margin-top: -20px;
   float: left;
   position: relative; }
 
