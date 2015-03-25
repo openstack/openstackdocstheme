@@ -4183,6 +4183,12 @@ li.docs-has-sub.open:before {
   color: #9eb5c3;
   text-transform: uppercase; }
 
+.docs-browse {
+  float: left;
+  font-size: 10px;
+  color: #6f91a6;
+  text-transform: uppercase; }
+
 .docs-updated {
   float: left; }
 
