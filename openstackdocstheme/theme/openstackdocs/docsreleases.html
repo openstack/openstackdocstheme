@@ -46,10 +46,10 @@
                 <div class="docs-browse">
                 {% if next or prev %}
                     {% if next %}
-                    <a class="docs-edit" href="{{ next.link|e }}">| next</i></a>
+                    <a class="docs-edit" href="{{ next.link|e }}">&nbsp;next</a>
                     {% endif %}
                     {% if prev %}
-                    <a class="docs-edit" href="{{ prev.link|e }}"> previous </a>
+                    <a class="docs-edit" href="{{ prev.link|e }}">previous | </a>
                     {% endif %}
                 {% endif %}
                 </div>
