@@ -1,6 +1,15 @@
 Release notes
 =============
 
+1.0.5
+
+* Bug fix for license text, CC-by rather than CC-by-sa:
+(https://bugs.launchpad.net/openstack-manuals/+bug/1436515)
+* Adds next and previous links on every page:
+(https://bugs.launchpad.net/openstack-manuals/+bug/1423064)
+* Adds Google Custom Search Engine rather than generic search form.
+(https://bugs.launchpad.net/openstack-manuals/+bug/1431024)
+
 1.0.4
 
 * Bug fix for admonitions styling: (https://bugs.launchpad.net/openstack-manuals/+bug/1416572)
