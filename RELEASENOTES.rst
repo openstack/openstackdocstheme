@@ -1,6 +1,12 @@
 Release notes
 =============
 
+1.0.6
+
+* Adds CSS styling for code using "native" pygments style.
+* Bug fix for Table of Contents links:
+(https://bugs.launchpad.net/openstack-manuals/+bug/1422454)
+
 1.0.5
 
 * Bug fix for license text, CC-by rather than CC-by-sa:
