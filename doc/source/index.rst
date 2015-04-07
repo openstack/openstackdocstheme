@@ -47,9 +47,9 @@ Here's another example that's python code:
         if hasattr(app.builder, 'init_templates'):
             app.builder.init_templates()
 
-Here's the same example but with ..code: ini to test the pygments lexer:
+Here's the same example but with ..code-block: ini to test the pygments lexer:
 
-.. code:: ini
+.. code-block:: ini
 
   [DEFAULT]
   ...
