@@ -1,6 +1,11 @@
 Release notes
 =============
 
+1.0.7
+
+* Adds "Report a bug" link with pre-filled information for Launchpad:
+(https://bugs.launchpad.net/openstack-manuals/+bug/1421799)
+
 1.0.6
 
 * Adds CSS styling for code using "native" pygments style.
