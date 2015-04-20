@@ -21,9 +21,10 @@
         var lineFeed = "%0A";
 
         {%- if show_source and has_source and sourcename %}
-            /* for some reason, sphinx replaces the rst extension with
-               a txt one. Replace it back.                          */
-            var sourceFile = "{{ pathto(sourcename,1) }}".replace(/\.txt$/,".rst")
+
+            /* "pagename" is the path to the source file, relative to conf.py's
+               directory. However, "pagename" is missing the rst extension. */
+            var sourceFile = "{{ pagename }}" + ".rst"
 
             /* Using the current working directory, figure out
                in which book we are and use that information to
