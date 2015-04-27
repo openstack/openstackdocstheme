@@ -6,3 +6,4 @@ _build/
 *.pyc
 doc/build
 doc/source/BBresult
+.tox
