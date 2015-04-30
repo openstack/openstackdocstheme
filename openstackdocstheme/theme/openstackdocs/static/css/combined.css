@@ -4184,8 +4184,8 @@ li.docs-has-sub.open:before {
   text-transform: uppercase; }
 
 .docs-browse {
-  float: left;
-  font-size: 10px;
+  float: right;
+  font-size: 14px;
   color: #6f91a6;
   text-transform: uppercase; }
 
