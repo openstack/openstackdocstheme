@@ -125,11 +125,13 @@ $('div.warning > p.admonition-title').text(function(ignored_para,original) {
 
 // Gives the log a bug icon the information it needs to generate the bug in
 // Launchpad with pre-filled information such as git SHA, git.openstack.org
-// source URL, and published document URL.
-function logABug(bugTitle, fieldComment) {
+// source URL, published document URL and tag.
+function logABug(bugTitle, fieldComment, fieldTags) {
     var lineFeed = "%0A";
     var urlBase = "https://bugs.launchpad.net/openstack-manuals/+filebug?field.title="
-    var bugLink = urlBase  + encodeURIComponent(bugTitle) + "&field.comment=" + lineFeed + lineFeed + "-----------------------------------" + lineFeed + fieldComment;
-   document.getElementById("logABugLink1").href=bugLink;
-   document.getElementById("logABugLink2").href=bugLink;
+    var bugLink = urlBase  + encodeURIComponent(bugTitle) +
+        "&field.comment=" + lineFeed + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
+        "&field.tags=" + fieldTags;
+    document.getElementById("logABugLink1").href=bugLink;
+    document.getElementById("logABugLink2").href=bugLink;
 }

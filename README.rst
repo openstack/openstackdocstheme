@@ -37,6 +37,8 @@ metadata for the project where the docs reside::
    # The git SHA checksum is used by "log-a-bug"
    git_cmd = "/usr/bin/git log | head -n1 | cut -f2 -d' '"
    gitsha = os.popen(git_cmd).read().strip('\n')
+   # tag that reported bugs will be tagged with
+   bug_tag = "your-chosen-tag"
    # source tree
    pwd = os.popen("pwd").read().strip('\n')
    # html_context allows us to pass arbitrary values into the html template

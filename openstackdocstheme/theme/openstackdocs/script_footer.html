@@ -16,7 +16,7 @@
     <!-- Javascript for page -->
     <script language="JavaScript">
     /* build a description of this page including SHA, source location on git repo and
-       build time and set the HREF of the bug buttons */
+       build time, the project's launchpad bug tag and set the HREF of the bug buttons */
 
         var lineFeed = "%0A";
 
@@ -34,9 +34,10 @@
             gitlink += pwd.slice(pwd.lastIndexOf("/doc/")) + "/" + sourceFile
         {%- endif %}
 
-        /* gitsha and project rely on variables in conf.py */
+        /* gitsha, project and bug_tag rely on variables in conf.py */
         var gitSha = "SHA: {{ gitsha }}"
         var bugTitle = "{{ title }} in {{ project }}"
+        var fieldTags = "{{bug_tag}}"
 
         /* "last_updated" is the build date and time. It relies on the
            conf.py variable "html_last_updated_fmt", which should include
@@ -47,7 +48,7 @@
                            lineFeed + encodeURI(gitSha) +
                            lineFeed + encodeURI(gitlink)
 
-        logABug(bugTitle, fieldComment)
+        logABug(bugTitle, fieldComment, fieldTags)
     </script>
     <!-- Javascript for search boxes (both sidebar and top nav) -->
 <script type="text/javascript">
