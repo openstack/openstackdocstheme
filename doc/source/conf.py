@@ -66,7 +66,7 @@ release = '1.0'
 git_cmd = "/usr/bin/git log | head -n1 | cut -f2 -d' '"
 gitsha = os.popen(git_cmd).read().strip('\n')
 # source tree
-pwd = os.popen("pwd").read().strip('\n')
+pwd = os.getcwd()
 # html_context allows us to pass arbitrary values into the html template
 html_context = { "pwd":pwd, "gitsha":gitsha }
 
