@@ -31,6 +31,10 @@ h5 {
     margin-bottom: 0;
 }
 
+dd {
+    margin-left: 20px
+}
+
 .lead {
     font-size: 18px;
     font-weight: 400;
