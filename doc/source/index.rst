@@ -14,6 +14,24 @@ The demo documentation provides example markup for looking at the expected outpu
 The project aims for simple implementation, massive scalability, and a rich set
 of features. Cloud computing experts from around the world contribute to the project.
 
+Here's an example glossary:
+
+Cactus
+   An OpenStack grouped release of projects that came out in the spring of
+   2011. It included Compute (nova), Object Storage (swift), and the Image
+   service (glance). Cactus is a city in Texas, US and is the code name for
+   the third release of OpenStack. When OpenStack releases went from three to
+   six months long, the code name of the release changed to match a geography
+   nearest the previous summit.
+
+CADF
+    Cloud Auditing Data Federation (CADF) is a specification for audit event
+    data. CADF is supported by OpenStack Identity.
+
+CALL
+    One of the RPC primitives used by the OpenStack message queue software.
+    Sends a message and waits for a response.
+
 Here's an example configuration::
 
    [DEFAULT]
