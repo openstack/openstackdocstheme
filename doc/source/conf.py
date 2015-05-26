@@ -69,7 +69,7 @@ gitsha = os.popen(git_cmd).read().strip('\n')
 # clickthrough on each page, such as user-guide or install-guide
 bug_tag = "doc-builds"
 # source tree
-pwd = os.popen("pwd").read().strip('\n')
+pwd = os.getcwd()
 # html_context allows us to pass arbitrary values into the html template
 html_context = { "pwd":pwd, "gitsha":gitsha, "bug_tag": bug_tag}
 
