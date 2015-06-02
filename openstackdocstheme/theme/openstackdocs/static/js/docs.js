@@ -129,8 +129,10 @@ $('div.warning > p.admonition-title').text(function(ignored_para,original) {
 function logABug(bugTitle, fieldComment, fieldTags) {
     var lineFeed = "%0A";
     var urlBase = "https://bugs.launchpad.net/openstack-manuals/+filebug?field.title="
+    var currentURL = "URL: " + window.location.href;
     var bugLink = urlBase  + encodeURIComponent(bugTitle) +
         "&field.comment=" + lineFeed + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
+        lineFeed + currentURL +
         "&field.tags=" + fieldTags;
     document.getElementById("logABugLink1").href=bugLink;
     document.getElementById("logABugLink2").href=bugLink;
