@@ -39,14 +39,4 @@ Search</div>
                         <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#contributor-guides"><h4>Contributor Guides</h4></a>
                     </div>
                 </div>
-                <div class="docs-browse">
-                {% if next or prev %}
-                    {% if next %}
-                    <a class="docs-edit" href="{{ next.link|e }}">&nbsp;next</a>
-                    {% endif %}
-                    {% if prev %}
-                    <a class="docs-edit" href="{{ prev.link|e }}">previous | </a>
-                    {% endif %}
-                {% endif %}
-                </div>
                 </div>
