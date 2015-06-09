@@ -4171,6 +4171,22 @@ li.docs-has-sub.open:before {
 .docs-actions .fa-bug:hover {
   color: #9A201D; }
 
+.docs-actions .fa-angle-double-left {
+  border-left: 1px solid #dae5ee;
+  color: #DA422F;
+  padding: 0 10px; }
+
+.docs-actions .fa-angle-double-left:hover {
+  color: #9A201D; }
+
+.docs-actions .fa-angle-double-right {
+  border-left: 1px solid #dae5ee;
+  color: #DA422F;
+  padding: 0 10px; }
+
+.docs-actions .fa-angle-double-right:hover {
+  color: #9A201D; }
+
 .tooltip {
   background: none;
   white-space: nowrap; }
@@ -4713,3 +4729,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"], input[type="radio"] {
   display: inline-block; }
+
+div.tooltip-inner {
+    max-width: 350px;
+}
