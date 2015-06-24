@@ -321,21 +321,21 @@ i.fa-caret-right {
    color: #8a959e;
    font-size: 12px;
    text-transform: lowercase;
-   font-weight: 400;  
+   font-weight: 400;
 }
 
 .header-search::-moz-placeholder {  /* Firefox 19+ */
    color: #8a959e;
    font-size: 12px;
    text-transform: lowercase;
-   font-weight: 400;  
+   font-weight: 400;
 }
 
-.header-search:-ms-input-placeholder {  
+.header-search:-ms-input-placeholder {
    color: #8a959e;
    font-size: 12px;
    text-transform: lowercase;
-   font-weight: 400;  
+   font-weight: 400;
 }
 .header-search:focus {
     border-radius: 4px;
@@ -553,7 +553,7 @@ a.overview-btn.right-btn {
 }
 .overview-right {
     text-align: center;
-}   
+}
 .control-cloud-graphic {
     max-width: 600px;
     margin: 0 auto 15px;
@@ -1092,21 +1092,21 @@ footer {
     color: #888;
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 
 .newsletter-input::-moz-placeholder {  /* Firefox 19+ */
     color: #888;
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 
-.newsletter-input:-ms-input-placeholder {  
+.newsletter-input:-ms-input-placeholder {
     color: #888;
     font-size: 12px;
     font-weight: 400;
-    text-transform: uppercase;  
+    text-transform: uppercase;
 }
 .newsletter-input:focus {
     outline: none;
@@ -1179,19 +1179,19 @@ footer {
 .feedback-input:-moz-placeholder { /* Firefox 18- */
     color: #555;
     font-size: 12px;
-    font-weight: 400;  
+    font-weight: 400;
 }
 
 .feedback-input::-moz-placeholder {  /* Firefox 19+ */
     color: #555;
     font-size: 12px;
-    font-weight: 400;  
+    font-weight: 400;
 }
 
-.feedback-input:-ms-input-placeholder {  
+.feedback-input:-ms-input-placeholder {
     color: #555;
     font-size: 12px;
-    font-weight: 400;  
+    font-weight: 400;
 }
 .feedback-input:focus {
     outline: none;
