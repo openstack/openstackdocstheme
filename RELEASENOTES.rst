@@ -1,6 +1,16 @@
 Release notes
 =============
 
+1.0.9
+
+* Make indentation on glossary definitions.
+* Adds original CSS/JS files to repository.
+* Improve navigation links.
+
+1.0.8
+
+* Enhancement to "Report a bug" link by adding URL to current page reported from.
+
 1.0.7
 
 * Adds "Report a bug" link with pre-filled information for Launchpad:
