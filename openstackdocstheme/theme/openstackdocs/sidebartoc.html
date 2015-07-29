@@ -38,5 +38,9 @@ Search</div>
                     <div class="docs-sidebar-section" id="contributor-guides">
                         <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#contributor-guides"><h4>Contributor Guides</h4></a>
                     </div>
+                    <div class="docs-sidebar-section" id="table-of-contents">
+                        <a class="docs-sidebar-section-title"><h4>{{ _('Contents') }}</h4></a>
+                        {{ toctree(maxdepth=2) }}
+                    </div>
                 </div>
                 </div>
