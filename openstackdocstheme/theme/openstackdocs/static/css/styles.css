@@ -35,6 +35,10 @@ dd {
     margin-left: 20px
 }
 
+ol.loweralpha {
+    list-style-type: lower-alpha;
+}
+
 .lead {
     font-size: 18px;
     font-weight: 400;
