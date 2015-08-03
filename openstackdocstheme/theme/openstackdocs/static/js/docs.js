@@ -136,4 +136,5 @@ function logABug(bugTitle, fieldComment, fieldTags) {
         "&field.tags=" + fieldTags;
     document.getElementById("logABugLink1").href=bugLink;
     document.getElementById("logABugLink2").href=bugLink;
+    document.getElementById("logABugLink3").href=bugLink;
 }
