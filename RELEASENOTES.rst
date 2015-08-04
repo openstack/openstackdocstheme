@@ -1,6 +1,17 @@
 Release notes
 =============
 
+1.1.1
+
+* Add next/previous buttons and report a bug link also at bottom of
+  the page.
+* Add dynamic table of content to sidebar.
+  (https://bugs.launchpad.net/openstack-manuals/+bug/1422454)
+* Fixed Korean typo on sidebartoc.
+  (https://bugs.launchpad.net/openstack-manuals/+bug/1474452)
+* Add loweralpha list-style for enumerated lists.
+  (https://bugs.launchpad.net/openstack-manuals/+bug/1476084)
+
 1.1.0
 
 * Make indentation on glossary definitions.
