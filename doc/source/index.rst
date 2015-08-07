@@ -87,3 +87,4 @@ Here's the same example but with ..code-block: ini to test the pygments lexer:
     configure_access_and_security_for_instances
     create_and_manage_databases
     create_and_manage_networks
+    launch-instance
