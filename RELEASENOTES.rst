@@ -1,7 +1,7 @@
 Release notes
 =============
 
-1.1.1
+1.2.0
 
 * Add next/previous buttons and report a bug link also at bottom of
   the page.
