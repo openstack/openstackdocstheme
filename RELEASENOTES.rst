@@ -1,6 +1,10 @@
 Release notes
 =============
 
+1.2.1
+
+* Fix inclusion of metatags.
+
 1.2.0
 
 * Add next/previous buttons and report a bug link also at bottom of
