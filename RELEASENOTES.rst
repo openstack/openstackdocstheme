@@ -4,6 +4,7 @@ Release notes
 1.2.1
 
 * Fix inclusion of metatags.
+* Remove unused images and javascript files.
 
 1.2.0
 
