@@ -6,6 +6,13 @@ Search</div>
                 <button onclick="location.href='/docs/'" class="btn docs-sidebar-home" data-toggle="tooltip" data-placement="top" title="Docs Home"><i class="fa fa-arrow-circle-o-left"></i></button>
                 <button href="#" type="button" data-toggle="dropdown" class="btn docs-sidebar-release-select">Release: Kilo (April 2015)<i class="fa fa-caret-down"></i></button>
                 <ul class="dropdown-menu docs-sidebar-dropdown" role="menu" aria-labelledby="dLabel">
+                    <li role="presentation" class="dropdown-header">Guides</li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#install-guides">Install Guides</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#user-guides">User Guides</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#configuration-guides">Configuration Guides</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#ops-and-admin-guides">Operations And Administration Guides</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#api-guides">API Guides</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="http://docs.openstack.org/index.html#contributor-guides">Contributor Guides</a></li>
                     <li role="presentation" class="dropdown-header">Releases</li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="/kilo/">Kilo (current release)</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="/juno/">Juno (October 2014)</a></li>
@@ -20,24 +27,6 @@ Search</div>
                 </ul>
             </div>
                 <div class="docs-sidebar-toc">
-                    <div class="docs-sidebar-section" id="install-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#install-guides"><h4>Install Guides</h4></a>
-                    </div>
-                    <div class="docs-sidebar-section" id="user-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#user-guides"><h4>User Guides</h4></a>
-                    </div>
-                    <div class="docs-sidebar-section" id="configuration-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#configuration-guides"><h4>Configuration Guides</h4></a>
-                    </div>
-                    <div class="docs-sidebar-section" id="operations-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/openstack-ops/content/"><h4>Operations Guide</h4></a>
-                    </div>
-                    <div class="docs-sidebar-section" id="api-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#api-guides"><h4>API Guides</h4></a>
-                    </div>
-                    <div class="docs-sidebar-section" id="contributor-guides">
-                        <a class="docs-sidebar-section-title" href="http://docs.openstack.org/index.html#contributor-guides"><h4>Contributor Guides</h4></a>
-                    </div>
                     <div class="docs-sidebar-section" id="table-of-contents">
                         <a class="docs-sidebar-section-title"><h4>{{ _('Contents') }}</h4></a>
                         {{ toctree(maxdepth=2) }}
