@@ -4016,6 +4016,10 @@ a.overview-btn.contribute-btn i {
 .docs-sidebar-section:hover {
   background: #BCCFDE; }
 
+#table-of-contents.docs-sidebar-section {
+  background-color: transparent;
+}
+
 .docs-sidebar-section.active {
   background: #D8E0EA;
   padding: 0;
