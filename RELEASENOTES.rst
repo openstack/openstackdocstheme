@@ -5,6 +5,7 @@ Release notes
 
 * Fix inclusion of metatags.
 * Remove unused images and javascript files.
+* Fix "Docs Home" link.
 
 1.2.0
 
