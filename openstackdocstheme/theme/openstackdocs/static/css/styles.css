@@ -126,39 +126,6 @@ ul.navbar-main {
         padding: 15px 8px;
     }
 }
-.navbar-default ul.navbar-main>li>a.sign-in-btn {
-    background: #2e729a;
-    padding: 7px 25px;
-    border-radius: 2px;
-    color: #fff;
-    margin-top: 7px;
-}
-.navbar-default ul.navbar-main>li>a.sign-in-btn:hover {
-    background: #286A9D;
-    color: #fff;
-}
-@media (max-width: 1025px) {
-    .navbar-default ul.navbar-main>li>a.sign-in-btn {
-        padding: 5px 10px;
-        margin-top: 9px;
-    }
-}
-@media (max-width: 767px) {
-    .navbar-default ul.navbar-main>li>a.sign-in-btn {
-        margin: 0;
-        padding: 10px 15px;
-        background: transparent;
-        border: none;
-        color: #2e729a;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-    }
-    .navbar-default ul.navbar-main>li>a.sign-in-btn:hover {
-        background: #fff;
-        color: #286A9D;
-    }
-}
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
     background: #fff;
 }
