@@ -4618,3 +4618,7 @@ input[type="checkbox"], input[type="radio"] {
 div.tooltip-inner {
     max-width: 350px;
 }
+
+table.highlighttable {
+  width: 100%;
+}
