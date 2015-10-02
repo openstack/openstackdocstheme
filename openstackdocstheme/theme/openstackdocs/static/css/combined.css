@@ -4112,7 +4112,7 @@ a.docs-edit i {
 
 .docs-top-contents ul {
   list-style: none;
-  padding: 0;
+  padding: 3px;
   margin: 0 0 0 10px; }
 
 .docs-top-contents ul li a {
