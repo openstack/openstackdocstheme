@@ -1,6 +1,20 @@
 Release notes
 =============
 
+1.2.2
+-----
+
+* Cleanup of HTML template files and CSS files
+* Fix link to the OpenStack summit
+* Fix links/texts in the license footer
+* Link the Apache 2.0 license note in the footer
+* Move listed guides in the sidebar into the dropdown menu
+* On hover don't change the background color of the sidebar TOC
+* Remove 'suggest edits' link from layout
+* Remove duplicate ask.openstack.org link from the footer
+* Remove last release details from header/footer
+* Remove the 'Sign in' link in the top bar
+
 1.2.1
 -----
 
