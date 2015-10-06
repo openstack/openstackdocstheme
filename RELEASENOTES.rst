@@ -4,8 +4,12 @@ Release notes
 1.2.3
 -----
 
+* Add padding to the left table of contents
+* Decrease the indent of TOC entries on the 2nd level
 * Fix broken links for firstapp and other repos.
   https://bugs.launchpad.net/bugs/1461185
+* Remove executable flags from js/css files
+* Set the width of the highlight table to 100%
 
 1.2.2
 -----
