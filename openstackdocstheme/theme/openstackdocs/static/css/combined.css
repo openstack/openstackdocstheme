@@ -4622,3 +4622,8 @@ div.tooltip-inner {
 table.highlighttable {
   width: 100%;
 }
+
+.docs-sidebar-section ul ul {
+  padding-left: 0px;
+  margin-left: 20px;
+}
