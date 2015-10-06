@@ -1,6 +1,12 @@
 Release notes
 =============
 
+1.2.3
+-----
+
+* Fix broken links for firstapp and other repos.
+  https://bugs.launchpad.net/bugs/1461185
+
 1.2.2
 -----
 
