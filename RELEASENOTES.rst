@@ -1,6 +1,11 @@
 Release notes
 =============
 
+1.2.4
+-----
+
+* Fix the broken anchor tags
+
 1.2.3
 -----
 
