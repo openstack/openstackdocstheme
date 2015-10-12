@@ -1,3 +1,9 @@
+/* pad after a table.
+ * bug 1439918 */
+table {
+  margin-bottom: 10px;
+}
+
 html {
   overflow-y: scroll; }
 
