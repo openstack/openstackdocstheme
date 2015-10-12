@@ -4,7 +4,11 @@ Release notes
 1.2.4
 -----
 
-* Fix the broken anchor tags
+* Add links for Liberty.
+* Fix the broken anchor tags.
+* Remove unused files.
+* Fix table padding.
+  https://bugs.launchpad.net/bugs/1439918
 
 1.2.3
 -----
