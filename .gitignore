@@ -7,3 +7,9 @@ _build/
 doc/build
 doc/source/BBresult
 .tox
+
+# Editors
+*~
+
+# Files created by releasenotes build
+releasenotes/build
