@@ -1,0 +1,5 @@
+---
+features:
+  - Contents in the sidebar TOC is now a link to a top page of a document
+    which contains a toc of the document. Now readers can easily move back
+    to a full toc of a document.
