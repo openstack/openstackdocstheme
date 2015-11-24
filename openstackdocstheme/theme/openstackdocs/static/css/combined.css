@@ -12,6 +12,9 @@ table.docutils th {
 table.docutils td {
   padding: 2px; }
 
+table.docutils caption {
+  font-weight: bold; }
+
 hr {
   height: 1px !important; }
 
