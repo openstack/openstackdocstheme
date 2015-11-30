@@ -1,0 +1,4 @@
+---
+fixes:
+  - Add Google Analytics JavaScript tracking snippet code to resolve
+    Launchpad bug #1516819.
