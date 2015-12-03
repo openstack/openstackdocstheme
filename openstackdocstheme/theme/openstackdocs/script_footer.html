@@ -36,6 +36,11 @@
 
     /* gitsha, project and bug_tag rely on variables in conf.py */
     var gitSha = "SHA: {{ gitsha }}";
+    {%- if bug_project %}
+        var bugProject = "{{ bug_project }}";
+    {%- else %}
+        var bugProject = "openstack-manuals";
+    {%- endif %}
     var bugTitle = "{{ title }} in {{ project }}";
     var fieldTags = "{{ bug_tag }}";
 
@@ -48,7 +53,7 @@
                        lineFeed + encodeURI(gitSha) +
                        lineFeed + encodeURI(gitURL) ;
 
-    logABug(bugTitle, fieldComment, fieldTags);
+    logABug(bugTitle, bugProject, fieldComment, fieldTags);
 </script>
 
 <!-- Javascript for search boxes (both sidebar and top nav) -->
