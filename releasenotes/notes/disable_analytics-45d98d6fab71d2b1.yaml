@@ -1,0 +1,5 @@
+---
+features:
+  - Google Analytics tracking may now be controlled by
+    setting the ``analytics_tracking_code`` option, or
+    removed entirely by leaving that option blank.
