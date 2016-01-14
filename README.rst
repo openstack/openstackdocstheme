@@ -35,8 +35,9 @@ metadata for the project where the docs reside::
 
    # We ask git for the SHA checksum
    # The git SHA checksum is used by "log-a-bug"
-   git_cmd = "/usr/bin/git log | head -n1 | cut -f2 -d' '"
-   gitsha = os.popen(git_cmd).read().strip('\n')
+   git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
+   gitsha = subprocess.Popen(
+       git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
    # tag that reported bugs will be tagged with
    bug_tag = "your-chosen-tag"
    # source tree
