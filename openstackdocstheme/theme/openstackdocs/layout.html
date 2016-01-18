@@ -39,8 +39,7 @@ ga('send', 'pageview');
           <div class="row">
             <div class="col-lg-12">
               <div class="docs-top-contents">
-                <h5><a href="{{ pathto(master_doc) }}">Contents</a></h5>
-                {{ toc }}
+{% include 'localtoc.html' %}
               </div>
               <div class="docs-body">
 {% block body %}{% endblock %}
