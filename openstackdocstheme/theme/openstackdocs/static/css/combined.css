@@ -4127,7 +4127,7 @@ a.docs-edit i {
 .docs-top-contents ul {
   list-style: none;
   padding: 3px;
-  margin: 0 0 0 10px; }
+  margin: 0 0 5px 0; }
 
 .docs-top-contents ul li a {
   text-decoration: underline; }
@@ -4640,4 +4640,20 @@ table.highlighttable {
 .docs-sidebar-section ul ul {
   padding-left: 0px;
   margin-left: 20px;
+}
+
+.docs-body .section h1 {
+  display: none;
+}
+
+.docs-top-contents a[href="#"] {
+  display: none;
+}
+
+.docs-top-contents h5 {
+  margin-bottom: 10px;
+}
+
+.docs-top-contents {
+  padding: 10px;
 }
