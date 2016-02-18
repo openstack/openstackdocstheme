@@ -3819,10 +3819,10 @@ input.docs-main-search:-ms-input-placeholder {
   text-decoration: none; }
 
 .docs-link-sections {
-  margin: 0 0 80px; }
+  margin: 0 0 10px; }
 
 .docs-contribute-wrapper {
-  padding-bottom: 80px;
+  padding-bottom: 10px;
   text-align: center; }
 
 a.overview-btn.contribute-btn {
