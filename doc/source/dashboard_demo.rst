@@ -19,14 +19,14 @@ server role.
 
 #. Open a web browser that has JavaScript and cookies enabled.
 
-.. note:: 
+   .. note::
 
-   To use the Virtual Network Computing (VNC) client for the dashboard,
-   your browser must support HTML5 Canvas and HTML5 WebSockets. The VNC
-   client is based on noVNC. For details, see `noVNC: HTML5 VNC
-   Client <https://github.com/kanaka/noVNC/blob/master/README.md>`__.
-   For a list of supported browsers, see `Browser
-   support <https://github.com/kanaka/noVNC/wiki/Browser-support>`__.
+      To use the Virtual Network Computing (VNC) client for the dashboard,
+      your browser must support HTML5 Canvas and HTML5 WebSockets. The VNC
+      client is based on noVNC. For details, see `noVNC: HTML5 VNC
+      Client <https://github.com/kanaka/noVNC/blob/master/README.md>`__.
+      For a list of supported browsers, see `Browser
+      support <https://github.com/kanaka/noVNC/wiki/Browser-support>`__.
 
 #. In the address bar, enter the host name or IP address for the
    dashboard.
@@ -35,12 +35,12 @@ server role.
 
        https://ipAddressOrHostName/
 
-.. note::
+   .. note::
 
-   If a certificate warning appears when you try to access the URL for
-   the first time, a self-signed certificate is in use, which is not
-   considered trustworthy by default. Verify the certificate or add an
-   exception in the browser to bypass the warning.
+      If a certificate warning appears when you try to access the URL for
+      the first time, a self-signed certificate is in use, which is not
+      considered trustworthy by default. Verify the certificate or add an
+      exception in the browser to bypass the warning.
 
 #. On the Log In page, enter your user name and password, and click Sign
    In.
@@ -72,15 +72,13 @@ from the CURRENT PROJECT list at the top of the tab.
 
 **Figure: Project tab**
 
-  .. image:: figures/dashboard-project-tab.png
+.. image:: figures/dashboard-project-tab.png
 
------------
 Project tab
 -----------
 
 From the :guilabel:`Project` tab, you can access the following tabs:
 
------------------------
 :guilabel:`Compute` tab
 -----------------------
 
@@ -112,7 +110,6 @@ reboot instances, or connect to them through VNC.
 
 * :guilabel:`API Access`: View API endpoints.
 
------------------------
 :guilabel:`Network` tab
 -----------------------
 
@@ -122,13 +119,11 @@ reboot instances, or connect to them through VNC.
 
 :guilabel:`Routers`: Create and manage subnets.
 
-----------------------------
 :guilabel:`Object Store` tab
 ----------------------------
 
 :guilabel:`Containers`: Create and manage containers and objects.
 
------------------------------
 :guilabel:`Orchestration` tab
 -----------------------------
 
@@ -146,15 +141,13 @@ quotas.
 
 **Figure: Admin tab**
 
-  .. image:: figures/dashboard_admin_project_tab.png
+.. image:: figures/dashboard_admin_project_tab.png
 
----------
 Admin tab
 ---------
 
 Access the following categories to complete these tasks:
 
-----------------------------
 :guilabel:`System Panel` tab
 ----------------------------
 
@@ -200,7 +193,6 @@ information:
 OpenStack Compute and define the maximum allowable size and number of
 resources.
 
-------------------------------
 :guilabel:`Identity Panel` tab
 ------------------------------
 

@@ -41,7 +41,9 @@ access to the instances.
 This procedure can be adjusted as necessary to add additional security
 group rules to a project, if your cloud requires them.
 
-.. note: When adding a rule, you must specify the protocol used with the
+.. note::
+
+   When adding a rule, you must specify the protocol used with the
    destination port or source port.
 
 #. Log in to the dashboard, choose a project, and click :guilabel:`Access &
@@ -56,12 +58,14 @@ group rules to a project, if your cloud requires them.
 
    +--------------------------------------+--------------------------------------+
    | Rule                                 | Remote                               |
-   |                                      |                                      |
+   +--------------------------------------+--------------------------------------+
    | ``SSH``                              | ``CIDR``                             |
    +--------------------------------------+--------------------------------------+
 
-.. note:: To accept requests from a particular range of IP addresses, specify
-   the IP address block in the CIDR box.
+   .. note::
+
+      To accept requests from a particular range of IP addresses, specify
+      the IP address block in the CIDR box.
 
 #. Click :guilabel:`Add`.
 
@@ -74,7 +78,7 @@ group rules to a project, if your cloud requires them.
 
    +--------------------------------------+--------------------------------------+
    | Rule                                 | Direction                            |
-   |                                      |                                      |
+   +--------------------------------------+--------------------------------------+
    | ``All ICMP``                         | ``Ingress``                          |
    +--------------------------------------+--------------------------------------+
 
@@ -128,10 +132,12 @@ Import a key pair
 
        $ chmod 0600 yourPrivateKey.pem
 
-.. note:: If you are using the dashboard from a Windows computer, use PuTTYgen
-   to load the ``*.pem`` file and convert and save it as ``*.ppk``. For
-   more information see the `WinSCP web page for
-   PuTTYgen <http://winscp.net/eng/docs/ui-puttygen>`__.
+   .. note::
+
+      If you are using the dashboard from a Windows computer, use PuTTYgen
+      to load the ``*.pem`` file and convert and save it as ``*.ppk``. For
+      more information see the `WinSCP web page for
+      PuTTYgen <http://winscp.net/eng/docs/ui-puttygen>`__.
 
 #. To make the key pair known to SSH, run the **ssh-add** command.
 
@@ -175,19 +181,20 @@ and the association of that address with a specific instance.
 #. In the Manage Floating IP Associations dialog box, choose the
    following options:
 
-   -  The IP Address field is filled automatically, but you can add a
+   #. The IP Address field is filled automatically, but you can add a
       new IP address by clicking the + button.
 
-   -  In the Ports to be associated field, select a port from the list.
+   #. In the Ports to be associated field, select a port from the list.
 
       The list shows all the instances with their fixed IP addresses.
 
 #. Click Associate.
 
-.. note:: To disassociate an IP address from an instance, click the
-   :guilabel:`Disassociate` button.
+   .. note::
+
+      To disassociate an IP address from an instance, click the
+      :guilabel:`Disassociate` button.
 
 To release the floating IP address back into the pool of addresses,
 click the :guilabel:`More` button and select the :guilabel:`Release
 Floating IP` option.
-
