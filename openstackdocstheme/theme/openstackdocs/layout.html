@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ metatags }}
 {% include 'css.html' %}
+{%- for cssfile in css_files %}
+<link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+{%- endfor %}
   {# FAVICON #}
 {% if favicon %}
     <link rel="shortcut icon" href="{{ pathto('_static/favicon.ico') }}"/>
