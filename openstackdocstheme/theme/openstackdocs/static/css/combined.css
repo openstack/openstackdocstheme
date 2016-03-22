@@ -29,6 +29,12 @@ a, a:visited {
 a:hover {
   text-decoration: underline; }
 
+ol.arabic ol {
+  list-style-type: lower-alpha; }
+
+ol.arabic ol ol {
+  list-style-type: upper-alpha; }
+
 /* @group Navigation */
 #navigation {
   display: block;
