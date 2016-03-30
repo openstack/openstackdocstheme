@@ -2,7 +2,12 @@ OpenStack docs.openstack.org Sphinx Theme
 =========================================
 
 Theme and extension support for Sphinx documentation that is published to
-docs.openstack.org. Intended for use by OpenStack projects.
+docs.openstack.org and developer.openstack.org.
+
+Intended for use by OpenStack `projects governed by the Technical Committee`_.
+
+.. _`projects governed by the Technical Committee`:
+http://governance.openstack.org/reference/projects/index.html
 
 Using the Theme
 ===============
