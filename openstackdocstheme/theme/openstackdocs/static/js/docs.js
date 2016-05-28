@@ -98,9 +98,9 @@ $.getJSON('common/js/doc-characters.json', function(data) {
    and warning. We decorate their title paragraphs with Font Awesome icons
    by adding the appropriate FA classes.                               */
 
-$('div.important > p.admonition-title').addClass('fa fa-info-circle');
-$('div.note > p.admonition-title').addClass('fa fa-check-circle');
-$('div.warning > p.admonition-title').addClass('fa fa-exclamation-triangle');
+$('div.important > p.admonition-title').prepend('<div class="fa fa-check-circle">&nbsp;</div>');
+$('div.note > p.admonition-title').prepend('<div class="fa fa-check-circle">&nbsp;</div>');
+$('div.warning > p.admonition-title').prepend('<div class="fa fa-exclamation-triangle">&nbsp;</div>');
 
 /* BB 150310
    We also insert a space between the icon and the admonition title
@@ -112,16 +112,6 @@ $('div.warning > p.admonition-title').addClass('fa fa-exclamation-triangle');
 
    The first parameter of the text() callback is not needed here (it's
    the index of the HTML element that we are modifying)                 */
-
-$('div.important > p.admonition-title').text(function(ignored_para,original) {
-    return " "+original
-});
-$('div.note > p.admonition-title').text(function(ignored_para,original) {
-    return " "+original
-});
-$('div.warning > p.admonition-title').text(function(ignored_para,original) {
-    return " "+original
-});
 
 // Gives the log a bug icon the information it needs to generate the bug in
 // Launchpad with pre-filled information such as git SHA, git.openstack.org
