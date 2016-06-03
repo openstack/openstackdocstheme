@@ -1,0 +1,16 @@
+---
+features:
+  - |
+    The sidebar Table of Contents can now be set to the full ``toc`` directive,
+    or remain as the ``toctree`` directive.
+
+    This can be set by setting ``"sidebar_mode"`` to ``"toc"`` in the
+    ``html_theme_options`` option in ``conf.py``.
+
+    For example:
+
+    ::
+
+      html_theme_options = {
+           "sidebar_mode": "toc",
+        }
