@@ -4111,7 +4111,8 @@ li.docs-has-sub.open:before {
   text-transform: uppercase; }
 
 .docs-updated {
-  float: left; }
+  float: left;
+  padding: 5px; }
 
 a.docs-edit {
   float: right;
@@ -4129,14 +4130,6 @@ a.docs-edit i {
   font-weight: 700;
   color: #2A4E68;
   margin: 20px 0; }
-
-.docs-top-contents ul {
-  list-style: none;
-  padding: 3px;
-  margin: 0 0 5px 0; }
-
-.docs-top-contents ul li a {
-  text-decoration: underline; }
 
 .docs-body a {
   text-decoration: underline;
@@ -4652,14 +4645,25 @@ table.highlighttable {
   display: none;
 }
 
+.docs-top-contents {
+  padding: 10px;
+  padding-left: 0px;
+}
+
 .docs-top-contents a[href="#"] {
   display: none;
 }
 
 .docs-top-contents h5 {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
-.docs-top-contents {
-  padding: 10px;
-}
+.docs-top-contents ul {
+  list-style: none;
+  padding: 3px; }
+
+.docs-top-contents ul ul {
+  padding-left: 15px; }
+
+.docs-top-contents ul li a {
+  text-decoration: underline; }
