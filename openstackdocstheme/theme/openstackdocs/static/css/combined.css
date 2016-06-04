@@ -35,6 +35,19 @@ ol.arabic ol {
 ol.arabic ol ol {
   list-style-type: upper-alpha; }
 
+tt.literal {
+  color: #E74C3C;
+  padding: 1px 3px;
+  border: solid 1px #e1e4e5;
+}
+
+table tt.literal {
+  color: #E74C3C;
+  padding: 1px 3px;
+  border: none;
+  /* border: solid 1px #e1e4e5; */
+}
+
 /* @group Navigation */
 #navigation {
   display: block;
