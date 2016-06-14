@@ -6,6 +6,7 @@ _build/
 *.pyc
 doc/build
 doc/source/BBresult
+api-ref/build
 .tox
 
 # Editors

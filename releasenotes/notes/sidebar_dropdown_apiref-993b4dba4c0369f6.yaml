@@ -1,0 +1,29 @@
+---
+prelude: >
+    Adds a theme variable, ``sidebar_dropdown`` to configure
+    the display of the new API sidebar dropdown menu.
+features:
+  - |
+    Adds the option to configure the display of a sidebar dropdown
+    menu for published API References and Guides.
+    In conf.py, set the theme variable, ``html_theme_options`` to
+    include the parameter, ``sidebar_dropdown`` as ``api_ref``. For
+    example:
+
+    ::
+
+      html_theme_options = {
+           "sidebar_dropdown": "api_ref",
+        }
+
+    The extensions parameter should include the sphinx extension,
+    ``os_api_ref``.
+
+    ::
+
+      extensions = [
+          'os_api_ref',
+      ]
+
+  - Publishes an API Reference demo which is integrated with the
+    API sidebar dropdown menu.
