@@ -41,7 +41,11 @@
     {%- else %}
         var bugProject = "openstack-manuals";
     {%- endif %}
-    var bugTitle = "{{ title }} in {{ project }}";
+    {%- if bug_title %}
+        var bugTitle = "{{ bug_title }}";
+    {%- else %}
+        var bugTitle = "{{ title }} in {{ project }}";
+    {%- endif %}
     var fieldTags = "{{ bug_tag }}";
 
     /* "last_updated" is the build date and time. It relies on the

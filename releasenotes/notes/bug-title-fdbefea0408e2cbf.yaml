@@ -1,0 +1,13 @@
+---
+features:
+  - |
+    The ability to customise the bug title for the 'Report a Bug'
+    link is now available. To customise the bug title used add
+    the ``bug_title`` key with a value to ``html_context`` in the
+    Sphinx configuration.
+
+    For example:
+
+    ::
+
+      html_context = {"bug_title": 'Documentation bug', ...}
