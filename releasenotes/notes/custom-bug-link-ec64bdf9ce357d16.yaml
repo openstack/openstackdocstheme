@@ -1,0 +1,18 @@
+---
+prelude: >
+    In preparation for releasing updated API reference
+    documentation using this theme, we have a collection
+    of new features and fixes.
+features:
+  - Ensure Javascript and CSS files are pulled in programmatically to
+    enable custom Javascript and CSS files.
+  - CSS adjustments to ``inline`` markup and contents indentation.
+  - Enable custom bug title link.
+  - Adds sidebar_mode for table of contents as an option for html_theme_options
+    in conf.py.
+fixes:
+  - Use HTTPS for external dependencies.
+  - Replace deprecated library function os.popen()
+    with subprocess. (1529836)
+  - Update contribute link in footer. (1421814)
+  - Hide duplicate titles and empty tocs in generated content.
