@@ -12,9 +12,6 @@
 {%- for cssfile in css_files %}
 <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
 {%- endfor %}
-{%- for jsfile in js_files %}
-<script src="{{ pathto(jsfile, 1) }}" type="text/javascript" />
-{%- endfor %}
   {# FAVICON #}
 {% if favicon %}
     <link rel="shortcut icon" href="{{ pathto('_static/favicon.ico') }}"/>
@@ -81,5 +78,6 @@ ga('send', 'pageview');
     </div>
 {% include 'footer.html' %}
 {% include 'script_footer.html' %}
+{% include 'js.html' %}
   </body>
 </html>
