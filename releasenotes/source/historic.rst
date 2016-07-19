@@ -1,5 +1,9 @@
-Release notes
-=============
+================================
+Release Notes for older versions
+================================
+
+These are release notes for version up to 1.2.4. With 1.2.5, the
+handling of release notes has changed.
 
 1.2.4
 -----
