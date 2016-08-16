@@ -1,0 +1,14 @@
+---
+features:
+  - |
+    The automatic table of contents that appears in the body of the
+    documentation can be disabled by setting ``display_toc`` to ``False`` in
+    the ``html_theme_options`` option in ``conf.py``.
+
+    For example:
+
+    .. code-block:: python
+
+      html_theme_options = {
+           "display_toc": False,
+      }

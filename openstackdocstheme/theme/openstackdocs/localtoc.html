@@ -1,6 +1,4 @@
-{%- if theme_sidebar_mode == 'toctree' %}
-{%- if display_toc %}
+{%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
 <h5><a href="{{ pathto(master_doc) }}">Contents</a></h5>
 {{ toc }}
-{%- endif %}
 {%- endif %}
