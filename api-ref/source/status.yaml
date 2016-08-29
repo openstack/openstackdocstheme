@@ -1,0 +1,17 @@
+200:
+  default: |
+    Request was successful.
+201:
+  default: |
+    Resource was created and is ready to use.
+400:
+  default: |
+    Some content in the request was invalid
+  another_400_error: |
+    Sample message for 400 error response.
+401:
+  default: |
+    User must authenticate before making a request
+500:
+  default: |
+    Something went wrong inside the service.
