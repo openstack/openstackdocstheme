@@ -89,7 +89,7 @@ Connect a router
 #. Optionally, in the :guilabel:`Add Interface` dialog box, set an
    :guilabel:`IP Address` for the router interface for the selected subnet.
 
-   If you choose not to set the the :guilabel:`IP Address` value, then by
+   If you choose not to set the :guilabel:`IP Address` value, then by
    default OpenStack Networking uses the first host IP address in the subnet.
 
    The :guilabel:`Router Name` and :guilabel:`Router ID` fields are
