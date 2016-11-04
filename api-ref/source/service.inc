@@ -1,13 +1,10 @@
 .. -*- rst -*-
 
-This is a Test Service API Reference.
+=========
+ Service
+=========
 
-List the Servers
-================
-
-Testing API for Service 1.
-
-**Passwords**
+**Introductory Concepts**
 
 When you create a server, you can specify a password through the
 optional adminPass attribute. The password must meet the complexity
@@ -20,35 +17,6 @@ If you do not specify a password, the API generates and assigns a random
 password that it returns in the response object. This password meets the
 security requirements set by the compute provider. For security reasons,
 subsequent GET calls do not require this password.
-
-**Server metadata**
-
-You can specify custom server metadata at server launch time. The
-maximum size for each metadata key-value pair is 255 bytes. The compute
-provider determines the maximum number of key-value pairs for each
-server. You can query this value through the ``maxServerMeta`` absolute
-limit.
-
-**Server networks**
-
-You can specify one or more networks to which the server connects at
-launch time. Users can also specify a specific port on the network or
-the fixed IP address to assign to the server interface.
-
-    **Note**
-
-    You can use both IPv4 and IPv6 addresses as access addresses and you
-    can assign both addresses simultaneously. You can update access
-    addresses after you create a server.
-
-**Server personality**
-
-To customize the personality of a server instance, you can inject data
-into its file system. For example, you might insert ssh keys, set
-configuration files, or store data that you want to retrieve from inside
-the instance. This customization method provides minimal launch-time
-personalization. If you require significant customization, create a
-custom image.
 
 Follow these guidelines when you inject files:
 
@@ -79,20 +47,26 @@ files. For example, on Linux, all files have root as the owner and the
 root group as the group owner, and allow only user and group read access
 (``chmod 440``).
 
-**Server access addresses**
 
-In a hybrid environment, the underlying implementation might not control
-the IP address of a server. Instead, the access IP address might be part
-of the dedicated hardware; for example, a router/NAT device. In this
-case, you cannot use the addresses that the implementation provides to
-access the server from outside the local LAN. Instead, the API might
-assign a separate access address at creation time to provide access to
-the server. This address might not be directly bound to a network
-interface on the server and might not necessarily appear when you query
-the server addresses. However, clients should use an access address to
-access the server directly.
+List the Servers
+================
 
 .. rest_method:: GET /v3/servers/{role_id}/role/{another_id}/role/{some_id}
+
+Short explanation about this GET method.
+
+HTTP Status codes
+-----------------
+
+.. rest_status_code:: success status.yaml
+
+   - 200
+   - 201
+
+.. rest_status_code:: error status.yaml
+
+   - 400
+   - 500
 
 Response
 --------
@@ -106,9 +80,10 @@ Response
 Copy the Server
 ===============
 
-Testing display of copy API.
-
 .. rest_method:: COPY /v3/servers/{role_id}
+
+Short explanation about this COPY method.
+
 
 Response
 --------
@@ -123,6 +98,15 @@ Change or Update the Servers
 ============================
 
 .. rest_method:: PUT /servers
+
+Explantory text about this PUT method.
+
+List of information:
+
+- Item 1
+- Item 2
+- Item 3
+
 
 Request
 -------
@@ -148,9 +132,10 @@ Response
 Delete a Server
 ===============
 
-Delete some server content.
-
 .. rest_method:: DELETE /servers/{id}
+
+Explain what the DELETE method does here.
+
 
 Request
 -------

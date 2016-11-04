@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-lg-8">
-    <h2>{{ title }}</h2>
+    {%- if theme_sidebar_dropdown == 'os_docs' %}
+      <h2>{{ title }}</h2>
+    {% else %}
+      <h2>OpenStack API Documentation</h2>
+    {%- endif %}
   </div>
   <div class="docs-actions">
     {% if prev %}
