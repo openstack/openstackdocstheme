@@ -15,6 +15,7 @@
 import subprocess
 import sys
 import os
+import warnings
 
 import openstackdocstheme
 
@@ -69,8 +70,12 @@ release = '1.0'
 # These variables are passed to the logabug code via html_context.
 giturl = u'http://git.openstack.org/cgit/openstack/openstackdocstheme/tree/doc/source'
 git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
-gitsha = subprocess.Popen(
-    git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+try:
+    gitsha = subprocess.Popen(
+        git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+except OSError:
+    warnings.warn('Cannot get gitsha from git repository. Setting to None')
+    gitsha = None
 bug_tag = "doc-builds"
 
 html_context = {"gitsha": gitsha, "bug_tag": bug_tag, "giturl": giturl}
