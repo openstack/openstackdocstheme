@@ -117,11 +117,27 @@ $('div.warning > p.admonition-title').prepend('<div class="fa fa-exclamation-tri
 // Launchpad with pre-filled information such as git SHA, git.openstack.org
 // source URL, published document URL and tag.
 function logABug(bugTitle, bugProject, fieldComment, fieldTags) {
+
     var lineFeed = "%0A";
-    var urlBase = "https://bugs.launchpad.net/" + bugProject + "/+filebug?field.title="
+
+    var bugChecklist = "This bug tracker is for errors with the documentation, " +
+        "use the following as a template and remove or add fields as " +
+        "you see fit. Convert [ ] into [x] to check boxes:" + lineFeed + lineFeed +
+        "- [ ] This doc is inaccurate in this way: ______" + lineFeed +
+        "- [ ] This is a doc addition request." + lineFeed +
+        "- [ ] I have a fix to the document that I can paste below including example: " +
+        "input and output. " + lineFeed + lineFeed +
+        "If you have a troubleshooting or support issue, use the following " +
+        " resources:" + lineFeed + lineFeed +
+        " - Ask OpenStack: http://ask.openstack.org" + lineFeed +
+        " - The mailing list: http://lists.openstack.org" + lineFeed +
+        " - IRC: 'openstack' channel on Freenode"+ lineFeed;
+
+    var urlBase = "https://bugs.launchpad.net/" + bugProject + "/+filebug?field.title=";
     var currentURL = "URL: " + window.location.href;
     var bugLink = urlBase  + encodeURIComponent(bugTitle) +
-        "&field.comment=" + lineFeed + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
+        "&field.comment=" + lineFeed + lineFeed +  lineFeed +
+        bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
         lineFeed + currentURL +
         "&field.tags=" + fieldTags;
     document.getElementById("logABugLink1").href=bugLink;

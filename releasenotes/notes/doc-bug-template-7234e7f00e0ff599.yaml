@@ -1,0 +1,8 @@
+---
+features:
+  - Adds additional information to the doc bug template
+    used on Launchpad when a reader clicks the doc bug
+    icon to report a bug.
+other:
+  - Implemented intially to guide people to better ways
+    to get end-user support rather than log a doc bug.
