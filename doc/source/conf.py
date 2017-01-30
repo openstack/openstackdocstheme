@@ -72,7 +72,7 @@ giturl = u'http://git.openstack.org/cgit/openstack/openstackdocstheme/tree/doc/s
 git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
 try:
     gitsha = subprocess.Popen(
-        git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+        git_cmd, stdout=subprocess.PIPE).communicate()[0].decode('utf-8').strip('\n')
 except OSError:
     warnings.warn('Cannot get gitsha from git repository. Setting to None')
     gitsha = None

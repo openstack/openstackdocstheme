@@ -45,7 +45,8 @@ Then modify your Sphinx settings in ``conf.py`` to include::
    html_theme_path = [openstackdocstheme.get_html_theme_path()]
 
 Also, you must include these variables so that the "Log a bug" link sends
-metadata for the project where the docs reside::
+metadata for the project where the docs reside. You'll also need to add
+``import subprocess`` to the top of your ``conf.py`` file::
 
    # We ask git for the SHA checksum
    # The git SHA checksum is used by "log-a-bug"
@@ -61,8 +62,17 @@ metadata for the project where the docs reside::
    # Must set this variable to include year, month, day, hours, and minutes.
    html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
+.. note::
+   If you're using Python 3 to build, you'll need to adjust the ``gitsha``
+   command to add a ``.decode('utf-8')`` option.
+
+   ::
+
+       gitsha = subprocess.Popen(
+           git_cmd, stdout=subprocess.PIPE).communicate()[0].decode('utf-8').strip('\n')
+
+
 * Free software: Apache License, Version 2.0
 * Release notes: http://docs.openstack.org/releasenotes/openstackdocstheme/
 * Source: http://git.openstack.org/cgit/openstack/openstackdocstheme
 * Bugs: http://bugs.launchpad.net/openstack-manuals
-
