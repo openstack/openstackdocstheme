@@ -4,6 +4,12 @@ id:
   type: string
   description: |
     The id of the service.
+image_id:
+  in: path
+  required: true
+  type: string
+  description: |
+    The id for the image.
 host:
   in: body
   required: true
@@ -16,6 +22,13 @@ name:
   type: string
   description: |
     The name of the service.
+role_id:
+  in: body
+  required: true
+  type: string
+  description: |
+    The unique identifier for the role, which enables defining role assignments
+    for multiple users in multiple projects.
 server.obj:
   in: body
   required: true

@@ -16,7 +16,7 @@ server password.
 List the Images
 ===============
 
-.. rest_method:: GET /v3/images/{role_id}/role/{another_id}/role/{some_id}<br>/b/a/x/{image_id.x}
+.. rest_method:: GET /v3/images/{role_id}/role/{id}/role/{image_id}
 
 Short explanation about this GET method.
 
@@ -39,7 +39,10 @@ Response
 .. rest_parameters:: parameters.yaml
 
    - host: host
+   - id: id
+   - image_id: image_id
    - name: name
+   - role_id: role_id
 
 Create an Image
 ===============

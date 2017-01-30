@@ -51,7 +51,7 @@ root group as the group owner, and allow only user and group read access
 List the Servers
 ================
 
-.. rest_method:: GET /v3/servers/{role_id}/role/{another_id}/role/{some_id}
+.. rest_method:: GET /v3/servers/{role_id}/role
 
 Short explanation about this GET method.
 
@@ -75,6 +75,7 @@ Response
 
    - host: host
    - name: name
+   - role_id: role_id
 
 
 Copy the Server
@@ -92,6 +93,7 @@ Response
 
    - host: host
    - name: name
+   - role_id: role_id
 
 
 Change or Update the Servers
