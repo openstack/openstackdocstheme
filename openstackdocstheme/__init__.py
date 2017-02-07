@@ -33,10 +33,25 @@ def builder_inited(app):
         app.builder.init_templates()
 
 
+def get_pkg_path():
+    return os.path.abspath(os.path.dirname(__file__))
+
+
 def get_html_theme_path():
     """Return the directory containing HTML theme for local builds."""
-    pkg_dir = os.path.abspath(os.path.dirname(__file__))
-    return os.path.join(pkg_dir, 'theme')
+    return os.path.join(get_pkg_path(), 'theme')
+
+
+def get_pdf_theme_path():
+    """Return the directory containing PDF theme for local builds."""
+    args = ['theme', 'openstackdocs_pdf', 'pdftheme']
+    return os.path.join(get_pkg_path(), *args)
+
+
+def get_openstack_logo_path():
+    """Return the directory containing openstack logo for local builds."""
+    args = ['theme', 'openstackdocs_pdf', 'openstack-logo-full.png']
+    return os.path.join(get_pkg_path(), *args)
 
 
 def setup(app):
