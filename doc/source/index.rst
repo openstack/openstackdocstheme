@@ -88,3 +88,8 @@ Here's the same example but with ..code-block: ini to test the pygments lexer:
     create_and_manage_databases
     create_and_manage_networks
     launch-instance
+
+Search in this guide
+~~~~~~~~~~~~~~~~~~~~
+
+* :ref:`search`
