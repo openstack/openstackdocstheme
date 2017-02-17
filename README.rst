@@ -2,8 +2,8 @@
 Team and repository tags
 ========================
 
-.. image:: http://governance.openstack.org/badges/openstackdocstheme.svg
-    :target: http://governance.openstack.org/reference/tags/index.html
+.. image:: https://governance.openstack.org/badges/openstackdocstheme.svg
+    :target: https://governance.openstack.org/reference/tags/index.html
 
 .. Change things from this point on
 
@@ -16,14 +16,14 @@ docs.openstack.org and developer.openstack.org.
 Intended for use by OpenStack `projects governed by the Technical Committee`_.
 
 .. _`projects governed by the Technical Committee`:
-http://governance.openstack.org/reference/projects/index.html
+https://governance.openstack.org/reference/projects/index.html
 
 Using the Theme
 ===============
 
 Prior to using this theme, ensure your project can use the OpenStack
 brand by referring to the brand guidelines at
-http://www.openstack.org/brand.
+https://www.openstack.org/brand.
 
 Update the requirements list for your project to
 include ``openstackdocstheme`` (usually in test-requirements.txt).
@@ -73,6 +73,6 @@ metadata for the project where the docs reside. You'll also need to add
 
 
 * Free software: Apache License, Version 2.0
-* Release notes: http://docs.openstack.org/releasenotes/openstackdocstheme/
-* Source: http://git.openstack.org/cgit/openstack/openstackdocstheme
-* Bugs: http://bugs.launchpad.net/openstack-manuals
+* Release notes: https://docs.openstack.org/releasenotes/openstackdocstheme/
+* Source: https://git.openstack.org/cgit/openstack/openstackdocstheme
+* Bugs: https://launchpad.net/openstack-doc-tools

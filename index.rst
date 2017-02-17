@@ -21,7 +21,7 @@ vncserver_listen = 0.0.0.0
 vncserver_proxyclient_address = 10.0.0.31
 novncproxy_base_url = http://controller:6080/vnc_auto.html
 
-..note:: Here's an example note. 
+..note:: Here's an example note.
 
 Developer Guide
 ===============
