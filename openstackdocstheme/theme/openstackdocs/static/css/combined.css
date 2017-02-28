@@ -35,17 +35,24 @@ ol.arabic ol {
 ol.arabic ol ol {
   list-style-type: upper-alpha; }
 
-tt.literal {
-  color: #E74C3C;
+div.docs-body code.literal {
+  color: #e74c3c;
   padding: 1px 3px;
   border: solid 1px #e1e4e5;
 }
 
-table tt.literal {
-  color: #E74C3C;
+div.docs-body table code.literal {
+  color: #e74c3c;
   padding: 1px 3px;
   border: none;
   /* border: solid 1px #e1e4e5; */
+}
+
+div.docs-body span.guilabel, div.docs-body span.menuselection {
+  color: #c7254e;
+  background-color: #e1e4e5;
+  padding: 1px 3px;
+  border-radius: 4px;
 }
 
 /* @group Navigation */
