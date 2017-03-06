@@ -1,0 +1,54 @@
+\makeatletter
+
+% Defines title page
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \begin{flushleft}
+       \includegraphics[width=3.5cm, height=0.8cm]{\openstacklogo}
+    \end{flushleft}
+    \vskip 6em%
+    \begin{center}
+       % Document title
+       {\Huge \textbf \@title}
+    \end{center}
+
+    \begin{flushright}
+       % Expect align right but center
+       \vskip 2em%
+       % RELEASE VERSION
+       {\LARGE \py@release \newline}
+    \end{flushright}
+
+    \vskip 6em%
+
+    \begin{flushright}
+       % Author
+       {\LARGE \@author}
+       \vskip 20em%
+       % Creation date
+       {\Large \@date}
+    \end{flushright}
+  \end{titlepage}
+}
+
+% Customizes page header & footer for OpenStack
+\fancypagestyle{normal}{
+  \fancyhf{}
+  \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+  \fancyfoot[RE,LO]{{\py@HeaderFamily\nouppercase\rightmark}}
+  \fancyhead[LE,RO]{{\py@HeaderFamily\@title\space\small\nouppercase{(\py@release)}}}
+  \fancyhead[RE,LO]{{\py@HeaderFamily\includegraphics[width=3.5cm, height=0.8cm]{\openstacklogo}}}
+}
+
+% Customizes colors
+\definecolor{VerbatimColor}{rgb}{.95,.95,.95}
+
+% Release name strings
+% TODO: using "releasename" directive after Sphinx 1.5.3 release
+%       https://github.com/sphinx-doc/sphinx/issues/3392
+\renewcommand{\release}[1]{%
+  \renewcommand{\py@release}{Release Version:\space\version}%
+  \renewcommand{\version}{#1}}
+
+% Do not use chapter and section number
+\setcounter{secnumdepth}{-1}
