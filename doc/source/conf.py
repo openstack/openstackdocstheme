@@ -24,6 +24,12 @@ import openstackdocstheme
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+# Release name for PDF documents
+latex_custom_template = r"""
+\usepackage{""" + openstackdocstheme.get_pdf_theme_path() + """}
+\\newcommand{\openstacklogo}{""" + openstackdocstheme.get_openstack_logo_path() + """}
+"""
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -216,16 +222,22 @@ htmlhelp_basename = 'os-doc-demodoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
+latex_engine = 'xelatex'
 
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '11pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
+    #Default figure align
+    'figure_align': 'H',
+
+    # Not to generate blank page after chapter
+    'classoptions': ',openany',
+    # Additional stuff for the LaTeX preamble.
+    'preamble': latex_custom_template,
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
