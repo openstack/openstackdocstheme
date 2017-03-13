@@ -6,6 +6,11 @@
 .. highlight: python
    :linenothreshold: 5
 
+.. figure:: figures/doc-logo-fox.jpg
+   :alt: Documentation Logo
+   :scale: 30%
+   :align: center
+
 Demo documentation
 ==================
 
