@@ -4687,3 +4687,37 @@ table.highlighttable {
 
 .docs-top-contents ul li a {
   text-decoration: underline; }
+
+img.align-left, .figure.align-left {
+  display: table;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+img.align-center, .figure.align-center {
+  display: table;
+  margin: auto;
+}
+
+img.align-right, .figure.align-right {
+  display: table;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/*img.align-left {*/
+/*  display: table;*/
+/*  margin-left: 0;*/
+/*  margin-right: auto;*/
+/*}*/
+/**/
+/*img.align-center {*/
+/*  display: table;*/
+/*  margin: auto;*/
+/*}*/
+/**/
+/*img.align-right {*/
+/*  display: table;*/
+/*  margin-left: auto;*/
+/*  margin-right: 0;*/
+/*}*/
