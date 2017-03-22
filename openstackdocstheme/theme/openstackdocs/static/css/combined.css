@@ -805,9 +805,6 @@ input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:
   background: #C43422 !important;
   border: none !important; }
 
-table.gsc-search-box td {
-  padding: 0px !important; }
-
 .gsc-input-box {
   border-color: #D3E9EF !important; }
 
@@ -1073,7 +1070,7 @@ input#gsc-i-id2.gsc-input {
   height: 30px !important; }
 
 table.gsc-search-box {
-  margin-bottom: 0; }
+  width: 90% !important; }
 
 .header-search, .gsc-input-box {
   border: 2px solid #dae5ee !important;
@@ -1153,7 +1150,7 @@ table#gs_id50.gstl_50 {
 .close-search {
   position: absolute;
   top: 20px;
-  right: 5px;
+  right: 12% !important;
   color: #dae5ee;
   z-index: 1001;
   font-size: 16px; }
