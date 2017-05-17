@@ -44,23 +44,36 @@ Then modify your Sphinx settings in ``conf.py`` to include::
    html_theme = 'openstackdocs'
    html_theme_path = [openstackdocstheme.get_html_theme_path()]
 
-Also, you must include these variables so that the "Log a bug" link sends
-metadata for the project where the docs reside. You'll also need to add
-``import subprocess`` to the top of your ``conf.py`` file::
+Also, you must pass the following variables as ``html_context`` so that the
+"Log a bug" link sends metadata for the project where the docs reside.
+
+* ``gitsha`` : (required) git commit hash from which the document is generated.
+* ``giturl`` : (required) The location of the document.
+* ``bug_project`` : (optional) Launchpad project which a bug is filed to.
+   The default value is ``openstack-manuals``.
+* ``bug_tag`` : (optional) Launchpad bug tag. If unspecified, no tag is set.
+   The default is empty.
+
+Your ``conf.py`` will be like as follow::
 
    # We ask git for the SHA checksum
    # The git SHA checksum is used by "log-a-bug"
    git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
    gitsha = subprocess.Popen(
        git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
-   # tag that reported bugs will be tagged with
-   bug_tag = "your-chosen-tag"
-   # source tree
-   pwd = os.getcwd()
+   giturl = u'https://git.openstack.org/cgit/openstack/<your-project>/tree/doc/source'
    # html_context allows us to pass arbitrary values into the html template
-   html_context = {"pwd": pwd, "gitsha": gitsha}
+   html_context = {
+       "gitsha": gitsha,
+       "giturl": giturl,
+       "bug_project": "your-launchpad-project",
+       # tag that reported bugs will be tagged with
+       "bug_tag": "your-chosen-tag",
+   }
    # Must set this variable to include year, month, day, hours, and minutes.
    html_last_updated_fmt = '%Y-%m-%d %H:%M'
+
+You'll also need to add ``import subprocess`` to the top of your ``conf.py`` file.
 
 .. note::
    If you're using Python 3 to build, you'll need to adjust the ``gitsha``
