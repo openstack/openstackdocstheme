@@ -3,6 +3,7 @@ _build/
 /ChangeLog
 /dist/
 /openstackdocstheme.egg-info/
+.DS_Store
 *.pyc
 doc/build
 doc/source/BBresult
