@@ -39,51 +39,42 @@ changed.
 
 Then modify your Sphinx settings in ``conf.py`` to include::
 
-   import openstackdocstheme
-
    html_theme = 'openstackdocs'
-   html_theme_path = [openstackdocstheme.get_html_theme_path()]
 
-Also, you must pass the following variables as ``html_context`` so that the
-"Log a bug" link sends metadata for the project where the docs reside.
+and to add ``'openstackdocstheme'`` to the list of extensions Sphinx
+needs to initialize::
 
-* ``gitsha`` : (required) git commit hash from which the document is generated.
-* ``giturl`` : (required) The location of the document.
-* ``bug_project`` : (optional) Launchpad project which a bug is filed to.
-   The default value is ``openstack-manuals``.
-* ``bug_tag`` : (optional) Launchpad bug tag. If unspecified, no tag is set.
-   The default is empty.
+   extensions = [
+       # ...
+       'openstackdocstheme',
+       # ...
+   ]
 
-Your ``conf.py`` will be like as follow::
+Set the options to link to the git repository and bug tracker.
 
-   # We ask git for the SHA checksum
-   # The git SHA checksum is used by "log-a-bug"
-   git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
-   gitsha = subprocess.Popen(
-       git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
-   giturl = u'https://git.openstack.org/cgit/openstack/<your-project>/tree/doc/source'
-   # html_context allows us to pass arbitrary values into the html template
-   html_context = {
-       "gitsha": gitsha,
-       "giturl": giturl,
-       "bug_project": "your-launchpad-project",
-       # tag that reported bugs will be tagged with
-       "bug_tag": "your-chosen-tag",
-   }
+``repository_name``
+    The prefix and repo name. For example,
+    ``'openstack/python-glanceclient'``.
+
+``bug_project``
+    The launchpad project name. For example, ``python-glanceclient``.
+
+``bug_tag``
+   Launchpad bug tag. If unspecified, no tag is set.  The default is
+   empty.
+
+For example::
+
+    # openstackdocstheme options
+    repository_name = 'openstack/python-glanceclient'
+    bug_project = 'python-glanceclient'
+    bug_tag = ''
+
+Enable the "last-updated" information by setting the format for the
+timestamp::
+
    # Must set this variable to include year, month, day, hours, and minutes.
    html_last_updated_fmt = '%Y-%m-%d %H:%M'
-
-You'll also need to add ``import subprocess`` to the top of your ``conf.py`` file.
-
-.. note::
-   If you're using Python 3 to build, you'll need to adjust the ``gitsha``
-   command to add a ``.decode('utf-8')`` option.
-
-   ::
-
-       gitsha = subprocess.Popen(
-           git_cmd, stdout=subprocess.PIPE).communicate()[0].decode('utf-8').strip('\n')
-
 
 * Free software: Apache License, Version 2.0
 * Release notes: https://docs.openstack.org/releasenotes/openstackdocstheme/
