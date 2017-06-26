@@ -13,10 +13,39 @@
 #    under the License.
 
 import os
+import string
 import subprocess
 
 _giturl = 'https://git.openstack.org/cgit/{}/tree/doc/source'
 _html_context_data = None
+
+
+def _get_other_versions(app):
+    if not app.config.html_theme_options.get('show_other_versions', False):
+        return []
+
+    git_cmd = ["git", "tag", "--merged"]
+    try:
+        raw_version_list = subprocess.Popen(
+            git_cmd, stdout=subprocess.PIPE).communicate()[0]
+        raw_version_list = raw_version_list.decode("utf-8")
+    except UnicodeDecodeError:
+        app.warn('Cannot decode the list based on utf-8 encoding. '
+                 'Not setting "other_versions".')
+        raw_version_list = u''
+    except OSError:
+        app.warn('Cannot get tags from git repository, or no merged tags. '
+                 'Not setting "other_versions".')
+        raw_version_list = u''
+
+    # grab last five that start with a number and reverse the order
+    _tags = [t.strip("'") for t in raw_version_list.split('\n')]
+    other_versions = [
+        t for t in _tags if t and t[0] in string.digits
+        # Don't show alpha, beta or release candidate tags
+        and 'rc' not in t and 'a' not in t and 'b' not in t
+    ][:-5:-1]
+    return other_versions
 
 
 def builder_inited(app):
@@ -65,6 +94,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             _html_context_data['bug_tag'] = bug_tag
 
     context.update(_html_context_data)
+    context['other_versions'] = _get_other_versions(app)
 
 
 def setup(app):

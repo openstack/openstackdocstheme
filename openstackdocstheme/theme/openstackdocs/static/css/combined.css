@@ -3813,6 +3813,34 @@ a.overview-btn.contribute-btn:hover {
 a.overview-btn.contribute-btn i {
   margin-left: 10px; }
 
+/*------------------------------------*\
+  Docs Version Dropdown
+\*------------------------------------*/
+
+.version-dropdown {
+    position: relative;
+    float: right;
+    display: inline-block;
+    border: solid 1px;
+    padding: 5px;
+}
+
+.version-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    top: 25px;
+    right: 5px;
+    z-index: 1;
+}
+
+.version-dropdown:hover .version-dropdown-content {
+    display: block;
+}
+
 /*End Docs Main*/
 /*Docs Book View*/
 .docs-book-wrapper, .docs-search-wrapper {
@@ -4078,6 +4106,10 @@ li.docs-has-sub.open:before {
 
 .docs-updated {
   float: left;
+  padding: 5px; }
+
+.docs-versioned {
+  float: right;
   padding: 5px; }
 
 a.docs-edit {
