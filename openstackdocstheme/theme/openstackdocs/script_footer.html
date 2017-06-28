@@ -47,6 +47,12 @@
         var bugTitle = "{{ title }} in {{ project }}";
     {%- endif %}
     var fieldTags = "{{ bug_tag }}";
+    {%- if use_storyboard %}
+        var useStoryboard = "{{ use_storyboard }}";
+    {%- else %}
+        var useStoryboard = "";
+    {%- endif %}
+
 
     /* "last_updated" is the build date and time. It relies on the
        conf.py variable "html_last_updated_fmt", which should include

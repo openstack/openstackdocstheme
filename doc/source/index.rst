@@ -54,17 +54,27 @@ Using the Theme
        ``'openstack/python-glanceclient'``.
 
    ``bug_project``
-       The launchpad project name. For example, ``python-glanceclient``.
+       The project name or ID. For launchpad, it's a string like
+       ``python-glanceclient``. If your project uses
+       ``storyboard.openstack.org``, use the project number instead
+       like ``901``
 
    ``bug_tag``
       Launchpad bug tag. If unspecified, no tag is set.  The default is
       empty.
 
-   For example::
+   One example for a project using launchpad::
 
       # openstackdocstheme options
       repository_name = 'openstack/python-glanceclient'
       bug_project = 'python-glanceclient'
+      bug_tag = ''
+
+   One example for a project using storyboard::
+
+      # openstackdocstheme options
+      repository_name = 'openstack-infra/infra-manual'
+      bug_project = '721'
       bug_tag = ''
 
 #. Enable the "last-updated" information by setting the format for the

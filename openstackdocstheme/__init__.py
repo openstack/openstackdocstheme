@@ -58,9 +58,12 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         bug_project = app.config.bug_project
         if bug_project:
             _html_context_data['bug_project'] = bug_project
+        if bug_project and bug_project.isdigit():
+            _html_context_data['use_storyboard'] = True
         bug_tag = app.config.bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
+
     context.update(_html_context_data)
 
 

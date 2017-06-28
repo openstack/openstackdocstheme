@@ -127,11 +127,17 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags) {
 
     var urlBase = "https://bugs.launchpad.net/" + bugProject + "/+filebug?field.title=";
     var currentURL = "URL: " + window.location.href;
-    var bugLink = urlBase  + encodeURIComponent(bugTitle) +
+    var bugLink = "";
+    if (useStoryboard) {
+        var urlBase = "https://storyboard.openstack.org/#!/project/";
+        bugLink = urlBase + bugProject;
+    } else {
+        bugLink = urlBase  + encodeURIComponent(bugTitle) +
         "&field.comment=" + lineFeed + lineFeed +  lineFeed +
         bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
         lineFeed + currentURL +
         "&field.tags=" + fieldTags;
+    }
     document.getElementById("logABugLink1").href=bugLink;
     document.getElementById("logABugLink2").href=bugLink;
     document.getElementById("logABugLink3").href=bugLink;

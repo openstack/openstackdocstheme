@@ -12,10 +12,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import subprocess
-import sys
-import os
-import warnings
+# import os
 
 import openstackdocstheme
 
@@ -62,8 +59,8 @@ master_doc = 'index'
 # 'security guide' or 'network guide'
 # It's used by the "log-a-bug" button on each page
 # and should ultimately be set automatically by the build process
-project = u'network guide'
-copyright = u'2015, OpenStack Contributors'
+project = u'OpenStack Documentation Theme'
+copyright = u'2015-2017, OpenStack Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
