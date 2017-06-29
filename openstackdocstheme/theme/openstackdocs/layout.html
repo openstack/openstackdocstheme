@@ -56,7 +56,9 @@ ga('send', 'pageview');
           {% if next %}
             <a href="{{ next.link|e }}"><i class="fa fa-angle-double-right" data-toggle="tooltip" data-placement="top" title="Next: {{ next.title }}"></i></a>
           {% endif %}
+          {%- if bug_project %}
             <a id="logABugLink3" href="" target="_blank" title="Found an error? Report a bug against this page"><i class="fa fa-bug" data-toggle="tooltip" data-placement="top" title="Report a Bug"></i></a>
+          {% endif %}
           </div>
           <div class="row docs-byline bottom">
             <div class="docs-updated">updated: {{ last_updated }}</div>
@@ -67,8 +69,11 @@ ga('send', 'pageview');
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 docs-actions-wrapper">
             <!-- ID buglinkbottom added so that pre-filled doc bugs
-                 are sent to Launchpad projects related to the document -->
+                 are sent to Launchpad projects related to the
+                 document -->
+              {%- if bug_project %}
               <a href="#" id="logABugLink2" class="docs-footer-actions"><i class="fa fa-bug"></i> found an error? report a bug</a>
+              {%- endif %}
               <a href="http://ask.openstack.org" class="docs-footer-actions"><i class="fa fa-question-circle"></i> questions?</a>
             </div>
           </div>

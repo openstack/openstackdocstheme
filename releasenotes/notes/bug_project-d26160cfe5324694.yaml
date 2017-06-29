@@ -1,0 +1,4 @@
+---
+fixes:
+  - If ``bug_project`` is not set, the "Report a bug" links are not
+    displayed at all.
