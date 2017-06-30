@@ -1,5 +1,5 @@
 ===========================================
- OpenStack docs.openstack.org Sphinx Theme
+ OpenStack docs.openstack.org Sphinx theme
 ===========================================
 
 ``openstackdocstheme`` is a theme and extension support for Sphinx
@@ -11,7 +11,7 @@ Technical Committee`_.
 
 .. _`projects governed by the Technical Committee`: https://governance.openstack.org/reference/projects/index.html
 
-Using the Theme
+Using the theme
 ===============
 
 .. note::
@@ -57,7 +57,8 @@ Using the Theme
        The project name or ID. For launchpad, it's a string like
        ``python-glanceclient``. If your project uses
        ``storyboard.openstack.org``, use the project number instead
-       like ``901``
+       like ``901``. If unspecified, the "Report a bug" links are
+       not shown.
 
    ``bug_tag``
       Launchpad bug tag. If unspecified, no tag is set.  The default is
