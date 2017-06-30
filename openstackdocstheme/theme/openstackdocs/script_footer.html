@@ -38,8 +38,6 @@
     var gitSha = "SHA: {{ gitsha }}";
     {%- if bug_project %}
         var bugProject = "{{ bug_project }}";
-    {%- else %}
-        var bugProject = "openstack-manuals";
     {%- endif %}
     {%- if bug_title %}
         var bugTitle = "{{ bug_title }}";
