@@ -4183,18 +4183,18 @@ pre .cl {
    originally had names "docs-important" and "docs-warning" */
 
 .admonition.important {
-  background: #FEFFBE;
-  border-color: #D7AA16;
-  color: #D7AA16; }
+  background: #feffd6;
+  border-color: #2A4E68;
+  color: #2A4E68; }
 
 .admonition.important a {
-  color: #e8be15; }
+  color: #cca50a; }
 
 .admonition.important h3 {
-  color: #e8be15; }
+  color: #cca50a; }
 
 .admonition.important h3 i {
-  color: #e8be15; }
+  color: #cca50a; }
 
 .admonition.warning {
   background: #FED3D9;

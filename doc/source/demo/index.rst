@@ -82,7 +82,22 @@ Here's the same example but with ..code-block: ini to test the pygments lexer:
   vncserver_proxyclient_address = 10.0.0.31
   novncproxy_base_url = http://controller:6080/vnc_auto.html
 
-.. note:: Here's an example note.
+Notices
+~~~~~~~
+
+Notices take these forms:
+
+.. note:: A comment with additional information that explains a part of the
+          text.
+
+.. important:: Something you must be aware of before proceeding.
+
+.. tip:: An extra but helpful piece of practical advice.
+
+.. caution:: Helpful information that prevents the user from making mistakes.
+
+.. warning:: Critical information about the risk of data loss or security
+             issues.
 
 .. toctree::
     :maxdepth: 1
