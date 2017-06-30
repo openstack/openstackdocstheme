@@ -94,6 +94,12 @@ Using the Theme
      html_theme_options = {"sidebar_dropdown": "api_ref",
                            "sidebar_mode": "toc"}
 
+#. If you are using this theme for documentation you want to release based on
+   git tags on your repository, set the release dropdown menu option in the
+   `html_theme_options` in the `conf.py` file. By default it is set to False.::
+
+    html_theme_options = {"show_other_versions": "True"}
+
 
 Demonstration example
 =====================

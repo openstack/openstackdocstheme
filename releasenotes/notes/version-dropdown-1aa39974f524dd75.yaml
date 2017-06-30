@@ -1,0 +1,23 @@
+---
+prelude: >
+    Adds ability to show up to the last five versions of the documentation,
+    based on the available git tags for the repository. Use the theme variable,
+    ``show_other_versions`` to chose to display the available versions in a
+    dropdown menu.
+features:
+  - |
+    Adds the option to configure the display of a version selector dropdown
+    menu for the most recent five git tags used as release indicators for the repository.
+    By default, in ``theme.conf``, the ``show_other_versions`` value is set to
+    False.
+    In ``conf.py``, set the theme variable, ``html_theme_options`` to
+    include the parameter, ``show_other_versions`` as ``True``. For
+    example:
+
+    ::
+
+      html_theme_options = {'show_other_versions': True}
+
+  - Publishes a version dropdown menu in the "Updated" date row, on both mobile
+    and desktop views, where the version list is imported from git tags on the
+    repository.
