@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    The title "Contents" of the page local TOC is now displayed
+    only when a page has sub-titles.
