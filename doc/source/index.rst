@@ -101,6 +101,17 @@ Using the theme
 
     html_theme_options = {"show_other_versions": "True"}
 
+    .. warning::
+
+       Use this only if the last *5* tagged versions are accessible
+       from the html path where the documents are currently published.
+       Remember that the OpenStack infra scripts publish now to
+       ``docs.openstack.org/REPO/latest`` and
+       ``docs.openstack.org/REPO/TAG``. Thus, check first that the
+       URLs are correct for your repository before using this option.
+
+       Do not use this for release-notes as they are always published
+       as one document with internal versioning.
 
 Demonstration example
 =====================
