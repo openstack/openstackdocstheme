@@ -24,7 +24,7 @@ def _get_other_versions(app):
     if not app.config.html_theme_options.get('show_other_versions', False):
         return []
 
-    git_cmd = ["git", "tag", "--merged"]
+    git_cmd = ["git", "tag", "--sort=v:refname", "--merged"]
     try:
         raw_version_list = subprocess.Popen(
             git_cmd, stdout=subprocess.PIPE).communicate()[0]
