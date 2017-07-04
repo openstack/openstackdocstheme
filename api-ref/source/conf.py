@@ -71,8 +71,12 @@ release = '1.0'
 # These variables are passed to the logabug code via html_context.
 giturl = u'https://git.openstack.org/cgit/openstack/openstackdocstheme/tree/doc/source'
 git_cmd = ["/usr/bin/git", "rev-parse", "HEAD"]
-gitsha = subprocess.Popen(
-    git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+# git might not be available during build (eg when building from an sdist)
+try:
+    gitsha = subprocess.Popen(
+        git_cmd, stdout=subprocess.PIPE).communicate()[0].strip('\n')
+except Exception:
+    gitsha = 'unknown'
 bug_tag = "doc-builds"
 
 html_context = {"gitsha": gitsha, "bug_tag": bug_tag, "giturl": giturl}
