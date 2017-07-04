@@ -78,9 +78,14 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     global _html_context_data
     if _html_context_data is None:
         _html_context_data = {}
-        _html_context_data['gitsha'] = subprocess.check_output(
-            ['git', 'rev-parse', 'HEAD'],
-        ).decode('utf-8').strip()
+        try:
+            _html_context_data['gitsha'] = subprocess.check_output(
+                ['git', 'rev-parse', 'HEAD'],
+            ).decode('utf-8').strip()
+        except Exception:
+            app.warn('Cannot get gitsha from git repository.')
+            _html_context_data['gitsha'] = 'unknown'
+
         repo_name = app.config.repository_name
         if repo_name:
             _html_context_data['giturl'] = _giturl.format(repo_name)
