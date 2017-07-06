@@ -113,3 +113,6 @@ def setup(app):
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
     )
+    return {
+        'parallel_read_safe': True,
+    }
