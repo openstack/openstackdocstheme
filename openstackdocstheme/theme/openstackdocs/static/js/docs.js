@@ -90,9 +90,13 @@ $('a').click(function(){
    and warning. We decorate their title paragraphs with Font Awesome icons
    by adding the appropriate FA classes.                               */
 
-$('div.important > p.admonition-title').prepend('<div class="fa fa-check-circle">&nbsp;</div>');
-$('div.note > p.admonition-title').prepend('<div class="fa fa-check-circle">&nbsp;</div>');
-$('div.warning > p.admonition-title').prepend('<div class="fa fa-exclamation-triangle">&nbsp;</div>');
+$('div.important > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
+$('div.note > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
+$('div.seealso > p.admonition-title').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
+$('div.warning > p.admonition-title').prepend('<div class="fa fa-fw fa-exclamation-triangle">&nbsp;</div>');
+$('div.versionadded > p').prepend('<div class="fa fa-fw fa-plus-circle">&nbsp;</div>');
+$('div.versionchanged > p').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
+$('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</div>');
 
 /* BB 150310
    We also insert a space between the icon and the admonition title

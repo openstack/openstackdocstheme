@@ -91,8 +91,26 @@ Notices take these forms:
 
 .. caution:: Helpful information that prevents the user from making mistakes.
 
+.. seealso::
+
+    A reference to another piece of related information, like a
+    related setting or upstream documentation
+
 .. warning:: Critical information about the risk of data loss or security
              issues.
+
+Configuration addition and deprecation notices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 9.0.0(Mitaka)
+
+.. versionchanged:: 10.0.0(Newton)
+
+    Added supported for new tags!
+
+.. deprecated:: 11.0.0(Ocata)
+
+    Use `Notices`_ instead.
 
 .. toctree::
     :maxdepth: 1
