@@ -1,3 +1,8 @@
+{% if page_source_suffix %}{# an input file was read #}
+<!-- SOURCE_FILE: {% if giturl %}{{giturl}}/{% endif %}{{pagename}}{{page_source_suffix}} -->
+{% else %}{# a template was rendered directly #}
+<!-- TEMPLATE_NAME: {{pagename}} -->
+{% endif %}
  {% include 'swiftype_search_install.html' %}
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
