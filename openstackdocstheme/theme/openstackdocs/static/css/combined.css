@@ -35,6 +35,8 @@ ol.arabic ol {
 ol.arabic ol ol {
   list-style-type: upper-alpha; }
 
+dd { margin-left: 2em; }
+
 div.docs-body code.literal {
   color: #e74c3c;
   padding: 1px 3px;
