@@ -18,10 +18,6 @@ table.docutils caption {
 hr {
   height: 1px !important; }
 
-h3 {
-  margin-top: 10px;
-  margin-bottom: 10px; }
-
 a, a:visited {
   color: #bc1518;
   text-decoration: none; }
@@ -825,29 +821,14 @@ body, html {
   width: 100%;
   height: 100%; }
 
-body, h1, h2, h3, h4, h5, h6 {
+body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 400; }
+}
 
-h1 {
+h1, h2, h3, h4, h5 {
   color: #2A4E68;
-  font-size: 34px;
-  font-weight: 300;
-  margin-bottom: 25px;
-  text-align: left; }
-
-h2 {
-  color: #2A4E68;
-  font-weight: 300;
-  margin-bottom: 25px;
-  text-align: left; }
-
-h3 {
-  color: #2A4E68; }
-
-h5 {
-  color: #DA422F;
-  margin-bottom: 0; }
+  font-weight: lighter;
+}
 
 a, a:visited {
   color: #30739C; }
@@ -1809,8 +1790,8 @@ footer {
 
 .footer-links h3 {
   color: #fff;
-  font-size: 14px;
-  font-weight: 400; }
+  font-size: 14px; 
+}
 
 .footer-links ul {
   margin-left: 0;
@@ -2655,10 +2636,6 @@ ul.resource-links li a:hover {
 .post-byline .postDate {
   text-align: right;
   color: #2A4E68; }
-
-.entry h1, .entry h2, .entry h3, .entry h3 a {
-  color: #2A4E68;
-  font-weight: 300; }
 
 .entry h1 {
   font-size: 24px; }
@@ -3589,12 +3566,6 @@ a.media-btn.left {
   border-color: #b1c9da;
   margin: 40px 0; }
 
-.top-docs-wrapper h3 {
-  text-align: left;
-  text-transform: capitalize;
-  font-weight: 300;
-  font-size: 24px; }
-
 a.overview-btn.docs-btn {
   border-radius: 2px;
   text-transform: capitalize;
@@ -3770,12 +3741,6 @@ input.docs-main-search:-ms-input-placeholder {
   padding-top: 80px;
   padding-bottom: 20px; }
 
-.docs-toc h3 {
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 600;
-  padding-left: 10px; }
-
 .docs-toc h3 i {
   font-size: 25px;
   margin-right: 10px; }
@@ -3922,12 +3887,6 @@ a.overview-btn.contribute-btn i {
   padding: 0;
   cursor: default; }
 
-.docs-sidebar-section h4 {
-  font-size: 14px;
-  width: 100%;
-  height: 100%;
-  font-weight: 700; }
-
 a.docs-sidebar-section-title {
   display: block;
   width: 100%;
@@ -3939,9 +3898,6 @@ a.docs-sidebar-section-title:hover {
 
 .docs-sidebar-section.active a.docs-sidebar-section-title:hover {
   cursor: default; }
-
-.docs-sidebar-section.active h4 {
-  margin-bottom: 20px; }
 
 .docs-sidebar-section.active ol {
   list-style: none;
@@ -4124,12 +4080,6 @@ a.docs-edit:hover {
 
 a.docs-edit i {
   margin-right: 5px; }
-
-.docs-book-wrapper h5 {
-  font-size: 14px;
-  font-weight: 700;
-  color: #2A4E68;
-  margin: 20px 0; }
 
 .docs-body a {
   text-decoration: underline;
@@ -4668,10 +4618,6 @@ table.highlighttable {
 
 .docs-top-contents a[href="#"] {
   display: none;
-}
-
-.docs-top-contents h5 {
-  margin-bottom: 5px;
 }
 
 .docs-top-contents ul {
