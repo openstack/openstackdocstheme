@@ -822,7 +822,7 @@ body, html {
   height: 100%; }
 
 body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -1185,7 +1185,6 @@ i.fa-caret-right {
   font-size: 3em;
   font-weight: 300;
   text-align: center;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   width: 100%; }
 
 @media (max-width: 767px) {
@@ -2289,7 +2288,6 @@ h2.marketplace {
   margin-bottom: -7px;
   margin-top: 0;
   font-size: 18px;
-  font-family: 'PT Sans', serif;
   font-style: normal;
   letter-spacing: -0.076em;
   line-height: 1em; }
@@ -2308,7 +2306,6 @@ h1.marketplace:hover {
 
 h1.marketplace a, h1.marketplace a.visited {
   color: #264D69;
-  font-family: 'PT Sans', serif;
   font-style: normal;
   letter-spacing: -0.076em;
   line-height: 1em; }
