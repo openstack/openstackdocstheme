@@ -102,13 +102,13 @@ Notices take these forms:
 Configuration addition and deprecation notices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. versionadded:: 9.0.0 (Mitaka)
+.. versionadded:: 9.0.0-Mitaka
 
-.. versionchanged:: 10.0.0 (Newton)
+.. versionchanged:: 10.0.0-Newton
 
-    Added supported for new tags!
+    Added support for new tags!
 
-.. deprecated:: 11.0.0 (Ocata)
+.. deprecated:: 11.0.0-Ocata
 
     Use `Notices`_ instead.
 
