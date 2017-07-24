@@ -406,17 +406,6 @@ a.downloadLink {
   font-size: 16px;
   color: #264d69; }
 
-#status {
-  padding: 12px;
-  color: #1d6006;
-  background-color: #e2f4dc;
-  border: 1px solid #b5c8a8;
-  margin-bottom: 10px;
-  height: 9em; }
-
-#status strong {
-  font-size: 120%; }
-
 #availability {
   line-height: 1.4em;
   padding: 12px;
@@ -431,7 +420,7 @@ a.downloadLink {
   color: #797979;
   margin-bottom: 4px; }
 
-#status p, #availability p {
+#availability p {
   margin: 0px; }
 
 #parallax {
