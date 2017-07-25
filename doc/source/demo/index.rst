@@ -14,6 +14,9 @@ The demo documentation provides example markup for looking at the expected outpu
 The project aims for simple implementation, massive scalability, and a rich set
 of features. Cloud computing experts from around the world contribute to the project.
 
+Glossary
+~~~~~~~~
+
 Here's an example glossary:
 
 Cactus
@@ -32,6 +35,9 @@ CALL
     One of the RPC primitives used by the OpenStack message queue software.
     Sends a message and waits for a response.
 
+Literal Blocks
+~~~~~~~~~~~~~~
+
 Here's an example configuration::
 
    [DEFAULT]
@@ -42,6 +48,8 @@ Here's an example configuration::
    vncserver_proxyclient_address = 10.0.0.31
    novncproxy_base_url = http://controller:6080/vnc_auto.html
 
+Code Blocks
+~~~~~~~~~~~
 
 Here's another example that's python code:
 
@@ -80,21 +88,39 @@ Here's the same example but with ..code-block: ini to test the pygments lexer:
 Notices
 ~~~~~~~
 
-Notices take these forms:
+Notices take these forms.
+
+note
+++++
 
 .. note:: A comment with additional information that explains a part of the
           text.
 
+important
++++++++++
+
 .. important:: Something you must be aware of before proceeding.
+
+tip
++++
 
 .. tip:: An extra but helpful piece of practical advice.
 
+caution
++++++++
+
 .. caution:: Helpful information that prevents the user from making mistakes.
+
+seealso
++++++++
 
 .. seealso::
 
     A reference to another piece of related information, like a
     related setting or upstream documentation
+
+warning
++++++++
 
 .. warning:: Critical information about the risk of data loss or security
              issues.
