@@ -1,5 +1,0 @@
-{%- for jsfile in script_files %}
-{%- if jsfile not in ('_static/jquery.js', '_static/underscore.js', '_static/doctools.js', '_static/searchtools.js') %}
-<script src="{{ pathto(jsfile, 1) }}" type="text/javascript"></script>
-{%- endif %}
-{%- endfor %}
