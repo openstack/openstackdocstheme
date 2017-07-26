@@ -130,13 +130,23 @@ Configuration addition and deprecation notices
 
 .. versionadded:: 9.0.0-Mitaka
 
+.. versionadded:: 10.0.0-Newton
+
 .. versionchanged:: 10.0.0-Newton
 
     Added support for new tags!
 
+.. versionchanged:: 11.0.0-Ocata
+
+    Showing that multiple notices work!
+
 .. deprecated:: 11.0.0-Ocata
 
     Use `Notices`_ instead.
+
+.. deprecated:: 12.0.0-Pike
+
+    A second deprecation notice
 
 .. toctree::
     :maxdepth: 1
