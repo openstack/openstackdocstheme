@@ -3877,10 +3877,10 @@ a.overview-btn.contribute-btn i {
 	list-style: none;
 }
 
-/* shift the first list in the toc left to account for the fact
-   that there are no bullets */
-#table-of-contents.docs-sidebar-section ul:first-of-type {
-	padding-left: 15px;
+/* shift the first level of list in the toc left to account for the
+   fact that there are no bullets */
+#table-of-contents.docs-sidebar-section ul  {
+	padding-left: 20px;
 }
 
 /* do not change the background color of the section when the user
