@@ -101,17 +101,21 @@ Using the theme
 
     html_theme_options = {"show_other_versions": "True"}
 
-    .. warning::
+#. If you are using this theme for a project with published
+   documentation that predates the mitaka release cycle, set the
+   ``earliest_published_series`` theme option to the name of the first
+   series with documentation available.::
 
-       Use this only if the last *5* tagged versions are accessible
-       from the html path where the documents are currently published.
-       Remember that the OpenStack infra scripts publish now to
-       ``docs.openstack.org/REPO/latest`` and
-       ``docs.openstack.org/REPO/TAG``. Thus, check first that the
-       URLs are correct for your repository before using this option.
+     html_theme_options = {
+         # ...
+         "earliest_published_series": "grizzly",
+         # ...
+     }
 
-       Do not use this for release-notes as they are always published
-       as one document with internal versioning.
+   .. warning::
+
+      Do not use this for release-notes as they are always published
+      as one document with internal versioning.
 
 Demonstration example
 =====================

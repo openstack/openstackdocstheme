@@ -13,8 +13,9 @@
 #    under the License.
 
 import os
-import string
 import subprocess
+
+import dulwich.repo
 
 _giturl = 'https://git.openstack.org/cgit/{}/tree/doc/source'
 _html_context_data = None
@@ -24,28 +25,42 @@ def _get_other_versions(app):
     if not app.config.html_theme_options.get('show_other_versions', False):
         return []
 
-    git_cmd = ["git", "tag", "--sort=v:refname", "--merged"]
+    all_series = []
     try:
-        raw_version_list = subprocess.Popen(
-            git_cmd, stdout=subprocess.PIPE).communicate()[0]
-        raw_version_list = raw_version_list.decode("utf-8")
-    except UnicodeDecodeError:
-        app.warn('Cannot decode the list based on utf-8 encoding. '
-                 'Not setting "other_versions".')
-        raw_version_list = u''
-    except OSError:
-        app.warn('Cannot get tags from git repository, or no merged tags. '
-                 'Not setting "other_versions".')
-        raw_version_list = u''
+        repo = dulwich.repo.Repo.discover()
+    except dulwich.repo.NotGitRepository:
+        return []
 
-    # grab last five that start with a number and reverse the order
-    _tags = [t.strip("'") for t in raw_version_list.split('\n')]
-    other_versions = [
-        t for t in _tags if t and t[0] in string.digits
-        # Don't show alpha, beta or release candidate tags
-        and 'rc' not in t and 'a' not in t and 'b' not in t
-    ][:-5:-1]
-    return other_versions
+    refs = repo.get_refs()
+    for ref in refs.keys():
+        ref = ref.decode('utf-8')
+        if ref.startswith('refs/remotes/origin/stable'):
+            series = ref.rpartition('/')[-1]
+            all_series.append(series)
+        elif ref.startswith('refs/tags/') and ref.endswith('-eol'):
+            series = ref.rpartition('/')[-1][:-4]
+            all_series.append(series)
+    all_series.sort()
+
+    # NOTE(dhellmann): Given when this feature was implemented, we
+    # assume that the earliest version we can link to is for
+    # mitaka. Projects that have older docs online can set the option
+    # to indicate another start point. Projects that come later should
+    # automatically include everything they actually have available
+    # because the start point is not present in the list.
+    earliest_desired = app.config.html_theme_options.get(
+        'earliest_published_series', 'mitaka')
+    if earliest_desired and earliest_desired in all_series:
+        interesting_series = all_series[all_series.index(earliest_desired):]
+    else:
+        interesting_series = all_series
+
+    # Reverse the list because we want the most recent to appear at
+    # the top of the dropdown. The "latest" release is added to the
+    # front of the list by the theme so we do not need to add it
+    # here.
+    interesting_series.reverse()
+    return interesting_series
 
 
 def builder_inited(app):
