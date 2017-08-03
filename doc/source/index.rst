@@ -117,6 +117,32 @@ Using the theme
       Do not use this for release-notes as they are always published
       as one document with internal versioning.
 
+#. To generate a PDF document using ``openstackdocstheme``, add a latex
+   preamble to properly use OpenStack logo image and a font file,
+   and make sure that release, title, and author information is correctly
+   set in the `conf.py` file::
+
+    pdf_theme_path = openstackdocstheme.get_pdf_theme_path()
+    openstack_logo = openstackdocstheme.get_openstack_logo_path()
+
+    latex_custom_template = r"""
+    \newcommand{\openstacklogo}{%s}
+    \usepackage{%s}
+    """ % (openstack_logo, pdf_theme_path)
+
+    latex_elements = {
+        # ...
+        # Additional stuff for the LaTeX preamble.
+        'preamble': latex_custom_template,
+    }
+
+    release = '15.0.0'
+
+    latex_documents = [
+    ('index', '[Output_filename].tex', u'[Title]',
+     u'OpenStack contributors', 'manual'),
+    ]
+
 Demonstration example
 =====================
 
