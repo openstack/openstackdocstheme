@@ -2,8 +2,8 @@
 Team and repository tags
 ========================
 
-.. image:: https://governance.openstack.org/badges/openstackdocstheme.svg
-    :target: https://governance.openstack.org/reference/tags/index.html
+.. image:: https://governance.openstack.org/tc/badges/openstackdocstheme.svg
+    :target: https://governance.openstack.org/tc/reference/tags/index.html
 
 .. Change things from this point on
 
@@ -15,7 +15,7 @@ docs.openstack.org and developer.openstack.org.
 
 Intended for use by OpenStack `projects governed by the Technical Committee`_.
 
-.. _`projects governed by the Technical Committee`: https://governance.openstack.org/reference/projects/index.html
+.. _`projects governed by the Technical Committee`: https://governance.openstack.org/tc/reference/projects/index.html
 
 * Free software: Apache License, Version 2.0
 * Documentation: https://docs.openstack.org/openstackdocstheme/latest/
