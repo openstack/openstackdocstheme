@@ -145,6 +145,32 @@ Using the theme
  
     latex_engine = 'xelatex'
 
+External Link Helper
+====================
+
+The configuration option ``openstack_projects`` can be used to define
+custom roles that build links that update automatically when branches
+are created for each release series. Builds on the master branch link
+to the ``latest`` documentation.
+
+In the ``conf.py`` for the source documentation, add:
+
+.. code-block:: python
+
+   extensions = [
+     # ...
+     'openstackdocstheme',
+   ]
+
+   openstack_projects = ['horizon']
+
+Then in the documentation source, link to a target using syntax like:
+
+.. code-block:: rst
+
+   :horizon-doc-link:`Launching Instances with Horizon <user/launch-instances.html>`
+
+
 Demonstration example
 =====================
 
@@ -156,4 +182,3 @@ for all documentation that is not API reference.
    :maxdepth: 1
 
    demo/index
-
