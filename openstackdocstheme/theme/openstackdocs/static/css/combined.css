@@ -1778,7 +1778,7 @@ footer {
 
 .footer-links h3 {
   color: #fff;
-  font-size: 14px; 
+  font-size: 14px;
 }
 
 .footer-links ul {
@@ -4651,6 +4651,11 @@ img.align-right, .figure.align-right {
   display: table;
   margin-left: auto;
   margin-right: 0;
+}
+
+/* for search result highlighting */
+span.highlighted {
+    background-color: #fbe54e;
 }
 
 /*img.align-left {*/

@@ -21,8 +21,23 @@
   </p>
   </div>
   <p>
-    {% trans %}To search the OpenStack documentation, type your query into the
+    {% trans %}To search the documentation for {{ project }}, type your query into the
     box below and press Enter.{% endtrans %}
   </p>
- {% include 'swiftype_search.html' %}
+    <form action="" method="get">
+    <input type="text" name="q" value="" />
+    <input type="submit" value="search" />
+    <span id="search-progress" style="padding-left: 10px"></span>
+
+    <div id="search-results">
+
+    </div>
+{% endblock %}
+
+{% block script_footer %}
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+
+  <script type="text/javascript" id="searchindexloader"></script>
 {% endblock %}

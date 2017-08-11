@@ -1,0 +1,12 @@
+---
+prelude: >
+    Adds scoped search so that readers can search within project documentation
+    only.
+features:
+  - |
+    Adds ability to use the Sphinx search implementation only for the content
+    for the project, such as nova or keystone. The default settings set the
+    search scope to within the built version and only for .html files.
+
+  - Readers access the search functionality through a link to Search from the
+    top-most landing page for the project documentation.
