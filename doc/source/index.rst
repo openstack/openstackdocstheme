@@ -142,6 +142,8 @@ Using the theme
     ('index', '[Output_filename].tex', u'[Title]',
      u'OpenStack contributors', 'manual'),
     ]
+ 
+    latex_engine = 'xelatex'
 
 Demonstration example
 =====================
