@@ -11,6 +11,12 @@ Demo documentation
 
 The demo documentation provides example markup for looking at the expected output.
 
+.. sidebar:: Sidebar
+
+   This is a sidebar which may be used to provide related or reference
+   material.  It is displayed in proximity to, but outside the main
+   text.
+
 The project aims for simple implementation, massive scalability, and a rich set
 of features. Cloud computing experts from around the world contribute to the project.
 
