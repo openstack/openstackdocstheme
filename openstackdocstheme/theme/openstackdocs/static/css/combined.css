@@ -34,16 +34,11 @@ ol.arabic ol ol {
 dd { margin-left: 2em; }
 
 div.docs-body code.literal {
-  color: #e74c3c;
-  padding: 1px 3px;
-  border: solid 1px #e1e4e5;
+  color: #000;
 }
 
 div.docs-body table code.literal {
-  color: #e74c3c;
-  padding: 1px 3px;
-  border: none;
-  /* border: solid 1px #e1e4e5; */
+  color: #000;
 }
 
 div.docs-body span.guilabel, div.docs-body span.menuselection {

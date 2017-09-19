@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    The double backticks (``) markup caused text to be displayed in red with
+    a pinkish background colour. The text is now displayed in black and bold.
