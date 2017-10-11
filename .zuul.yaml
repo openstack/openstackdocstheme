@@ -1,0 +1,17 @@
+
+# parent job is defined in openstack-manuals
+- job:
+    name: build-tox-manuals-buildpdf
+    parent: build-tox-manuals
+    vars:
+      tox_envlist: buildpdf
+
+
+- project:
+    name: openstack/openstackdocstheme
+    check:
+      jobs:
+        - build-tox-manuals-buildpdf
+    gate:
+      jobs:
+        - build-tox-manuals-buildpdf
