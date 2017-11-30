@@ -1,0 +1,8 @@
+# Notes:
+# reno needs openstackdocstheme which needs reno (cycle dep).
+# os-api-ref needs openstackdocstheme which needs os-api-ref (cycle dep).
+# Put them in here will make it clear that those are only needed for
+# docs.
+
+os-api-ref>=1.4.0 # Apache-2.0
+reno>=2.5.0 # Apache-2.0
