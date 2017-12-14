@@ -78,6 +78,14 @@ Using the theme
       bug_project = '721'
       bug_tag = ''
 
+#. Set the specific Git URL.
+
+   ``giturl``
+      The path to the ``source`` directory of the documentation at ``git.openstack.org``.
+      If the documentation doesn't locate in ``doc/source`` directory, this option should
+      be set. Otherwise, the default is
+      ``https://git.openstack.org/cgit/openstack/PROJECT_NAME/tree/doc/source/``.
+
 #. Enable the "last-updated" information by setting the format for the
    timestamp::
 
