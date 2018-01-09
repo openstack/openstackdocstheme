@@ -16,9 +16,11 @@ import os
 import subprocess
 
 import dulwich.repo
+from sphinx.util import logging
 
 _giturl = 'https://git.openstack.org/cgit/{}/tree/doc/source'
 _html_context_data = None
+logger = logging.getLogger(__name__)
 
 
 def _get_other_versions(app):
@@ -65,7 +67,7 @@ def _get_other_versions(app):
 
 def builder_inited(app):
     theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
-    app.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
+    logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
 
 
 def get_pkg_path():
@@ -98,7 +100,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 ['git', 'rev-parse', 'HEAD'],
             ).decode('utf-8').strip()
         except Exception:
-            app.warn('Cannot get gitsha from git repository.')
+            logger.warn('Cannot get gitsha from git repository.')
             _html_context_data['gitsha'] = 'unknown'
 
         giturl = app.config.giturl
@@ -121,7 +123,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
 
 def setup(app):
-    app.info('connecting events for openstackdocstheme')
+    logger.info('connecting events for openstackdocstheme')
     app.connect('builder-inited', builder_inited)
     app.connect('html-page-context', _html_page_context)
     app.add_config_value('repository_name', '', 'env')
