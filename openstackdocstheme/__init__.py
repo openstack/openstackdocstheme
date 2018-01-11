@@ -68,7 +68,7 @@ def _get_other_versions(app):
 def _get_doc_path(app):
     # Handle 'doc/{docType}/source' paths
     doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-3:]
-    if doc_parts[0] == 'doc' and doc_parts[1] == 'source':
+    if doc_parts[0] == 'doc' and doc_parts[2] == 'source':
         return '/'.join(doc_parts)
 
     # Handle '{docType}/source' paths
