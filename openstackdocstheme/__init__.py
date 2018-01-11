@@ -103,11 +103,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             logger.warn('Cannot get gitsha from git repository.')
             _html_context_data['gitsha'] = 'unknown'
 
-        giturl = app.config.giturl
         repo_name = app.config.repository_name
-        if giturl:
-            _html_context_data['giturl'] = app.config.giturl
-        elif repo_name:
+        if repo_name:
             _html_context_data['giturl'] = _giturl.format(repo_name)
         bug_project = app.config.bug_project
         if bug_project:
@@ -129,7 +126,6 @@ def setup(app):
     app.add_config_value('repository_name', '', 'env')
     app.add_config_value('bug_project', '', 'env')
     app.add_config_value('bug_tag', '', 'env')
-    app.add_config_value('giturl', '', 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
