@@ -18,7 +18,7 @@ import subprocess
 import dulwich.repo
 from sphinx.util import logging
 
-_giturl = 'https://git.openstack.org/cgit/{}/tree/doc/source'
+_giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
 _html_context_data = None
 logger = logging.getLogger(__name__)
 
@@ -65,6 +65,21 @@ def _get_other_versions(app):
     return interesting_series
 
 
+def _get_doc_path(app):
+    # Handle 'doc/{docType}/source' paths
+    doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-3:]
+    if doc_parts[0] == 'doc' and doc_parts[1] == 'source':
+        return '/'.join(doc_parts)
+
+    # Handle '{docType}/source' paths
+    doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
+    if doc_parts[1] == 'source':
+        return '/'.join(doc_parts)
+
+    logger.info('Cannot identify project\'s root directory.')
+    return
+
+
 def builder_inited(app):
     theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
     logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
@@ -103,9 +118,10 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             logger.warn('Cannot get gitsha from git repository.')
             _html_context_data['gitsha'] = 'unknown'
 
+        doc_path = _get_doc_path(app)
         repo_name = app.config.repository_name
-        if repo_name:
-            _html_context_data['giturl'] = _giturl.format(repo_name)
+        if repo_name and doc_path:
+            _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
         bug_project = app.config.bug_project
         if bug_project:
             _html_context_data['bug_project'] = bug_project
