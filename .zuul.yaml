@@ -8,7 +8,6 @@
 
 
 - project:
-    name: openstack/openstackdocstheme
     check:
       jobs:
         - build-tox-manuals-buildpdf
