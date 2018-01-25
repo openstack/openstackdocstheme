@@ -115,7 +115,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 ['git', 'rev-parse', 'HEAD'],
             ).decode('utf-8').strip()
         except Exception:
-            logger.warn('Cannot get gitsha from git repository.')
+            logger.warning('Cannot get gitsha from git repository.')
             _html_context_data['gitsha'] = 'unknown'
 
         doc_path = _get_doc_path(app)
