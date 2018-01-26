@@ -12,10 +12,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
 import os
 import subprocess
 
 import dulwich.repo
+from sphinx.ext import extlinks
 from sphinx.util import logging
 
 _giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
@@ -83,6 +88,7 @@ def _get_doc_path(app):
 def builder_inited(app):
     theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
     logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
+    setup_link_roles(app)
 
 
 def get_pkg_path():
@@ -135,6 +141,34 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     context['other_versions'] = _get_other_versions(app)
 
 
+_SERIES = None
+
+
+def get_series_name():
+    "Return string name of release series, or 'latest'"
+    global _SERIES
+    if _SERIES is None:
+        parser = configparser.ConfigParser()
+        parser.read('.gitreview')
+        try:
+            branch = parser.get('gerrit', 'defaultbranch')
+        except configparser.Error:
+            _SERIES = 'latest'
+        else:
+            _SERIES = branch.rpartition('/')[-1]
+    return _SERIES
+
+
+def setup_link_roles(app):
+    series = get_series_name()
+    for project_name in app.config.openstack_projects:
+        url = 'https://docs.openstack.org/{}/{}/%s'.format(
+            project_name, series)
+        role_name = '{}-doc-link'.format(project_name)
+        logger.info('adding role %s to link to %s', role_name, url)
+        app.add_role(role_name, extlinks.make_link_role(url, project_name))
+
+
 def setup(app):
     logger.info('connecting events for openstackdocstheme')
     app.connect('builder-inited', builder_inited)
@@ -142,6 +176,7 @@ def setup(app):
     app.add_config_value('repository_name', '', 'env')
     app.add_config_value('bug_project', '', 'env')
     app.add_config_value('bug_tag', '', 'env')
+    app.add_config_value('openstack_projects', [], 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
