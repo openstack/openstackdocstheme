@@ -164,7 +164,7 @@ def setup_link_roles(app):
     for project_name in app.config.openstack_projects:
         url = 'https://docs.openstack.org/{}/{}/%s'.format(
             project_name, series)
-        role_name = '{}-doc-link'.format(project_name)
+        role_name = '{}-doc'.format(project_name)
         logger.info('adding role %s to link to %s', role_name, url)
         app.add_role(role_name, extlinks.make_link_role(url, project_name))
 

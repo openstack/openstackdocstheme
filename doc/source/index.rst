@@ -142,7 +142,7 @@ Using the theme
     ('index', '[Output_filename].tex', u'[Title]',
      u'OpenStack contributors', 'manual'),
     ]
- 
+
     latex_engine = 'xelatex'
 
 External Link Helper
@@ -168,7 +168,7 @@ Then in the documentation source, link to a target using syntax like:
 
 .. code-block:: rst
 
-   :horizon-doc-link:`Launching Instances with Horizon <user/launch-instances.html>`
+   :horizon-doc:`Launching Instances with Horizon <user/launch-instances.html>`
 
 
 Demonstration example
