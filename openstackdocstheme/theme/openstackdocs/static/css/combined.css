@@ -3993,6 +3993,9 @@ a.docs-sidebar-section-title:hover {
   margin-left: 20px;
   counter-increment: none; }
 
+.docs-sidebar-section ul li {
+  word-wrap: break-word; }
+
 li.docs-has-sub > a {
   font-weight: 700; }
 
