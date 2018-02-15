@@ -24,7 +24,9 @@ from sphinx.ext import extlinks
 from sphinx.util import logging
 
 _giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
+_series = None
 _html_context_data = None
+
 logger = logging.getLogger(__name__)
 
 
@@ -85,12 +87,6 @@ def _get_doc_path(app):
     return
 
 
-def builder_inited(app):
-    theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
-    logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
-    setup_link_roles(app)
-
-
 def get_pkg_path():
     return os.path.abspath(os.path.dirname(__file__))
 
@@ -141,26 +137,23 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     context['other_versions'] = _get_other_versions(app)
 
 
-_SERIES = None
-
-
-def get_series_name():
+def _get_series_name():
     "Return string name of release series, or 'latest'"
-    global _SERIES
-    if _SERIES is None:
+    global _series
+    if _series is None:
         parser = configparser.ConfigParser()
         parser.read('.gitreview')
         try:
             branch = parser.get('gerrit', 'defaultbranch')
         except configparser.Error:
-            _SERIES = 'latest'
+            _series = 'latest'
         else:
-            _SERIES = branch.rpartition('/')[-1]
-    return _SERIES
+            _series = branch.rpartition('/')[-1]
+    return _series
 
 
-def setup_link_roles(app):
-    series = get_series_name()
+def _setup_link_roles(app):
+    series = _get_series_name()
     for project_name in app.config.openstack_projects:
         url = 'https://docs.openstack.org/{}/{}/%s'.format(
             project_name, series)
@@ -169,9 +162,15 @@ def setup_link_roles(app):
         app.add_role(role_name, extlinks.make_link_role(url, project_name))
 
 
+def _builder_inited(app):
+    theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
+    logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
+    _setup_link_roles(app)
+
+
 def setup(app):
     logger.info('connecting events for openstackdocstheme')
-    app.connect('builder-inited', builder_inited)
+    app.connect('builder-inited', _builder_inited)
     app.connect('html-page-context', _html_page_context)
     app.add_config_value('repository_name', '', 'env')
     app.add_config_value('bug_project', '', 'env')
