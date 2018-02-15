@@ -213,11 +213,27 @@ def _builder_inited(app):
     if project_name:
         app.config.project = project_name
 
+    app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
+
     # ...except for version/release which, if blank, should remain that way to
     # cater for unversioned documents
     if app.config.version != '':
         app.config.version = version
         app.config.release = version
+
+    openstack_logo = paths.get_openstack_logo_path()
+    pdf_theme_path = paths.get_pdf_theme_path()
+
+    app.config.latex_engine = 'xelatex'
+    app.config.latex_elements = {
+        'papersize': 'a4paper',
+        'pointsize': '11pt',
+        'figure_align': 'H',
+        'classoptions': ',openany',
+        'preamble': r"""
+\usepackage{""" + pdf_theme_path + """}
+\\newcommand{\openstacklogo}{""" + openstack_logo + """}
+"""}
 
 
 def setup(app):

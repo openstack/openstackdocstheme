@@ -7,6 +7,9 @@ features:
     - ``project``
     - ``version``
     - ``release``
+    - ``html_last_updated_fmt``
+    - ``latex_engine``
+    - ``latex_elements``
 
     It is not necessary to retain any configuration in ``conf.py`` and, in most
     cases, such configuration will be ignored. The sole exceptions to this rule
