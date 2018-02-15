@@ -20,12 +20,14 @@ import os
 import subprocess
 
 import dulwich.repo
+from pbr import packaging
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
 from openstackdocstheme import paths
 
 _series = None
+_project = None
 _giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
 _html_context_data = None
 
@@ -123,6 +125,7 @@ def _get_series_name():
     global _series
     if _series is None:
         parser = configparser.ConfigParser()
+        # TODO(stephenfin): Should this be relative to some directory?
         parser.read('.gitreview')
         try:
             branch = parser.get('gerrit', 'defaultbranch')
@@ -143,10 +146,78 @@ def _setup_link_roles(app):
         app.add_role(role_name, extlinks.make_link_role(url, project_name))
 
 
+def _find_setup_cfg(srcdir):
+    """Find the 'setup.cfg' file, if it exists.
+
+    This assumes we're using 'doc/source' for documentation, but also allows
+    for single level 'doc' paths.
+    """
+    # TODO(stephenfin): Are we sure that this will always exist, e.g. for
+    # an sdist or wheel? Perhaps we should check for 'PKG-INFO' or
+    # 'METADATA' files, a la 'pbr.packaging._get_version_from_pkg_metadata'
+    for path in [
+            os.path.join(srcdir, os.pardir, 'setup.cfg'),
+            os.path.join(srcdir, os.pardir, os.pardir, 'setup.cfg')]:
+        if os.path.exists(path):
+            return path
+
+    return None
+
+
+def _get_project_name(srcdir):
+    """Return string name of project name, or None.
+
+    This assumes every project is using 'pbr' and, therefore, the metadata can
+    be extracted from 'setup.cfg'.
+
+    We don't rely on distutils/setuptools as we don't want to actually install
+    the package simply to build docs.
+    """
+    global _project
+    if _project is None:
+        parser = configparser.ConfigParser()
+
+        path = _find_setup_cfg(srcdir)
+        if not path or not parser.read(path):
+            logger.info('Could not find a setup.cfg to extract project name '
+                        'from')
+            return None
+
+        try:
+            project = parser.get('metadata', 'name')
+        except configparser.Error:
+            logger.info('Could not extract project name from setup.cfg')
+            return None
+        _project = project
+    return _project
+
+
 def _builder_inited(app):
     theme_dir = paths.get_html_theme_path()
     logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
     _setup_link_roles(app)
+
+    # we only override configuration if the theme has been configured, meaning
+    # users are using these features
+    if app.config.html_theme != 'openstackdocs':
+        return
+
+    # TODO(stephenfin): Once Sphinx 1.8 is released, we should move the below
+    # to a 'config-inited' handler
+
+    project_name = _get_project_name(app.srcdir)
+    version = packaging.get_version(project_name)
+
+    # NOTE(stephenfin): Chances are that whatever's in 'conf.py' is probably
+    # wrong/outdated so, if we can, we intentionally overwrite it...
+    if project_name:
+        app.config.project = project_name
+
+    # ...except for version/release which, if blank, should remain that way to
+    # cater for unversioned documents
+    if app.config.version != '':
+        app.config.version = version
+        app.config.release = version
 
 
 def setup(app):

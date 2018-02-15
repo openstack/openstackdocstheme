@@ -1,0 +1,14 @@
+---
+features:
+  - |
+    The following configuration variables, normally defined in ``conf.py``,
+    can now be configured automatically.
+
+    - ``project``
+    - ``version``
+    - ``release``
+
+    It is not necessary to retain any configuration in ``conf.py`` and, in most
+    cases, such configuration will be ignored. The sole exceptions to this rule
+    are ``version`` and ``release`` which, if set to ``''`` will not be
+    overridden. This allows for unversioned documentation.
