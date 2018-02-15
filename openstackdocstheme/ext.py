@@ -23,6 +23,8 @@ import dulwich.repo
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
+from openstackdocstheme import paths
+
 _series = None
 _giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
 _html_context_data = None
@@ -142,7 +144,7 @@ def _setup_link_roles(app):
 
 
 def _builder_inited(app):
-    theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
+    theme_dir = paths.get_html_theme_path()
     logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
     _setup_link_roles(app)
 
