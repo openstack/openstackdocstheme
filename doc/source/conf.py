@@ -3,7 +3,6 @@
 # openstackdocstheme documentation build configuration file
 
 import openstackdocstheme
-from openstackdocstheme.version import version_info
 
 # Release name for PDF documents
 latex_custom_template = r"""
@@ -29,21 +28,8 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
-# "project" contains the name of the book, such as
-# 'security guide' or 'network guide'
-# It's used by the "log-a-bug" button on each page
-# and should ultimately be set automatically by the build process
-project = u'OpenStack Documentation Theme'
+# General information about the project.
 copyright = u'2015-2017, OpenStack Contributors'
-
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
-# The full version, including alpha/beta/rc tags.
-release = version_info.release_string()
-# The short X.Y version.
-version = version_info.version_string()
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
