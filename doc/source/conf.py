@@ -2,14 +2,6 @@
 #
 # openstackdocstheme documentation build configuration file
 
-import openstackdocstheme
-
-# Release name for PDF documents
-latex_custom_template = r"""
-\usepackage{""" + openstackdocstheme.get_pdf_theme_path() + """}
-\\newcommand{\openstacklogo}{""" + openstackdocstheme.get_openstack_logo_path() + """}
-"""
-
 # -- General configuration ------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -63,23 +55,6 @@ html_static_path = ['_static/css']
 
 
 # -- Options for LaTeX output ---------------------------------------------
-latex_engine = 'xelatex'
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    'papersize': 'a4paper',
-
-    # The font size ('10pt', '11pt' or '12pt').
-    'pointsize': '11pt',
-
-    #Default figure align
-    'figure_align': 'H',
-
-    # Not to generate blank page after chapter
-    'classoptions': ',openany',
-    # Additional stuff for the LaTeX preamble.
-    'preamble': latex_custom_template,
-}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,

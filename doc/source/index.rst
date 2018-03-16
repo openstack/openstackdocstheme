@@ -32,18 +32,16 @@ Using the theme
    and then in your ``conf.py`` you can remove the import statement and
    extension listing for *oslosphinx*.
 
-#. Then modify your Sphinx settings in ``conf.py`` to include::
-
-     html_theme = 'openstackdocs'
-
-#. and to add ``'openstackdocstheme'`` to the list of extensions
-   Sphinx needs to initialize::
+#. Once done, you should add ``'openstackdocstheme'`` to the list of extensions
+   Sphinx needs to initialize and configure the theme::
 
      extensions = [
          # ...
          'openstackdocstheme',
          # ...
      ]
+
+     html_theme = 'openstackdocs'
 
 #. Set the options to link to the git repository and bug tracker.
 
@@ -74,72 +72,72 @@ Using the theme
       bug_project = '721'
       bug_tag = ''
 
-#. Enable the "last-updated" information by setting the format for the
-   timestamp::
+#. Remove the options that will be automatically configured by the theme.
 
-     # Must set this variable to include year, month, day, hours, and minutes.
-     html_last_updated_fmt = '%Y-%m-%d %H:%M'
+   - ``project``
+   - ``html_last_updated_fmt``
+   - ``latex_engine``
+   - ``latex_elements``
 
-#. If you are using this theme for API reference documentation, set the sidebar
-   navigation in the `html_theme_options` in the `conf.py` file::
+   In addition, if your documentation is versioned, you should remove the
+   options related to versioning.
 
-     # To use the API Reference sidebar dropdown menu,
-     # uncomment the html_theme_options parameter.  The theme
-     # variable, sidebar_dropdown, should be set to `api_ref`.
-     # Otherwise, the list of links for the User and Ops docs
-     # appear in the sidebar dropdown menu.
-     html_theme_options = {"sidebar_dropdown": "api_ref",
-                           "sidebar_mode": "toc"}
+   - ``version``
+   - ``release``
 
-#. If you are using this theme for documentation you want to release based on
-   git tags on your repository, set the release dropdown menu option in the
-   `html_theme_options` in the `conf.py` file. By default it is set to False.::
+.. versionchanged:: 1.20
 
-    html_theme_options = {"show_other_versions": "True"}
+   In older versions of *openstackdocstheme*, it was necessary to manually
+   configure the ``html_last_updated_fmt`` option for HTML output and the
+   ``latex_engine`` and ``latex_elements`` options if you required PDF output.
+   This is no longer the case as these attributes are now configured
+   automatically.
 
-#. If you are using this theme for a project with published
-   documentation that predates the mitaka release cycle, set the
-   ``earliest_published_series`` theme option to the name of the first
-   series with documentation available.::
 
-     html_theme_options = {
-         # ...
-         "earliest_published_series": "grizzly",
-         # ...
-     }
+Additional Configuration
+------------------------
 
-   .. warning::
+If you are using this theme for API reference documentation, set the sidebar
+navigation in the ``html_theme_options`` in the ``conf.py`` file::
 
-      Do not use this for release-notes as they are always published
-      as one document with internal versioning.
-
-#. To generate a PDF document using ``openstackdocstheme``, add a latex
-   preamble to properly use OpenStack logo image and a font file,
-   and make sure that release, title, and author information is correctly
-   set in the `conf.py` file::
-
-    pdf_theme_path = openstackdocstheme.get_pdf_theme_path()
-    openstack_logo = openstackdocstheme.get_openstack_logo_path()
-
-    latex_custom_template = r"""
-    \newcommand{\openstacklogo}{%s}
-    \usepackage{%s}
-    """ % (openstack_logo, pdf_theme_path)
-
-    latex_elements = {
+    # To use the API Reference sidebar dropdown menu,
+    # uncomment the html_theme_options parameter.  The theme
+    # variable, sidebar_dropdown, should be set to `api_ref`.
+    # Otherwise, the list of links for the User and Ops docs
+    # appear in the sidebar dropdown menu.
+    html_theme_options = {
         # ...
-        # Additional stuff for the LaTeX preamble.
-        'preamble': latex_custom_template,
+        "sidebar_dropdown": "api_ref",
+        "sidebar_mode": "toc",
+        # ...
     }
 
-    release = '15.0.0'
+If you are using this theme for documentation you want to release based on git
+tags on your repository, set the release dropdown menu option in the
+``html_theme_options`` in the ``conf.py`` file. By default it is set to
+``False``::
 
-    latex_documents = [
-    ('index', '[Output_filename].tex', u'[Title]',
-     u'OpenStack contributors', 'manual'),
-    ]
+    html_theme_options = {
+        # ...
+        "show_other_versions": "True",
+        # ...
+    }
 
-    latex_engine = 'xelatex'
+If you are using this theme for a project with published documentation that
+predates the Mitaka release cycle, set the earliest published version in the
+``html_theme_options`` in the ``conf.py`` file to the name of the first series
+with documentation available. By default it is set to ``None``::
+
+    html_theme_options = {
+        # ...
+        "earliest_published_series": "grizzly",
+        # ...
+    }
+
+.. warning::
+
+    Do not use this for release-notes as they are always published as one
+    document with internal versioning.
 
 
 External Link Helper
@@ -153,11 +151,6 @@ to the ``latest`` documentation.
 In the ``conf.py`` for the source documentation, add:
 
 .. code-block:: python
-
-   extensions = [
-     # ...
-     'openstackdocstheme',
-   ]
 
    openstack_projects = ['horizon']
 
