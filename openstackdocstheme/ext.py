@@ -206,7 +206,10 @@ def _builder_inited(app):
     # to a 'config-inited' handler
 
     project_name = _get_project_name(app.srcdir)
-    version = packaging.get_version(project_name)
+    try:
+        version = packaging.get_version(project_name)
+    except Exception:
+        version = None
 
     # NOTE(stephenfin): Chances are that whatever's in 'conf.py' is probably
     # wrong/outdated so, if we can, we intentionally overwrite it...
@@ -217,7 +220,7 @@ def _builder_inited(app):
 
     # ...except for version/release which, if blank, should remain that way to
     # cater for unversioned documents
-    if app.config.version != '':
+    if app.config.version != '' and version:
         app.config.version = version
         app.config.release = version
 
