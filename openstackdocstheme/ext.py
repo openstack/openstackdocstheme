@@ -184,9 +184,14 @@ def _get_project_name(srcdir):
             return None
 
         try:
+            # for project name we use the name in setup.cfg, but if the
+            # length is longer then 32 we use summary. Otherwise thAe
+            # menu rendering looks brolen
             project = parser.get('metadata', 'name')
+            if len(project.split()) == 1 and len(project) > 32:
+                project = parser.get('metadata', 'summary')
         except configparser.Error:
-            logger.info('Could not extract project name from setup.cfg')
+            logger.info('Could not extract project metadata from setup.cfg')
             return None
         _project = project
     return _project
