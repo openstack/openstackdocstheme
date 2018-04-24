@@ -129,10 +129,10 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags) {
         bugLink = urlBase + bugProject;
     } else {
         bugLink = urlBase  + encodeURIComponent(bugTitle) +
+        "&field.tags=" + fieldTags +
         "&field.comment=" + lineFeed + lineFeed +  lineFeed +
         bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
-        lineFeed + currentURL +
-        "&field.tags=" + fieldTags;
+        lineFeed + currentURL;
     }
     document.getElementById("logABugLink1").href=bugLink;
     document.getElementById("logABugLink2").href=bugLink;
