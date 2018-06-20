@@ -59,7 +59,7 @@
     {%- if bug_title %}
         var bugTitle = "{{ bug_title }}";
     {%- else %}
-        var bugTitle = "{{ title }} in {{ project }}";
+        var bugTitle = "{{ title|striptags }} in {{ project }}";
     {%- endif %}
     var fieldTags = "{{ bug_tag }}";
     {%- if use_storyboard %}
