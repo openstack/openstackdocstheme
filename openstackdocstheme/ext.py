@@ -124,9 +124,18 @@ def _get_series_name():
     "Return string name of release series, or 'latest'"
     global _series
     if _series is None:
+        try:
+            git_root_dir = subprocess.check_output(
+                ['git', 'rev-parse', '--show-toplevel'],
+            ).decode('utf-8').strip()
+        except Exception:
+            logger.warning('Cannot find git top directory, assuming "."')
+            git_root_dir = '.'
         parser = configparser.ConfigParser()
-        # TODO(stephenfin): Should this be relative to some directory?
-        parser.read('.gitreview')
+        in_file = os.path.join(git_root_dir, '.gitreview')
+        parsed = parser.read(in_file)
+        if not parsed:
+            logger.info('No {} found'.format(in_file))
         try:
             branch = parser.get('gerrit', 'defaultbranch')
         except configparser.Error:
