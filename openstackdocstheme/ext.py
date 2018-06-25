@@ -115,6 +115,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         bug_tag = app.config.bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
+        _html_context_data['series'] = _get_series_name()
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
