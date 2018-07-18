@@ -1,21 +1,3 @@
-// Open header search bar
-$(function() {
-  $(".search-icon").click(function() {
-    $(".navbar-main").toggleClass("show");
-    $(".search-container").toggleClass("show");
-    $(".search-icon").toggleClass("show");
-    $('#gsc-i-id1').focus();
-  });
-});
-
-// Close header search bar
-$(function() {
-  $(".close-search").click(function() {
-    $(".navbar-main").toggleClass("show");
-    $(".search-container").toggleClass("show")
-    $(".search-icon").toggleClass("show");
-  });
-});
 
 // Open header drop downs on hover
 jQuery(document).ready(function(){
@@ -29,7 +11,20 @@ jQuery(document).ready(function(){
     } else {
         $('ul.navbar-main li ul.dropdown-menu').removeClass('dropdown-hover');
     }
+
+    $(document).on('click', ".ossw-search-bar-close", function() {
+        $(".navbar-main").toggleClass("show");
+        $(".search-container").toggleClass("show");
+        $(".search-icon").toggleClass("show");
+    });
+
+     $(document).on('click', ".search-icon", function() {
+        $(".navbar-main").toggleClass("show");
+        $(".search-container").toggleClass("show");
+        $(".search-icon").toggleClass("show");
+    });
 });
+
 jQuery(window).resize(function () {
     if (jQuery(window).width() > 767) {
         $('ul.navbar-main li ul.dropdown-menu').addClass('dropdown-hover');
@@ -58,10 +53,4 @@ jQuery(window).resize(function () {
         $('#search-label').text('Search');
     }
 });
-
-// Show placeholder text in Google Search
-setTimeout( function() {
-    $(".gsc-input").attr("placeholder", "search docs.openstack.org");
-}, 1000 );
-
 
