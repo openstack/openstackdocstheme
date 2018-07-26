@@ -24,3 +24,8 @@ releasenotes/build
 /.aux
 /.fdb_latexmk
 /texput.fls
+
+# Files created by setuptools
+/build/
+RELEASENOTES.rst
+releasenotes/notes/reno.cache
