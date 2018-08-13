@@ -9,8 +9,8 @@
 - project:
     templates:
       - check-requirements
-      - release-notes-jobs
-      - publish-openstack-sphinx-docs
+      - release-notes-jobs-python3
+      - publish-openstack-docs-pti
     check:
       jobs:
         - build-tox-manuals-buildpdf
