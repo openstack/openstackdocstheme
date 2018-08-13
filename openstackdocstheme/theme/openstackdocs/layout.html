@@ -94,5 +94,21 @@ ga('send', 'pageview');
 {% include 'footer.html' %}
 {% include 'script_footer.html' %}
 {% block script_footer %}{% endblock %}
+{% if series %}
+<script type="text/javascript">
+    $(document).ready(function(){
+
+          $.ajax({
+            context: this,
+            dataType : "html",
+            url : "https://docs.openstack.org/{{ series }}/badge.html",
+            success : function(results) {
+                $('#deprecated-badge-container').html(results);
+            }
+        });
+    });
+</script>
+<div id="deprecated-badge-container"></div>
+{% endif %}
   </body>
 </html>
