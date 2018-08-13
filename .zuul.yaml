@@ -1,4 +1,3 @@
-
 # parent job is defined in openstack-manuals
 - job:
     name: build-tox-manuals-buildpdf
@@ -8,9 +7,18 @@
 
 
 - project:
+    templates:
+      - check-requirements
+      - release-notes-jobs
+      - publish-openstack-sphinx-docs
     check:
       jobs:
         - build-tox-manuals-buildpdf
+        - openstack-tox-pep8
     gate:
       jobs:
         - build-tox-manuals-buildpdf
+        - openstack-tox-pep8
+    post:
+      jobs:
+        - publish-openstack-python-branch-tarball
