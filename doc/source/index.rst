@@ -140,6 +140,15 @@ with documentation available. By default it is set to ``None``::
     document with internal versioning.
 
 
+By default, a badge is displayed showing which the latest OpenStack
+release is. You can disable the badge with::
+
+        html_theme_options = {
+        # ...
+        "display_badge": False,
+        # ...
+    }
+
 External Link Helper
 --------------------
 

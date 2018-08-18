@@ -49,7 +49,7 @@ master_doc = 'index'
 # It's used by the "log-a-bug" button on each page
 # and should ultimately be set automatically by the build process
 project = u'Test API Reference'
-copyright = u'2016, OpenStack Contributors'
+copyright = u'2018, OpenStack Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -121,6 +121,7 @@ html_theme = 'openstackdocs'
 # Otherwise, the list of links for the User and Ops docs
 # appear in the sidebar dropdown menu.
 html_theme_options = {"sidebar_dropdown": "api_ref",
+                      "display_badge": False,
                       "sidebar_mode": "toc"}
 
 # Add any paths that contain custom themes here, relative to this directory.
