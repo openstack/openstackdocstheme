@@ -1,7 +1,7 @@
 # parent job is defined in openstack-manuals
 - job:
-    name: build-tox-manuals-buildpdf
-    parent: build-tox-manuals
+    name: openstackdocsstheme-tox-manuals-buildpdf
+    parent: build-tox-manuals-base
     vars:
       tox_envlist: buildpdf
 
@@ -13,11 +13,11 @@
       - publish-openstack-docs-pti
     check:
       jobs:
-        - build-tox-manuals-buildpdf
+        - openstackdocsstheme-tox-manuals-buildpdf
         - openstack-tox-pep8
     gate:
       jobs:
-        - build-tox-manuals-buildpdf
+        - openstackdocsstheme-tox-manuals-buildpdf
         - openstack-tox-pep8
     post:
       jobs:
