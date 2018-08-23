@@ -34,6 +34,21 @@ _html_context_data = None
 logger = logging.getLogger(__name__)
 
 
+def _has_stable_branches():
+    try:
+        repo = dulwich.repo.Repo.discover()
+    except dulwich.repo.NotGitRepository:
+        return False
+
+    refs = repo.get_refs()
+    for ref in refs.keys():
+        ref = ref.decode('utf-8')
+        if ref.startswith('refs/remotes/origin/stable'):
+            return True
+
+    return False
+
+
 def _get_other_versions(app):
     if not app.config.html_theme_options.get('show_other_versions', False):
         return []
@@ -116,6 +131,21 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
         _html_context_data['series'] = _get_series_name()
+
+        # Do not show the badge in these cases:
+        # - display_badge is false
+        # - repo has no stable/ branches
+        # - directory is named api-guide, api-ref, or releasenotes
+        if not app.config.html_theme_options.get('display_badge', True):
+            _html_context_data['display_badge'] = False
+        elif _has_stable_branches():
+            doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
+            if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
+                _html_context_data['display_badge'] = False
+            else:
+                _html_context_data['display_badge'] = True
+        else:
+            _html_context_data['display_badge'] = False
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)

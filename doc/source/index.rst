@@ -140,8 +140,10 @@ with documentation available. By default it is set to ``None``::
     document with internal versioning.
 
 
-By default, a badge is displayed showing which the latest OpenStack
-release is. You can disable the badge with::
+A badge pointing out the support status of a document is shown now
+for repositories that have ``stable/`` branches. The badge is not
+displayed for api-ref, api-guide and releasenotes documents. It
+can be disabled with the ``display_badge`` html theme option::
 
         html_theme_options = {
         # ...
