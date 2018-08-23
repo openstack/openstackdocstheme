@@ -110,6 +110,11 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         bug_project = app.config.bug_project
         if bug_project:
             _html_context_data['bug_project'] = bug_project
+        use_storyboard = app.config.use_storyboard
+        if bug_project and use_storyboard:
+            _html_context_data['use_storyboard'] = use_storyboard
+        # Previously storyboard showed numbers that were used, keep
+        # for old conf.py files:
         if bug_project and bug_project.isdigit():
             _html_context_data['use_storyboard'] = True
         bug_tag = app.config.bug_tag
@@ -262,6 +267,7 @@ def setup(app):
     app.add_config_value('bug_project', '', 'env')
     app.add_config_value('bug_tag', '', 'env')
     app.add_config_value('openstack_projects', [], 'env')
+    app.add_config_value('use_storyboard', '', 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',

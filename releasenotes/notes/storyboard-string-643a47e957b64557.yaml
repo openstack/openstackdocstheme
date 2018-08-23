@@ -1,0 +1,6 @@
+---
+fixes:
+  - |
+    Storyboard shows now instead of numbers the name of the project group.
+    Allow setting this as string. In this case the variable
+    ``use_storyboard`` needs to be set.
