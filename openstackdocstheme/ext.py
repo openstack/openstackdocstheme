@@ -297,7 +297,7 @@ def setup(app):
     app.add_config_value('bug_project', '', 'env')
     app.add_config_value('bug_tag', '', 'env')
     app.add_config_value('openstack_projects', [], 'env')
-    app.add_config_value('use_storyboard', '', 'env')
+    app.add_config_value('use_storyboard', False, 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',

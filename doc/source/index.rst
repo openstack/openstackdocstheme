@@ -78,6 +78,7 @@ Using the theme
 
       # openstackdocstheme options
       repository_name = 'openstack-infra/infra-manual'
+      use_storyboard = True
       bug_project = 'openstack-ci'
       bug_tag = ''
 
