@@ -49,23 +49,22 @@ Using the theme
        The prefix and repo name. For example,
        ``'openstack/python-glanceclient'``.
 
+   ``use_storyboard``
+       Set to ``True`` if using StoryBoard.
+
+       .. note::
+
+          If using StoryBoard, do not set ``bug_project`` and ``bug_tag``
+          options.
+
    ``bug_project``
        The project name or ID. For launchpad, it's a string like
        ``python-glanceclient``. If unspecified, the "Report a bug"
-       links are not shown.
-
-       If your project uses ``storyboard.openstack.org``, it's a
-       string like ``openstack-ci`` for the project group.
-
-       ..note:: Previously StoryBoard showed numbers, and thus you set
-       this to a project number instead like ``901``. Set this to a
-       string instead and also use the ``use_storyboard`` variable.
+       links are not shown. This option can be removed if using StoryBoard.
 
    ``bug_tag``
-      Launchpad bug tag. If unspecified, no tag is set.  The default is empty.
-
-   ``use_storyboard``
-      Set to ``True`` if using StoryBoard.
+      Launchpad bug tag. If unspecified, no tag is set. The default is empty.
+      This option can be removed if using StoryBoard.
 
    One example for a project using launchpad::
 
@@ -79,8 +78,6 @@ Using the theme
       # openstackdocstheme options
       repository_name = 'openstack-infra/infra-manual'
       use_storyboard = True
-      bug_project = 'openstack-ci'
-      bug_tag = ''
 
 #. Remove the options that will be automatically configured by the theme.
 

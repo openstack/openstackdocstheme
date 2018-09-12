@@ -1,0 +1,6 @@
+---
+fixes:
+  - |
+    If you use storyboard via ``use_storyboard``, now only ``repository_name``
+    is used and not ``bug_project`` anymore to construct the URL for storyboard.
+    The generated URL has been fixed as well.

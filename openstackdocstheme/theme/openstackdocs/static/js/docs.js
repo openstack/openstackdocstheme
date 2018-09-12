@@ -104,7 +104,7 @@ $('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</d
 // Gives the log a bug icon the information it needs to generate the bug in
 // Launchpad with pre-filled information such as git SHA, git.openstack.org
 // source URL, published document URL and tag.
-function logABug(bugTitle, bugProject, fieldComment, fieldTags) {
+function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) {
 
     var lineFeed = "%0A";
 
@@ -126,7 +126,7 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags) {
     var bugLink = "";
     if (useStoryboard) {
         var urlBase = "https://storyboard.openstack.org/#!/project/";
-        bugLink = urlBase + bugProject;
+        bugLink = urlBase + repositoryName;
     } else {
         bugLink = urlBase  + encodeURIComponent(bugTitle) +
         "&field.tags=" + fieldTags +
