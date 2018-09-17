@@ -109,6 +109,7 @@ def _get_doc_path(app):
 def _html_page_context(app, pagename, templatename, context, doctree):
     global _html_context_data
     if _html_context_data is None:
+        logger.debug('[openstackdocstheme] building html context')
         _html_context_data = {}
         try:
             _html_context_data['gitsha'] = subprocess.check_output(
@@ -121,22 +122,37 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         doc_path = _get_doc_path(app)
         repo_name = app.config.repository_name
         _html_context_data['repository_name'] = repo_name
+        logger.debug('[openstackdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
+            logger.info('[openstackdocstheme] giturl %r',
+                        _html_context_data['giturl'])
+        use_storyboard = app.config.use_storyboard
+        _html_context_data['use_storyboard'] = use_storyboard
         bug_project = app.config.bug_project
         if bug_project:
+            logger.info('[openstackdocstheme] bug_project (from user) %r',
+                        bug_project)
+        elif use_storyboard:
+            bug_project = repo_name
+            logger.info('[openstackdocstheme] bug_project '
+                        '(use_storyboard set) %r',
+                        bug_project)
+        if bug_project:
             _html_context_data['bug_project'] = bug_project
-        use_storyboard = app.config.use_storyboard
-        if bug_project and use_storyboard:
-            _html_context_data['use_storyboard'] = use_storyboard
         # Previously storyboard showed numbers that were used, keep
         # for old conf.py files:
         if bug_project and bug_project.isdigit():
+            logger.info('[openstackdocstheme] bug_project looks like a '
+                        'number, setting use_storyboard')
             _html_context_data['use_storyboard'] = True
         bug_tag = app.config.bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
+            logger.info('[openstackdocstheme] bug_tag %r', bug_tag)
         _html_context_data['series'] = _get_series_name()
+        logger.info('[openstackdocstheme] series %r',
+                    _html_context_data['series'])
 
         # Do not show the badge in these cases:
         # - display_badge is false
@@ -144,17 +160,28 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         # - directory is named api-guide, api-ref, or releasenotes
         if not app.config.html_theme_options.get('display_badge', True):
             _html_context_data['display_badge'] = False
+            logger.info('[openstackdocstheme] display_badge False '
+                        '(configured by user)')
         elif _has_stable_branches():
             doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
             if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
                 _html_context_data['display_badge'] = False
+                logger.info('[openstackdocstheme] display_badge False '
+                            '(doc name contains %r)',
+                            doc_parts[0])
             else:
                 _html_context_data['display_badge'] = True
+                logger.info('[openstackdocstheme] display_badge True '
+                            '(stable branches)')
         else:
             _html_context_data['display_badge'] = False
+            logger.info('[openstackdocstheme] display_badge False '
+                        '(no stable branches)')
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
+    logger.info('[openstackdocstheme] other_versions %s',
+                context['other_versions'])
 
 
 def _get_series_name():
