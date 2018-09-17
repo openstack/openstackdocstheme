@@ -53,9 +53,7 @@
 
     /* gitsha, project and bug_tag rely on variables in conf.py */
     var gitSha = "SHA: {{ gitsha }}";
-    {%- if repository_name %}
-        var repositoryName = "{{ repository_name }}";
-    {%- endif %}
+    var repositoryName = "{{ repository_name }}";
     {%- if bug_project %}
         var bugProject = "{{ bug_project }}";
     {%- endif %}

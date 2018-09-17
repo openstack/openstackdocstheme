@@ -120,6 +120,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         doc_path = _get_doc_path(app)
         repo_name = app.config.repository_name
+        _html_context_data['repository_name'] = repo_name
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
         bug_project = app.config.bug_project
