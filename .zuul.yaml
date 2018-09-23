@@ -9,16 +9,34 @@
 - project:
     templates:
       - check-requirements
-      - release-notes-jobs-python3
       - publish-openstack-docs-pti
+      - release-notes-jobs-python3
     check:
       jobs:
         - openstackdocsstheme-tox-manuals-buildpdf
         - openstack-tox-pep8
+        - build-openstack-api-ref:
+            # Override files section of the job so that this builds
+            # if we change the template.
+            files:
+              - ^tox.ini$
+              - ^api-ref/.*
+              - ^doc/.*$
+              - ^openstackdocstheme/.*$
+              - ^.*\.txt$
+              - ^.*\.rst$
     gate:
       jobs:
         - openstackdocsstheme-tox-manuals-buildpdf
         - openstack-tox-pep8
+        - build-openstack-api-ref:
+            files:
+              - ^tox.ini$
+              - ^api-ref/.*
+              - ^doc/.*$
+              - ^openstackdocstheme/.*$
+              - ^.*\.txt$
+              - ^.*\.rst$
     post:
       jobs:
         - publish-openstack-python-branch-tarball
