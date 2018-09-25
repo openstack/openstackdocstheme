@@ -9,6 +9,7 @@
 {%- endif %}
   </div>
   <div class="docs-sidebar-toc">
+  {%- if theme_display_global_toc_section %}
     <div class="docs-sidebar-section" id="table-of-contents">
       <a href="{{ pathto(master_doc) }}" class="docs-sidebar-section-title"><h4>{{project}} {{version}}</h4></a>
       {%- if theme_sidebar_mode == 'toc' %}
@@ -17,6 +18,7 @@
       {{ toctree(maxdepth=2) }}
       {%- endif %}
     </div>
+  {%- endif %}
 {% include 'localtoc.html' %}
   </div>
 </div>

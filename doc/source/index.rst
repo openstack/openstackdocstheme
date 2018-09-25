@@ -158,6 +158,16 @@ can be disabled with the ``display_badge`` html theme option::
         # ...
     }
 
+The TOC on the left contains a global section (to navigate between pages)
+and a local section (showing page contents). If the TOC is diplayed in the
+text, you might want to disable the global section of the TOC::
+
+    html_theme_options = {
+        # ...
+        "display_global_toc_section": False,
+        # ...
+    }
+
 If you are using this theme for something other than docs.openstack.org,
 you can customize the root title ("OpenStack Docs") that appears in the
 page title and the left arrow tooltip::
