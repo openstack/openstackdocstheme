@@ -158,6 +158,16 @@ can be disabled with the ``display_badge`` html theme option::
         # ...
     }
 
+If you are using this theme for something other than docs.openstack.org,
+you can customize the root title ("OpenStack Docs") that appears in the
+page title and the left arrow tooltip::
+
+    html_theme_options = {
+        # ...
+        "root_title": "OpenStack Governance",
+        # ...
+    }
+
 External Link Helper
 --------------------
 
