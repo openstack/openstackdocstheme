@@ -5,6 +5,17 @@
     vars:
       tox_envlist: buildpdf
 
+- job:
+    name: openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
+    parent: build-tox-manuals-base
+    vars:
+      tox_envlist: buildpdf-starlingxdocs
+
+- job:
+    name: openstack-tox-docs-starlingxdocs
+    parent: openstack-tox-docs
+    vars:
+      tox_envlist: docs-starlingxdocs
 
 - project:
     templates:
@@ -14,6 +25,7 @@
     check:
       jobs:
         - openstackdocsstheme-tox-manuals-buildpdf
+        - openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
         - openstack-tox-pep8
         - build-openstack-api-ref:
             # Override files section of the job so that this builds
@@ -25,9 +37,12 @@
               - ^openstackdocstheme/.*$
               - ^.*\.txt$
               - ^.*\.rst$
+        # Run the docs build using the starlingxdocs theme
+        - openstack-tox-docs-starlingxdocs
     gate:
       jobs:
         - openstackdocsstheme-tox-manuals-buildpdf
+        - openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
         - openstack-tox-pep8
         - build-openstack-api-ref:
             files:
@@ -37,6 +52,7 @@
               - ^openstackdocstheme/.*$
               - ^.*\.txt$
               - ^.*\.rst$
+        - openstack-tox-docs-starlingxdocs
     post:
       jobs:
         - publish-openstack-python-branch-tarball

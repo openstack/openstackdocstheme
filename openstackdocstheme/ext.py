@@ -277,7 +277,7 @@ def _builder_inited(app):
 
     # we only override configuration if the theme has been configured, meaning
     # users are using these features
-    if app.config.html_theme != 'openstackdocs':
+    if app.config.html_theme not in ['openstackdocs', 'starlingxdocs']:
         return
 
     # TODO(stephenfin): Once Sphinx 1.8 is released, we should move the below
@@ -302,8 +302,8 @@ def _builder_inited(app):
         app.config.version = version
         app.config.release = version
 
-    openstack_logo = paths.get_openstack_logo_path()
-    pdf_theme_path = paths.get_pdf_theme_path()
+    theme_logo = paths.get_theme_logo_path(app.config.html_theme)
+    pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
 
     app.config.latex_engine = 'xelatex'
     app.config.latex_elements = {
@@ -313,7 +313,7 @@ def _builder_inited(app):
         'classoptions': ',openany',
         'preamble': r"""
 \usepackage{""" + pdf_theme_path + """}
-\\newcommand{\openstacklogo}{""" + openstack_logo + """}
+\\newcommand{\openstacklogo}{""" + theme_logo + """}
 """}
 
 
@@ -329,6 +329,10 @@ def setup(app):
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
+    )
+    app.add_html_theme(
+        'starlingxdocs',
+        os.path.abspath(os.path.dirname(__file__)) + '/theme/starlingxdocs',
     )
     return {
         'parallel_read_safe': True,

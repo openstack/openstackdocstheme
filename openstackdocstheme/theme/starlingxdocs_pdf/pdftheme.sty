@@ -1,0 +1,67 @@
+\makeatletter
+
+% Do not print release information if empty
+% Note: Sphinx does support version variable in conf.py to latex yet
+\def \ifempty#1{\def\temp{#1} \ifx\temp\empty }
+\renewcommand{\release}[1]{
+   \ifempty{#1}
+     \newcommand{\osreleasetitle}{}
+     \newcommand{\osreleaseheader}{}
+   \else
+     \newcommand{\osreleasetitle}{\LARGE Release Version: #1\newline}
+     \newcommand{\osreleaseheader}{\space\small\nouppercase{(Release Version: #1)}}
+   \fi
+}
+
+% Defines title page
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \begin{flushleft}
+       \includegraphics[width=3.5cm, height=0.8cm]{\openstacklogo}
+    \end{flushleft}
+    \vskip 6em%
+    \begin{center}
+       % Document title
+       {\Huge \textbf \@title}
+    \end{center}
+
+    \begin{flushright}
+       % Expect align right but center
+       \vskip 2em%
+       % RELEASE VERSION
+       {\osreleasetitle}
+    \end{flushright}
+
+    \vskip 6em%
+
+    \begin{flushright}
+       % Author
+       {\LARGE \@author}
+       \vskip 20em%
+       % Creation date
+       {\Large \@date}
+    \end{flushright}
+  \end{titlepage}
+}
+
+% Customizes page header & footer for OpenStack
+\fancypagestyle{normal}{
+  \fancyhf{}
+  \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+  \fancyfoot[RE,LO]{{\py@HeaderFamily\nouppercase\rightmark}}
+  \fancyhead[LE,RO]{{\py@HeaderFamily\@title\osreleaseheader}}
+  \fancyhead[RE,LO]{{\py@HeaderFamily\includegraphics[width=3.5cm, height=0.8cm]{\openstacklogo}}}
+}
+
+% Customizes colors
+\definecolor{VerbatimColor}{rgb}{.95,.95,.95}
+
+% Do not use chapter and section number
+\setcounter{secnumdepth}{-1}
+
+% Font selection (English)
+\usepackage{fontspec}
+\defaultfontfeatures{Scale=MatchLowercase}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont[SmallCapsFont={Liberation Mono}]{Liberation Mono}

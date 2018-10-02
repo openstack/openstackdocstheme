@@ -1,14 +1,20 @@
-===========================================
- OpenStack docs.openstack.org Sphinx theme
-===========================================
+=========================
+ OpenStack Sphinx themes
+=========================
 
-*openstackdocstheme* is a theme and extension support for Sphinx documentation
-that is published to docs.openstack.org and developer.openstack.org.
+*openstackdocstheme* is a Sphinx documentation extension that includes
+theme support for OpenStack Foundation projects.
 
-It is intended for use by OpenStack `projects governed by the Technical
-Committee`_.
+The *openstackdocs* theme is used for documentation that is published
+to docs.openstack.org and developer.openstack.org. It is intended for
+use by OpenStack `projects governed by the Technical Committee`_.
+
+The *starlingxdocs* theme is used for documentation that is published
+to docs.starlingx.io. It is intended for use by StarlingX
+`projects governed by the Technical Steering Committee`_.
 
 .. _`projects governed by the Technical Committee`: https://governance.openstack.org/reference/projects/index.html
+.. _`projects governed by the Technical Steering Committee`: https://docs.starlingx.io/governance/reference/projects/index.html
 
 Using the theme
 ---------------
