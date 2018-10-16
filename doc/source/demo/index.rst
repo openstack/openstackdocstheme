@@ -64,7 +64,7 @@ Here's another example that's python code:
 
     def builder_inited(app):
         theme_dir = os.path.join(os.path.dirname(__file__), 'theme')
-        app.info('Using openstack theme from %s' % theme_dir)
+        LOG.info('Using openstack theme from %s' % theme_dir)
         # Insert our theme directory at the front of the search path and
         # force the theme setting to use the one in the package. This is
         # done here, instead of in setup(), because conf.py is read after
