@@ -1,8 +1,8 @@
 ---
 features:
   - |
-    Add support for additional themes is included in the package.  The
-    first theme is ``starlingxdocs``.  The initial implementation sets up
+    Add support for including additional themes in the package, starting
+    with ``starlingxdocs``.  The initial implementation sets up
     the new theme to inherit from ``openstackdocs`` and updates some of
     the ``openstackdocs`` bits that are hard coded in the Python.
 
