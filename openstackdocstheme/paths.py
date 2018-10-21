@@ -34,3 +34,9 @@ def get_theme_logo_path(theme='openstack'):
     """Return the directory containing theme logo for local builds."""
     args = ['theme', theme + '_pdf', 'logo-full.png']
     return os.path.join(get_pkg_path(), *args)
+
+
+# This function is for compatibility with previous releases.
+def get_openstack_logo_path():
+    """Return the directory containing openstack logo for local builds."""
+    return get_theme_logo_path('openstack')

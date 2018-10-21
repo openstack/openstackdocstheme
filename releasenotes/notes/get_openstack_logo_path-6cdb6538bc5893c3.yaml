@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Fix API breakages in 1.26.0: Readd ``get_openstack_logo_path``,
+    add default parameter to ``get_pdf_theme_path``.
