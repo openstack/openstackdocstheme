@@ -24,13 +24,13 @@ def get_html_theme_path():
     return os.path.join(get_pkg_path(), 'theme')
 
 
-def get_pdf_theme_path(theme='openstack'):
+def get_pdf_theme_path(theme='openstackdocs'):
     """Return the directory containing PDF theme for local builds."""
     args = ['theme', theme + '_pdf', 'pdftheme']
     return os.path.join(get_pkg_path(), *args)
 
 
-def get_theme_logo_path(theme='openstack'):
+def get_theme_logo_path(theme='openstackdocs'):
     """Return the directory containing theme logo for local builds."""
     args = ['theme', theme + '_pdf', 'logo-full.png']
     return os.path.join(get_pkg_path(), *args)
@@ -38,5 +38,5 @@ def get_theme_logo_path(theme='openstack'):
 
 # This function is for compatibility with previous releases.
 def get_openstack_logo_path():
-    """Return the directory containing openstack logo for local builds."""
-    return get_theme_logo_path('openstack')
+    """Return the directory containing OpenStack logo for local builds."""
+    return get_theme_logo_path('openstackdocs')
