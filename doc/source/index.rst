@@ -165,7 +165,7 @@ can be disabled with the ``display_badge`` html theme option::
     }
 
 The TOC on the left contains a global section (to navigate between pages)
-and a local section (showing page contents). If the TOC is diplayed in the
+and a local section (showing page contents). If the TOC is displayed in the
 text, you might want to disable the global section of the TOC::
 
     html_theme_options = {
