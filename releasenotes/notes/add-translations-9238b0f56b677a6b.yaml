@@ -1,0 +1,8 @@
+---
+features:
+  - |
+    Add tools for building translated documents. The file
+    ``docstheme-build-translated.sh`` will look for translations and
+    build translated documents for all languages that exist.
+    Invoke ``docstheme-build-translated.sh`` from tox.ini instead of running
+    ``sphinx-build`` directly.
