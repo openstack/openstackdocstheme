@@ -12,5 +12,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from .ext import setup  # noqa
+from . import ext  # noqa
+from . import page_context  # noqa
 from .paths import *  # noqa
+
+
+def setup(app):
+    ext.setup(app)
+    page_context.setup(app)
