@@ -129,11 +129,42 @@ for locale in `find ${DIRECTORY}/source/locale/ -maxdepth 1 -type d` ; do
         potname=$(basename $pot)
         resname=${potname%.pot}
         # merge all translation resources
-        msgmerge --silent -o \
-            ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.po \
-            ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${DOCNAME}.po \
-            ${DIRECTORY}/source/locale/${potname}
-        # compile all translation resources
+
+        # Note that this is the counterpart to how we push
+        # translations to the server. The code lives in
+        # http://git.openstack.org/cgit/openstack-infra/openstack-zuul-jobs/tree/roles/prepare-zanata-client/files/common_translation_update.sh
+        # in function extract_messages_doc:
+        # While Sphinx generates a single pot file per source file in the top
+        # directory, is generates a file per directory for any subdirectory.
+        # The function extract_messages_doc creates a file per
+        # directory, so also for the top directory:
+        # * For directory X, a file named doc-X.pot is created.
+        # * All files of the top-level directory are merged into the
+        # file doc.pot.
+
+        # We need to find for each file the downloaded folder file and
+        # use that to generate translations.
+        # Case 1: Is this a pot file for a directory and does it have translations?
+        if [ -e ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/doc-${resname}.po ]; then
+            msgmerge --silent -o \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.po \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/doc-${resname}.po \
+                ${DIRECTORY}/source/locale/${potname}
+        # Case 2: Is this a a file in the top directory and has translations?
+        elif [ -e ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/doc.po ]; then
+            msgmerge --silent -o \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.po \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/doc.po \
+                ${DIRECTORY}/source/locale/${potname}
+        # Otherwise we have no translations for this file, let's create an
+        # empty po file.
+        else
+            msgmerge --silent -o \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.po \
+                ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/doc.po \
+                ${DIRECTORY}/source/locale/${potname}
+        fi
+        # Compile all translation resources.
         msgfmt -o \
             ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.mo \
             ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${resname}.po
