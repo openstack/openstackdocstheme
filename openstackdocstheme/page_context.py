@@ -32,7 +32,7 @@ def _get_last_updated_file(src_file):
                 '--', src_file,
             ]
         ).decode('utf-8').strip()
-    except subprocess.CalledProcessError as err:
+    except (subprocess.CalledProcessError, OSError) as err:
         LOG.info(
             '[openstackdocstheme] Could not get modification time of %s: %s',
             src_file, err)
