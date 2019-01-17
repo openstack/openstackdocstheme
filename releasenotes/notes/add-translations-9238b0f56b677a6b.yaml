@@ -6,3 +6,19 @@ features:
     build translated documents for all languages that exist.
     Invoke ``docstheme-build-translated.sh`` from tox.ini instead of running
     ``sphinx-build`` directly.
+    The following environment variables control the script:
+    ``SKIP_SPHINX_WARNINGS`` to not treat warnings from sphinx-build as an
+    error.
+    ``SPHINX_WARNINGS_TRANS`` will turn on warnings by sphinx-build as
+    an error on translation (use with caution).
+
+    Example for tox.ini:
+
+    ::
+
+      [testenv:docs]
+      deps = -r{toxinidir}/doc/requirements.txt
+      setenv =
+          SKIP_SPHINX_WARNINGS=1
+      commands=
+          docstheme-build-translated.sh

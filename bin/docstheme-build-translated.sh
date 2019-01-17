@@ -21,6 +21,23 @@ set -x
 DOCNAME=doc
 DIRECTORY=doc
 
+# Sphinx will warnings treated as an error
+SPHINX_BUILD_OPTION_ENG='-W'
+SPHINX_BUILD_OPTION_TRANS='-W'
+
+# Initial env vars
+SKIP_SPHINX_WARNINGS=${SKIP_SPHINX_WARNINGS:-0}
+SKIP_SPHINX_TRANS=${SKIP_SPHINX_TRANS:-0}
+
+# Skip -W option for english and translation builds
+if [ ${SKIP_SPHINX_WARNINGS} -lt 1 ]; then
+    SPHINX_BUILD_OPTION_ENG=''
+fi
+
+if [ ${SPHINX_WARNINGS_TRANS} -gt 0 ]; then
+    SPHINX_BUILD_OPTION_TRANS=''
+fi
+
 # This function sets the following global variables
 # - LANG_INDEX : filename which contains the language index
 # - HAS_LANG : 1 (there are languages other than English), 0 (English only)
@@ -171,8 +188,7 @@ for locale in `find ${DIRECTORY}/source/locale/ -maxdepth 1 -type d` ; do
     done
 
     # build translated guide
-    # TODO(amotoki): Enable -W option in translated version
-    sphinx-build -a -b html -D language=${language} \
+    sphinx-build -a ${SPHINX_BUILD_OPTION_TRANS} -b html -D language=${language} \
         -d ${DIRECTORY}/build/doctrees.languages/${language} \
         ${DIRECTORY}/source ${DIRECTORY}/build/html/${language}
 
@@ -191,7 +207,7 @@ rm -f ${DIRECTORY}/source/locale/*.pot
 add_language_index_to_original
 
 # build English document
-sphinx-build -a -W -b html \
+sphinx-build -a ${SPHINX_BUILD_OPTION_ENG} -b html \
     -d ${DIRECTORY}/build/doctrees \
     ${DIRECTORY}/source ${DIRECTORY}/build/html/
 
