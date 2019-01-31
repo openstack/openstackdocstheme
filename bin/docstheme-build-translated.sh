@@ -45,7 +45,6 @@ function prepare_language_index {
     # Global variables
     HAS_LANG=0
     LANG_INDEX=`mktemp`
-    trap "rm -f -- $LANG_INDEX" EXIT
 
     cat <<EOF >> $LANG_INDEX
 [
@@ -113,9 +112,26 @@ function add_language_index_to_original {
 
 function recover_rst_files {
     for f in `find $DIRECTORY/source -name '*.rst'`; do
-        mv $f.backup $f
+        [ -f $f.backup ] && mv $f.backup $f
     done
 }
+
+function remove_pot_files {
+    # remove newly created pot files
+    rm -f ${DIRECTORY}/source/locale/*.pot
+}
+
+function cleanup {
+    if [ $DOCSTHEME_BUILD_TRANSLATED__NO_CLEANUP ]; then
+        echo "Skipping cleanup. Your repository is dirty."
+        return
+    fi
+    [ $LANG_INDEX ] && rm -f -- $LANG_INDEX
+    recover_rst_files
+    remove_pot_files
+}
+
+trap cleanup EXIT
 
 sphinx-build -a -W -b gettext \
     -d ${DIRECTORY}/build/doctrees.gettext \
@@ -201,8 +217,7 @@ for locale in `find ${DIRECTORY}/source/locale/ -maxdepth 1 -type d` ; do
     git checkout -q -- ${DIRECTORY}/source/locale/${language}/LC_MESSAGES/${DOCNAME}.po
 done
 
-# remove newly created pot files
-rm -f ${DIRECTORY}/source/locale/*.pot
+remove_pot_files
 
 add_language_index_to_original
 
@@ -210,5 +225,3 @@ add_language_index_to_original
 sphinx-build -a ${SPHINX_BUILD_OPTION_ENG} -b html \
     -d ${DIRECTORY}/build/doctrees \
     ${DIRECTORY}/source ${DIRECTORY}/build/html/
-
-recover_rst_files
