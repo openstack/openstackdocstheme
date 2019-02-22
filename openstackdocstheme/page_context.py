@@ -70,7 +70,7 @@ def _get_last_updated(app, pagename):
     for filename in candidates:
         last_updated = _get_last_updated_file(filename)
         if last_updated:
-            LOG.info(
+            LOG.debug(
                 '[openstackdocstheme] Last updated for %s is %s',
                 pagename, last_updated)
             return last_updated
