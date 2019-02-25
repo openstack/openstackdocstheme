@@ -180,8 +180,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
-    logger.info('[openstackdocstheme] other_versions %s',
-                context['other_versions'])
+    logger.debug('[openstackdocstheme] other_versions %s',
+                 context['other_versions'])
 
 
 def _get_series_name():
