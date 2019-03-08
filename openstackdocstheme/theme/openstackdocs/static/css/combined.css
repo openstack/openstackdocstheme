@@ -3819,7 +3819,9 @@ a.docs-sidebar-section-title:hover {
   counter-increment: none; }
 
 .docs-sidebar-section ul li {
-  word-wrap: break-word; }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 li.docs-has-sub > a {
   font-weight: 700; }
@@ -4475,6 +4477,8 @@ table.highlighttable {
 .docs-sidebar-section ul ul {
   padding-left: 0px;
   margin-left: 20px;
+  padding-right: 0px;
+  margin-right: 20px;
 }
 
 .docs-body .section h1 {
