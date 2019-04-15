@@ -142,6 +142,9 @@ html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
+# If the SOURCE_DATE_EPOCH env var is set, its value will be used as default
+# instead of the build time.
+# See https://reproducible-builds.org/specs/source-date-epoch/
 # html_last_updated_fmt = '%b %d, %Y'
 html_last_updated_fmt = '%Y-%m-%d %H:%M'
 

@@ -11,14 +11,17 @@
 #    under the License.
 
 import datetime
+import os
 import os.path
 import subprocess
+import time
 
 from sphinx.util import logging
 
 LOG = logging.getLogger(__name__)
 
-_default_last_updated = datetime.datetime.now()
+_timeint = int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
+_default_last_updated = datetime.datetime.utcfromtimestamp(_timeint)
 
 
 def _get_last_updated_file(src_file):
