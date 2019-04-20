@@ -112,9 +112,12 @@ function add_language_index_to_original {
 
 function recover_rst_files {
     for f in `find $DIRECTORY/source -name '*.rst'`; do
-        [ -f $f.backup ] && mv $f.backup $f
+        if [ -f $f.backup ]; then
+            mv $f.backup $f
+        fi
     done
 }
+
 
 function remove_pot_files {
     # remove newly created pot files
