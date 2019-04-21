@@ -102,7 +102,7 @@ $('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</d
    the index of the HTML element that we are modifying)                 */
 
 // Gives the log a bug icon the information it needs to generate the bug in
-// Launchpad with pre-filled information such as git SHA, git.openstack.org
+// Launchpad with pre-filled information such as git SHA, opendev.org
 // source URL, published document URL and tag.
 function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard) {
 

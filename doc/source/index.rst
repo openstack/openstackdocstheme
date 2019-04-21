@@ -49,7 +49,8 @@ Using the theme
 
      html_theme = 'openstackdocs'
 
-#. Set the options to link to the git repository and bug tracker.
+#. Set the options to link to the git repository on
+   ``https://opendev.org`` and bug tracker.
 
    ``repository_name``
        The prefix and repo name. For example,
@@ -82,7 +83,7 @@ Using the theme
    One example for a project using StoryBoard::
 
       # openstackdocstheme options
-      repository_name = 'openstack-infra/infra-manual'
+      repository_name = 'openstack/infra-manual'
       use_storyboard = True
 
 #. Remove the options that will be automatically configured by the theme.

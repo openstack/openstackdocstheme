@@ -165,7 +165,7 @@ for locale in `find ${DIRECTORY}/source/locale/ -maxdepth 1 -type d` ; do
 
         # Note that this is the counterpart to how we push
         # translations to the server. The code lives in
-        # http://git.openstack.org/cgit/openstack-infra/openstack-zuul-jobs/tree/roles/prepare-zanata-client/files/common_translation_update.sh
+        # https://opendev.org/openstack/openstack-zuul-jobs/src/roles/prepare-zanata-client/files/common_translation_update.sh
         # in function extract_messages_doc:
         # While Sphinx generates a single pot file per source file in the top
         # directory, is generates a file per directory for any subdirectory.

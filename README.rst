@@ -39,5 +39,5 @@ References
 * Free software: Apache License, Version 2.0
 * Documentation: https://docs.openstack.org/openstackdocstheme/latest/
 * Release notes: https://docs.openstack.org/releasenotes/openstackdocstheme/
-* Source: https://git.openstack.org/cgit/openstack/openstackdocstheme
+* Source: https://opendev.org/openstack/openstackdocstheme
 * Bugs: https://launchpad.net/openstack-doc-tools
