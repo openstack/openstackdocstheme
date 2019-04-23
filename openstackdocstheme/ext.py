@@ -28,7 +28,7 @@ from openstackdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://git.openstack.org/cgit/{}/tree/{}'
+_giturl = 'https://opendev.org/{}/src/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
