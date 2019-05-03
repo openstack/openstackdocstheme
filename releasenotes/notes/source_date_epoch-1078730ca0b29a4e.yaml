@@ -1,0 +1,6 @@
+---
+fixes:
+  - |
+    Allow to override build date of generated files with SOURCE_DATE_EPOCH
+    in order to make build results of packages fully reproducible
+    especially when building from tarballs without a .git directory.
