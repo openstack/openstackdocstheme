@@ -2193,7 +2193,7 @@ ul.marketplace-nav a:hover {
   color: #DA422F; }
 
 ul.marketplace-nav a span {
-  background: url("http://openstack.org/marketplace/code/ui/frontend/images/marketplace-icons.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: url("https://openstack.org/marketplace/code/ui/frontend/images/marketplace-icons.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
   display: block;
   height: 50px;
   margin: auto;
@@ -2251,7 +2251,7 @@ ul.marketplace-nav .current a {
   font-weight: 300; }
 
 .details-button {
-  background: url("http://openstack.org/marketplace/code/ui/frontend/images/register-arrow.png") no-repeat scroll 85% center #000000;
+  background: url("https://openstack.org/marketplace/code/ui/frontend/images/register-arrow.png") no-repeat scroll 85% center #000000;
   color: #FFFFFF !important;
   display: inline-block;
   margin-right: -10px;
