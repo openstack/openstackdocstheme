@@ -205,6 +205,11 @@ Then in the documentation source, link to a target using syntax like:
 
    :horizon-doc:`Launching Instances with Horizon <user/launch-instances.html>`
 
+.. note::
+
+   Do not use this feature to reference projects that have a different branching
+   policy, for example, only have a master branch.
+
 
 Demonstration example
 ---------------------
