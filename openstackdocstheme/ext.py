@@ -84,9 +84,9 @@ def _get_other_versions(app):
         interesting_series = all_series
 
     # Reverse the list because we want the most recent to appear at
-    # the top of the dropdown. The "latest" release is added to the
-    # front of the list by the theme so we do not need to add it
-    # here.
+    # the top of the dropdown. Add the "latest" release to the
+    # front of the list.
+    interesting_series.append("latest")
     interesting_series.reverse()
     return interesting_series
 

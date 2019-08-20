@@ -46,7 +46,6 @@ ga('send', 'pageview');
             <div class="version-dropdown">
             <span>{{ _('version') }}</span>
               <div class="version-dropdown-content">
-                    <p><a href="../latest/" rel="nofollow">Latest</a></p>
                   {%- for ver in other_versions: %}
                     <p><a href="../{{pathto(ver, 1) }}" rel="nofollow">{{ ver }}</a></p>
                   {%- endfor %}
