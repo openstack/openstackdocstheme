@@ -111,6 +111,35 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     global _html_context_data
     if _html_context_data is None:
         logger.debug('[openstackdocstheme] building html context')
+
+        if app.config.repository_name is not None:
+            logger.info(
+                "The 'repository_name' config option has been deprecated and "
+                "replaced by the 'openstackdocs_repo_name' option; support "
+                "for the former will be dropped in a future release")
+            app.config.openstackdocs_repo_name = app.config.repository_name
+
+        if app.config.use_storyboard is not None:
+            logger.info(
+                "The 'use_storyboard' config option has been deprecated and "
+                "replaced by the 'openstackdocs_use_storyboard' option; "
+                "support for the former will be dropped in a future release")
+            app.config.openstackdocs_use_storyboard = app.config.use_storyboard
+
+        if app.config.bug_project is not None:
+            logger.info(
+                "The 'bug_project' config option has been deprecated and "
+                "replaced by the 'openstackdocs_bug_project' option; support "
+                "for the former will be dropped in a future release")
+            app.config.openstackdocs_bug_project = app.config.bug_project
+
+        if app.config.bug_tag is not None:
+            logger.info(
+                "The 'bug_tag' config option has been deprecated and "
+                "replaced by the 'openstackdocs_bug_tag' option; support "
+                "for the former will be dropped in a future release")
+            app.config.openstackdocs_bug_project = app.config.bug_project
+
         _html_context_data = {}
         try:
             _html_context_data['gitsha'] = subprocess.check_output(
@@ -121,16 +150,16 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             _html_context_data['gitsha'] = 'unknown'
 
         doc_path = _get_doc_path(app)
-        repo_name = app.config.repository_name
+        repo_name = app.config.openstackdocs_repo_name
         _html_context_data['repository_name'] = repo_name
         logger.debug('[openstackdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
             logger.info('[openstackdocstheme] giturl %r',
                         _html_context_data['giturl'])
-        use_storyboard = app.config.use_storyboard
+        use_storyboard = app.config.openstackdocs_use_storyboard
         _html_context_data['use_storyboard'] = use_storyboard
-        bug_project = app.config.bug_project
+        bug_project = app.config.openstackdocs_bug_project
         if bug_project:
             logger.info('[openstackdocstheme] bug_project (from user) %r',
                         bug_project)
@@ -147,7 +176,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             logger.info('[openstackdocstheme] bug_project looks like a '
                         'number, setting use_storyboard')
             _html_context_data['use_storyboard'] = True
-        bug_tag = app.config.bug_tag
+        bug_tag = app.config.openstackdocs_bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
             logger.info('[openstackdocstheme] bug_tag %r', bug_tag)
@@ -212,7 +241,7 @@ def _get_series_name():
 
 def _setup_link_roles(app):
     series = _get_series_name()
-    for project_name in app.config.openstack_projects:
+    for project_name in app.config.openstackdocs_projects:
         url = 'https://docs.openstack.org/{}/{}/%s'.format(
             project_name, series)
         role_name = '{}-doc'.format(project_name)
@@ -274,6 +303,14 @@ def _get_project_name(srcdir):
 def _builder_inited(app):
     theme_dir = paths.get_html_theme_path()
     logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
+
+    if app.config.openstack_projects is not None:
+        logger.info(
+            "The 'openstack_projects' config option has been deprecated and "
+            "replaced by the 'openstackdocs_projects' option; support "
+            "for the former will be dropped in a future release")
+        app.config.openstackdocs_projects = app.config.openstack_projects
+
     _setup_link_roles(app)
 
     # we only override configuration if the theme has been configured, meaning
@@ -369,15 +406,28 @@ def _builder_inited(app):
 
 def setup(app):
     logger.info('connecting events for openstackdocstheme')
+
+    # extensions
     app.connect('builder-inited', _builder_inited)
     app.connect('html-page-context', _html_page_context)
-    app.add_config_value('repository_name', '', 'env')
-    app.add_config_value('bug_project', '', 'env')
-    app.add_config_value('bug_tag', '', 'env')
-    app.add_config_value('openstack_projects', [], 'env')
-    app.add_config_value('use_storyboard', False, 'env')
+
+    # config options
+    app.add_config_value('openstackdocs_repo_name', '', 'env')
+    app.add_config_value('openstackdocs_bug_project', '', 'env')
+    app.add_config_value('openstackdocs_bug_tag', '', 'env')
+    app.add_config_value('openstackdocs_projects', [], 'env')
+    app.add_config_value('openstackdocs_use_storyboard', False, 'env')
     app.add_config_value('openstackdocs_auto_version', None, 'env')
     app.add_config_value('openstackdocs_auto_name', True, 'env')
+
+    # legacy config options
+    app.add_config_value('repository_name', None, 'env')
+    app.add_config_value('bug_project', None, 'env')
+    app.add_config_value('bug_tag', None, 'env')
+    app.add_config_value('openstack_projects', None, 'env')
+    app.add_config_value('use_storyboard', None, 'env')
+
+    # themes
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
@@ -386,6 +436,7 @@ def setup(app):
         'starlingxdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/starlingxdocs',
     )
+
     return {
         'parallel_read_safe': True,
     }

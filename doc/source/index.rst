@@ -49,14 +49,14 @@ Using the theme
 
      html_theme = 'openstackdocs'
 
-#. Set the options to link to the git repository on
-   ``https://opendev.org`` and bug tracker.
+#. Set the options to link to the git repository on ``https://opendev.org`` and
+   bug tracker.
 
-   ``repository_name``
+   ``openstackdocs_repo_name``
        The prefix and repo name. For example,
        ``'openstack/python-glanceclient'``.
 
-   ``use_storyboard``
+   ``openstackdocs_use_storyboard``
        Set to ``True`` if using StoryBoard.
 
        .. note::
@@ -64,27 +64,27 @@ Using the theme
           If using StoryBoard, do not set ``bug_project`` and ``bug_tag``
           options.
 
-   ``bug_project``
+   ``openstackdocs_bug_project``
        The project name or ID. For launchpad, it's a string like
        ``python-glanceclient``. If unspecified, the "Report a bug"
        links are not shown. This option can be removed if using StoryBoard.
 
-   ``bug_tag``
+   ``openstackdocs_bug_tag``
       Launchpad bug tag. If unspecified, no tag is set. The default is empty.
       This option can be removed if using StoryBoard.
 
    One example for a project using launchpad::
 
       # openstackdocstheme options
-      repository_name = 'openstack/python-glanceclient'
-      bug_project = 'python-glanceclient'
-      bug_tag = ''
+      openstackdocs_repo_name = 'openstack/python-glanceclient'
+      openstackdocs_bug_project = 'python-glanceclient'
+      openstackdocs_bug_tag = ''
 
    One example for a project using StoryBoard::
 
       # openstackdocstheme options
-      repository_name = 'openstack/infra-manual'
-      use_storyboard = True
+      openstackdocs_repo_name = 'openstack/infra-manual'
+      openstackdocs_use_storyboard = true
 
 #. Remove the options that will be automatically configured by the theme.
 
@@ -110,6 +110,14 @@ Using the theme
    documentation. You can disable this behavior by setting the
    ``openstackdocs_auto_name`` option to ``false`` and configuring the
    ``project`` option to the name you wish to use.
+
+.. versionchanged:: 2.1.0
+
+   The ``repository_name``, ``bug_project``, ``bug_tag`` and ``use_storyboard``
+   config options were renamed to ``openstackdocs_repo_name``,
+   ``openstackdocs_bug_project``, ``openstackdocs_bug_tag`` and
+   ``openstackdocs_use_storyboard``, respectively. Aliases are provided but
+   these will be removed in a future release.
 
 .. versionchanged:: 2.1.0
 
