@@ -1,21 +1,9 @@
-# parent job is defined in openstack-manuals
-- job:
-    name: openstackdocsstheme-tox-manuals-buildpdf
-    parent: build-tox-manuals-base
-    vars:
-      tox_envlist: buildpdf
-
-- job:
-    name: openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
-    parent: build-tox-manuals-base
-    vars:
-      tox_envlist: buildpdf-starlingxdocs
-
 - job:
     name: openstack-tox-docs-starlingxdocs
     parent: openstack-tox-docs
     vars:
       tox_envlist: docs-starlingxdocs
+      tox_pdf_envlist: pdf-docs-starlingxdocs
 
 - project:
     templates:
@@ -24,8 +12,6 @@
       - release-notes-jobs-python3
     check:
       jobs:
-        - openstackdocsstheme-tox-manuals-buildpdf
-        - openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
         - openstack-tox-pep8
         - build-openstack-api-ref:
             # Override files section of the job so that this builds
@@ -41,8 +27,6 @@
         - openstack-tox-docs-starlingxdocs
     gate:
       jobs:
-        - openstackdocsstheme-tox-manuals-buildpdf
-        - openstackdocsstheme-tox-manuals-buildpdf-starlingxpdf
         - openstack-tox-pep8
         - build-openstack-api-ref:
             files:
