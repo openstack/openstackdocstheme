@@ -1,0 +1,13 @@
+---
+features:
+  - |
+    A new config option, ``openstackdocs_auto_version``, has been added. This
+    can be used to disable auto-versioning of documentation for things like
+    release notes or API references.
+upgrade:
+  - |
+    The ``openstackdocs_auto_version`` option must be configured to disable
+    auto-versioning of documentation. Previously, the extension would check for
+    an empty string (``''``) and, if present, use this to indicate that the
+    document should be unversioned. However, this only worked if building
+    documentation using the ``build_sphinx`` distutils extension.
