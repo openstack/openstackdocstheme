@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    A new config option, ``openstackdocs_auto_name``, has been added. This
+    can be used to disable auto-configuration of the project name through
+    inspection of package metadata.
