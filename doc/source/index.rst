@@ -90,8 +90,6 @@ Using the theme
 
    - ``project``
    - ``html_last_updated_fmt``
-   - ``latex_engine``
-   - ``latex_elements``
 
 #. Configure version-related options.
 
