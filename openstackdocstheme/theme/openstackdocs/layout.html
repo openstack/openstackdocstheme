@@ -39,21 +39,6 @@ ga('send', 'pageview');
       <div class="row">
         <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
 {% include 'titlerow.html' %}
-        {%- block otherversions %}
-          {%- if other_versions %}
-          <div class="row docs-byline">
-            <div class="docs-updated">this page last updated: {{ last_updated }}</div>
-            <div class="version-dropdown">
-            <span>{{ _('version') }}</span>
-              <div class="version-dropdown-content">
-                  {%- for ver in other_versions: %}
-                    <p><a href="../{{pathto(ver, 1) }}" rel="nofollow">{{ ver }}</a></p>
-                  {%- endfor %}
-              </div>
-            </div>
-          </div>
-          {%- endif %}
-        {%- endblock %}
           <div class="row">
             <div class="col-lg-12">
               <div class="docs-body" role="main">

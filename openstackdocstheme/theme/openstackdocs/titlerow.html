@@ -7,6 +7,18 @@
     {%- endif %}
   </div>
   <div class="docs-actions">
+    {%- block otherversions %}
+      {%- if other_versions %}
+      <div class="version-dropdown">
+        <span>{{ _('version') }}</span>
+        <div class="version-dropdown-content">
+          {%- for ver in other_versions: %}
+            <p><a href="../{{pathto(ver, 1) }}" rel="nofollow">{{ ver }}</a></p>
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endif %}
+    {%- endblock %}
     {% if prev %}
     <a href="{{ prev.link|e }}"><i class="fa fa-angle-double-left" data-toggle="tooltip" data-placement="top" title="Previous: {{ prev.title|striptags }}"></i></a>
     {% endif %}

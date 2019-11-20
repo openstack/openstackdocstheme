@@ -374,14 +374,20 @@ footer {
 /*Docs Version Dropdown*/
 
 .version-dropdown {
+    font-size: 10px;
+    color: #9eb5c3;
+    text-transform: uppercase;
     position: relative;
-    float: right;
     display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 6px;
     border: solid 1px;
-    padding: 5px; }
+    padding: 3px 5px 3px 5px; }
 
 .version-dropdown-content {
     display: none;
+    text-align: left;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -647,7 +653,7 @@ a.docs-sidebar-section-title:hover {
 .docs-actions .fa-angle-double-left {
   border-left: 1px solid #dae5ee;
   color: #DA422F;
-  padding: 0 10px; }
+  padding: 0 8px 0 10px; }
 
 .docs-actions .fa-angle-double-left:hover {
   color: #9A201D; }
@@ -655,7 +661,7 @@ a.docs-sidebar-section-title:hover {
 .docs-actions .fa-angle-double-right {
   border-left: 1px solid #dae5ee;
   color: #DA422F;
-  padding: 0 10px; }
+  padding: 0 8px 0 10px; }
 
 .docs-actions .fa-angle-double-right:hover {
   color: #9A201D; }
