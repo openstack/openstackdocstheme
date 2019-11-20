@@ -666,6 +666,11 @@ a.docs-sidebar-section-title:hover {
   background: none;
   white-space: nowrap; }
 
+.docs-title {
+  border-bottom: 1px solid #edf2f7;
+  margin-bottom: 30px;
+}
+
 .docs-byline {
   border-top: 1px solid #edf2f7;
   border-bottom: 1px solid #edf2f7;
