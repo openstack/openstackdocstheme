@@ -146,7 +146,6 @@ html_static_path = ['_static']
 # instead of the build time.
 # See https://reproducible-builds.org/specs/source-date-epoch/
 # html_last_updated_fmt = '%b %d, %Y'
-html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
