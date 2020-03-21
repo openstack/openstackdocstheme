@@ -44,8 +44,8 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, 
         "input and output. " + lineFeed + lineFeed +
         "If you have a troubleshooting or support issue, use the following " +
         " resources:" + lineFeed + lineFeed +
-        " - Ask OpenStack: http://ask.openstack.org" + lineFeed +
-        " - The mailing list: http://lists.openstack.org" + lineFeed +
+        " - Ask OpenStack: https://ask.openstack.org" + lineFeed +
+        " - The mailing list: https://lists.openstack.org" + lineFeed +
         " - IRC: 'openstack' channel on Freenode"+ lineFeed;
 
     var urlBase = "https://bugs.launchpad.net/" + bugProject + "/+filebug?field.title=";
