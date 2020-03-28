@@ -312,8 +312,8 @@ def _builder_inited(app):
         'figure_align': 'H',
         'classoptions': ',openany',
         'preamble': r"""
-\usepackage{""" + pdf_theme_path + """}
-\\newcommand{\openstacklogo}{""" + theme_logo + """}
+\usepackage{""" + pdf_theme_path + r"""}
+\newcommand{\openstacklogo}{""" + theme_logo + """}
 """}
 
 

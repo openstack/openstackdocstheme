@@ -22,7 +22,7 @@ import babel
 
 lang_code = sys.argv[1]
 try:
-    l = babel.Locale.parse(lang_code)
-    print(l.get_display_name())
+    lo = babel.Locale.parse(lang_code)
+    print(lo.get_display_name())
 except Exception:
     print(lang_code)

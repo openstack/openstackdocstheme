@@ -48,7 +48,7 @@ def _get_last_updated_file(src_file):
             try:
                 return datetime.datetime.strptime(last_updated_t,
                                                   '%Y-%m-%d %H:%M:%S')
-            except ValueError as err:
+            except ValueError:
                 LOG.info(
                     '[openstackdocstheme] '
                     'Could not parse modification time of %s: %r',
