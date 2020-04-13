@@ -20,3 +20,7 @@ from .paths import *  # noqa
 def setup(app):
     ext.setup(app)
     page_context.setup(app)
+    return {
+        'parallel_read_safe': True,
+        'parallel_write_safe': True,
+    }
