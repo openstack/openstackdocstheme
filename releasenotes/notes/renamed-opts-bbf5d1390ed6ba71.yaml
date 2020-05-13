@@ -1,0 +1,15 @@
+---
+upgrade:
+  - |
+    All configuration options are now prefixed with ``openstackdocs_``. Support
+    for the previous configuration option names are considered deprecated and
+    will be removed in a future release.
+
+    .. csv-table:: Affected options
+       :header: "New Name", "Deprecated Name"
+
+       ``openstackdocs_repo_name``, ``repository_name``
+       ``openstackdocs_use_storyboard``, ``use_storyboard``
+       ``openstackdocs_bug_project``, ``bug_project``
+       ``openstackdocs_bug_tag``, ``bug_tag``
+       ``openstackdocs_project``, ``openstack_project``
