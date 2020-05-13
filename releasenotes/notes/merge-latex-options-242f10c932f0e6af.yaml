@@ -1,0 +1,9 @@
+---
+fixes:
+  - |
+    The ``latex_engine`` and ``latex_elements`` options, which were previously
+    always overridden by the extension, will now be merged with user
+    configuration. If ``latex_engine`` is configured by the user, this will be
+    used in-place of the default. If ``latex_elements``, a dictionary, is
+    configured, the values provided by the user will be merged with the
+    defaults with user-provided defaults preferred.

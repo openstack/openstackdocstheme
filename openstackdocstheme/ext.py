@@ -18,6 +18,7 @@ except ImportError:
     import ConfigParser as configparser
 import os
 import subprocess
+import textwrap
 
 import dulwich.repo
 from pbr import packaging
@@ -341,17 +342,29 @@ def _builder_inited(app):
 
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
-
-    app.config.latex_engine = 'xelatex'
-    app.config.latex_elements = {
+    latex_elements = {
         'papersize': 'a4paper',
         'pointsize': '11pt',
         'figure_align': 'H',
         'classoptions': ',openany',
-        'preamble': r"""
-\usepackage{""" + pdf_theme_path + r"""}
-\newcommand{\openstacklogo}{""" + theme_logo + """}
-"""}
+    }
+
+    if app.config.latex_elements:
+        latex_elements.update(app.config.latex_elements)
+
+    preamble = textwrap.dedent(
+        r"""
+        \usepackage{%s}
+        \\newcommand{\openstacklogo}{%s}
+        """
+    ) % (pdf_theme_path, theme_logo)
+
+    if 'preamble' in latex_elements:
+        preamble += latex_elements['preamble']
+
+    latex_elements['preamble'] = preamble
+
+    app.config.latex_elements = latex_elements
 
 
 def setup(app):
