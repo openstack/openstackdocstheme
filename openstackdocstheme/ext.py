@@ -283,12 +283,19 @@ def _builder_inited(app):
     # TODO(stephenfin): Once Sphinx 1.8 is released, we should move the below
     # to a 'config-inited' handler
 
-    project_name = _get_project_name(app.srcdir)
+    if app.config.openstackdocs_auto_name:
+        project_name = _get_project_name(app.srcdir)
 
-    # NOTE(stephenfin): Chances are that whatever's in 'conf.py' is probably
-    # wrong/outdated so, if we can, we intentionally overwrite it...
-    if project_name:
-        app.config.project = project_name
+        if app.config.project and project_name:
+            logger.info(
+                "Overriding configured project name (%s) with name extracted "
+                "from the package (%s); you can disable this behavior with "
+                "the 'openstackdocs_auto_name' option",
+                app.config.project, project_name,
+            )
+
+        if project_name:
+            app.config.project = project_name
 
     app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
@@ -357,6 +364,7 @@ def setup(app):
     app.add_config_value('openstack_projects', [], 'env')
     app.add_config_value('use_storyboard', False, 'env')
     app.add_config_value('openstackdocs_auto_version', None, 'env')
+    app.add_config_value('openstackdocs_auto_name', True, 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',

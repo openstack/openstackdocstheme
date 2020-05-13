@@ -106,9 +106,17 @@ Using the theme
    - ``version``
    - ``release``
 
+#. (Optional) Manually configure the project name.
+
+   The theme will automatically set the project name used in your
+   documentation. You can disable this behavior by setting the
+   ``openstackdocs_auto_name`` option to ``false`` and configuring the
+   ``project`` option to the name you wish to use.
+
 .. versionchanged:: 2.1.0
 
-   The ``openstackdocs_auto_version`` config option was added.
+   The ``openstackdocs_auto_version`` and ``openstackdocs_auto_name`` config
+   options were added.
 
 .. versionchanged:: 1.20
 
