@@ -157,8 +157,10 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
             logger.info('[openstackdocstheme] giturl %r',
                         _html_context_data['giturl'])
+
         use_storyboard = app.config.openstackdocs_use_storyboard
         _html_context_data['use_storyboard'] = use_storyboard
+
         bug_project = app.config.openstackdocs_bug_project
         if bug_project:
             logger.info('[openstackdocstheme] bug_project (from user) %r',
@@ -168,18 +170,22 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             logger.info('[openstackdocstheme] bug_project '
                         '(use_storyboard set) %r',
                         bug_project)
+
         if bug_project:
             _html_context_data['bug_project'] = bug_project
+
         # Previously storyboard showed numbers that were used, keep
         # for old conf.py files:
         if bug_project and bug_project.isdigit():
             logger.info('[openstackdocstheme] bug_project looks like a '
                         'number, setting use_storyboard')
             _html_context_data['use_storyboard'] = True
+
         bug_tag = app.config.openstackdocs_bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
             logger.info('[openstackdocstheme] bug_tag %r', bug_tag)
+
         _html_context_data['series'] = _get_series_name()
         logger.info('[openstackdocstheme] series %r',
                     _html_context_data['series'])
@@ -288,8 +294,8 @@ def _get_project_name(srcdir):
 
         try:
             # for project name we use the name in setup.cfg, but if the
-            # length is longer then 32 we use summary. Otherwise thAe
-            # menu rendering looks brolen
+            # length is longer then 32 we use summary. Otherwise the
+            # menu rendering looks broken
             project = parser.get('metadata', 'name')
             if len(project.split()) == 1 and len(project) > 32:
                 project = parser.get('metadata', 'summary')
