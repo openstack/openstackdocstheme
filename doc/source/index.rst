@@ -93,11 +93,22 @@ Using the theme
    - ``latex_engine``
    - ``latex_elements``
 
-   In addition, if your documentation is versioned, you should remove the
-   options related to versioning.
+#. Configure version-related options.
+
+   For everything except documentation in the ``api-guide``, ``api-ref``, and
+   ``releasenotes`` paths, the theme will automatically set the version of your
+   documentation. This behavior can be manually configured by setting the
+   ``openstackdocs_auto_version`` option to either ``True`` or ``False``.
+
+   If your documentation is auto-versioned, you should remove the options
+   related to versioning as they will be overridden.
 
    - ``version``
    - ``release``
+
+.. versionchanged:: 2.1.0
+
+   The ``openstackdocs_auto_version`` config option was added.
 
 .. versionchanged:: 1.20
 

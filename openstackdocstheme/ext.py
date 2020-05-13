@@ -284,10 +284,6 @@ def _builder_inited(app):
     # to a 'config-inited' handler
 
     project_name = _get_project_name(app.srcdir)
-    try:
-        version = packaging.get_version(project_name)
-    except Exception:
-        version = None
 
     # NOTE(stephenfin): Chances are that whatever's in 'conf.py' is probably
     # wrong/outdated so, if we can, we intentionally overwrite it...
@@ -296,11 +292,45 @@ def _builder_inited(app):
 
     app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
-    # ...except for version/release which, if blank, should remain that way to
-    # cater for unversioned documents
-    if app.config.version != '' and version:
-        app.config.version = version
-        app.config.release = version
+    if app.config.openstackdocs_auto_version is False:
+        logger.info(
+            '[openstackdocstheme] auto-versioning disabled (configured by '
+            'user)'
+        )
+        auto_version = False
+    elif app.config.openstackdocs_auto_version is True:
+        logger.info(
+            '[openstackdocstheme] auto-versioning enabled (configured by user)'
+        )
+        auto_version = True
+    else:  # None
+        doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
+        if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
+            logger.info(
+                f'[openstackdocstheme] auto-versioning disabled (doc name '
+                f'contains {doc_parts[0]}'
+            )
+            auto_version = False
+        else:
+            logger.info(
+                '[openstackdocstheme] auto-versioning enabled (default)'
+            )
+            auto_version = True
+
+    if auto_version:
+        try:
+            project_version = packaging.get_version(project_name)
+        except Exception:
+            project_version = None
+
+        if not project_version:
+            logger.warning(
+                'Could not extract version from project; defaulting to '
+                'unversioned'
+            )
+
+        app.config.version = project_version
+        app.config.release = project_version
 
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
@@ -326,6 +356,7 @@ def setup(app):
     app.add_config_value('bug_tag', '', 'env')
     app.add_config_value('openstack_projects', [], 'env')
     app.add_config_value('use_storyboard', False, 'env')
+    app.add_config_value('openstackdocs_auto_version', None, 'env')
     app.add_html_theme(
         'openstackdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/openstackdocs',
