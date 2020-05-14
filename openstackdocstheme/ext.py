@@ -383,6 +383,9 @@ def _builder_inited(app):
         app.config.version = project_version
         app.config.release = project_version
 
+    if not app.config.latex_engine:
+        app.config.latex_engine = 'xelatex'
+
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
     latex_elements = {
