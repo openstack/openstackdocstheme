@@ -101,7 +101,9 @@ def _get_doc_path(app):
     if doc_parts[1] == 'source':
         return '/'.join(doc_parts)
 
-    logger.info('Cannot identify project\'s root directory.')
+    logger.info(
+        "[openstackdocstheme] cannot identify project's root directory."
+    )
     return
 
 
@@ -112,28 +114,32 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         if app.config.repository_name is not None:
             logger.info(
-                "The 'repository_name' config option has been deprecated and "
+                "[openstackdocstheme] "
+                "the 'repository_name' config option has been deprecated and "
                 "replaced by the 'openstackdocs_repo_name' option; support "
                 "for the former will be dropped in a future release")
             app.config.openstackdocs_repo_name = app.config.repository_name
 
         if app.config.use_storyboard is not None:
             logger.info(
-                "The 'use_storyboard' config option has been deprecated and "
+                "[openstackdocstheme] "
+                "the 'use_storyboard' config option has been deprecated and "
                 "replaced by the 'openstackdocs_use_storyboard' option; "
                 "support for the former will be dropped in a future release")
             app.config.openstackdocs_use_storyboard = app.config.use_storyboard
 
         if app.config.bug_project is not None:
             logger.info(
-                "The 'bug_project' config option has been deprecated and "
+                "[openstackdocstheme] "
+                "the 'bug_project' config option has been deprecated and "
                 "replaced by the 'openstackdocs_bug_project' option; support "
                 "for the former will be dropped in a future release")
             app.config.openstackdocs_bug_project = app.config.bug_project
 
         if app.config.bug_tag is not None:
             logger.info(
-                "The 'bug_tag' config option has been deprecated and "
+                "[openstackdocstheme] "
+                "the 'bug_tag' config option has been deprecated and "
                 "replaced by the 'openstackdocs_bug_tag' option; support "
                 "for the former will be dropped in a future release")
             app.config.openstackdocs_bug_project = app.config.bug_project
@@ -144,7 +150,9 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 ['git', 'rev-parse', 'HEAD'],
             ).decode('utf-8').strip()
         except Exception:
-            logger.warning('Cannot get gitsha from git repository.')
+            logger.warning(
+                '[openstackdocstheme] cannot get gitsha from git repository'
+            )
             _html_context_data['gitsha'] = 'unknown'
 
         doc_path = _get_doc_path(app)
@@ -153,21 +161,24 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         logger.debug('[openstackdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
-            logger.info('[openstackdocstheme] giturl %r',
-                        _html_context_data['giturl'])
+            logger.debug(
+                '[openstackdocstheme] giturl %r', _html_context_data['giturl'],
+            )
 
         use_storyboard = app.config.openstackdocs_use_storyboard
         _html_context_data['use_storyboard'] = use_storyboard
 
         bug_project = app.config.openstackdocs_bug_project
         if bug_project:
-            logger.info('[openstackdocstheme] bug_project (from user) %r',
-                        bug_project)
+            logger.debug(
+                '[openstackdocstheme] bug_project (from user) %r', bug_project,
+            )
         elif use_storyboard:
             bug_project = repo_name
-            logger.info('[openstackdocstheme] bug_project '
-                        '(use_storyboard set) %r',
-                        bug_project)
+            logger.debug(
+                '[openstackdocstheme] bug_project (use_storyboard set) %r',
+                bug_project,
+            )
 
         if bug_project:
             _html_context_data['bug_project'] = bug_project
@@ -175,18 +186,21 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         # Previously storyboard showed numbers that were used, keep
         # for old conf.py files:
         if bug_project and bug_project.isdigit():
-            logger.info('[openstackdocstheme] bug_project looks like a '
-                        'number, setting use_storyboard')
+            logger.debug(
+                '[openstackdocstheme] bug_project looks like a number, '
+                'setting use_storyboard'
+            )
             _html_context_data['use_storyboard'] = True
 
         bug_tag = app.config.openstackdocs_bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
-            logger.info('[openstackdocstheme] bug_tag %r', bug_tag)
+            logger.debug('[openstackdocstheme] bug_tag %r', bug_tag)
 
         _html_context_data['series'] = _get_series_name()
-        logger.info('[openstackdocstheme] series %r',
-                    _html_context_data['series'])
+        logger.debug(
+            '[openstackdocstheme] series %r', _html_context_data['series'],
+        )
 
         # Do not show the badge in these cases:
         # - display_badge is false
@@ -194,28 +208,34 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         # - directory is named api-guide, api-ref, or releasenotes
         if not app.config.html_theme_options.get('display_badge', True):
             _html_context_data['display_badge'] = False
-            logger.info('[openstackdocstheme] display_badge False '
-                        '(configured by user)')
+            logger.debug(
+                '[openstackdocstheme] display_badge False (configured by user)'
+            )
         elif _has_stable_branches():
             doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
             if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
                 _html_context_data['display_badge'] = False
-                logger.info('[openstackdocstheme] display_badge False '
-                            '(doc name contains %r)',
-                            doc_parts[0])
+                logger.debug(
+                    '[openstackdocstheme] display_badge False (doc name '
+                    'contains %r)',
+                    doc_parts[0],
+                )
             else:
                 _html_context_data['display_badge'] = True
-                logger.info('[openstackdocstheme] display_badge True '
-                            '(stable branches)')
+                logger.debug(
+                    '[openstackdocstheme] display_badge True (stable branches)'
+                )
         else:
             _html_context_data['display_badge'] = False
-            logger.info('[openstackdocstheme] display_badge False '
-                        '(no stable branches)')
+            logger.debug(
+                '[openstackdocstheme] display_badge False (no stable branches)'
+            )
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
-    logger.debug('[openstackdocstheme] other_versions %s',
-                 context['other_versions'])
+    logger.debug(
+        '[openstackdocstheme] other_versions %s', context['other_versions'],
+    )
 
 
 def _get_series_name():
@@ -227,19 +247,25 @@ def _get_series_name():
                 ['git', 'rev-parse', '--show-toplevel'],
             ).decode('utf-8').strip()
         except Exception:
-            logger.warning('Cannot find git top directory, assuming "."')
+            logger.info(
+                '[openstackdocstheme] cannot find git top directory, '
+                'assuming "."'
+            )
             git_root_dir = '.'
+
         parser = configparser.ConfigParser()
         in_file = os.path.join(git_root_dir, '.gitreview')
         parsed = parser.read(in_file)
         if not parsed:
-            logger.info('No {} found'.format(in_file))
+            logger.info('[openstackdocstheme] no %s found', in_file)
+
         try:
             branch = parser.get('gerrit', 'defaultbranch')
         except configparser.Error:
             _series = 'latest'
         else:
             _series = branch.rpartition('/')[-1]
+
     return _series
 
 
@@ -249,7 +275,11 @@ def _setup_link_roles(app):
         url = 'https://docs.openstack.org/{}/{}/%s'.format(
             project_name, series)
         role_name = '{}-doc'.format(project_name)
-        logger.info('adding role %s to link to %s', role_name, url)
+        logger.debug(
+            '[openstackdocstheme] adding role %s to link to %s',
+            role_name,
+            url,
+        )
         app.add_role(role_name, extlinks.make_link_role(url, project_name))
 
 
@@ -286,8 +316,10 @@ def _get_project_name(srcdir):
 
         path = _find_setup_cfg(srcdir)
         if not path or not parser.read(path):
-            logger.info('Could not find a setup.cfg to extract project name '
-                        'from')
+            logger.info(
+                '[openstackdocstheme] could not find a setup.cfg to extract '
+                'project name from'
+            )
             return None
 
         try:
@@ -298,7 +330,10 @@ def _get_project_name(srcdir):
             if len(project.split()) == 1 and len(project) > 32:
                 project = parser.get('metadata', 'summary')
         except configparser.Error:
-            logger.info('Could not extract project metadata from setup.cfg')
+            logger.info(
+                '[openstackdocstheme] could not extract project metadata from '
+                'setup.cfg'
+            )
             return None
         _project = project
     return _project
@@ -314,9 +349,11 @@ def _builder_inited(app):
 
     if app.config.openstack_projects is not None:
         logger.info(
-            "The 'openstack_projects' config option has been deprecated and "
+            "[openstackdocstheme] "
+            "the 'openstack_projects' config option has been deprecated and "
             "replaced by the 'openstackdocs_projects' option; support "
-            "for the former will be dropped in a future release")
+            "for the former will be dropped in a future release"
+        )
         app.config.openstackdocs_projects = app.config.openstack_projects
 
     _setup_link_roles(app)
@@ -334,7 +371,8 @@ def _builder_inited(app):
 
         if app.config.project and project_name:
             logger.info(
-                "Overriding configured project name (%s) with name extracted "
+                "[openstackdocstheme] "
+                "overriding configured project name (%s) with name extracted "
                 "from the package (%s); you can disable this behavior with "
                 "the 'openstackdocs_auto_name' option",
                 app.config.project, project_name,
@@ -346,26 +384,26 @@ def _builder_inited(app):
     app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
     if app.config.openstackdocs_auto_version is False:
-        logger.info(
+        logger.debug(
             '[openstackdocstheme] auto-versioning disabled (configured by '
             'user)'
         )
         auto_version = False
     elif app.config.openstackdocs_auto_version is True:
-        logger.info(
+        logger.debug(
             '[openstackdocstheme] auto-versioning enabled (configured by user)'
         )
         auto_version = True
     else:  # None
         doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
         if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
-            logger.info(
+            logger.debug(
                 f'[openstackdocstheme] auto-versioning disabled (doc name '
                 f'contains {doc_parts[0]}'
             )
             auto_version = False
         else:
-            logger.info(
+            logger.debug(
                 '[openstackdocstheme] auto-versioning enabled (default)'
             )
             auto_version = True
@@ -378,8 +416,8 @@ def _builder_inited(app):
 
         if not project_version:
             logger.warning(
-                'Could not extract version from project; defaulting to '
-                'unversioned'
+                '[openstackdocstheme] could not extract version from '
+                'project; defaulting to unversioned'
             )
 
         app.config.version = project_version
@@ -416,7 +454,7 @@ def _builder_inited(app):
 
 
 def setup(app):
-    logger.info('connecting events for openstackdocstheme')
+    logger.debug('[openstackdocstheme] connecting events')
 
     # extensions
     app.connect('builder-inited', _builder_inited)
