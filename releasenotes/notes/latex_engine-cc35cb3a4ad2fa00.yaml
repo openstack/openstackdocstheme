@@ -1,0 +1,5 @@
+fixes:
+  - |
+    ``latex_engine`` is always set to ``xelatex``, there's no good solution
+    to check whether it is overriden. This restores the behavior before
+    version 2.1.0.
