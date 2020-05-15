@@ -14,4 +14,4 @@
 
 import pbr.version
 
-version_info = pbr.version.VersionInfo('openstackdoctheme')
+version_info = pbr.version.VersionInfo('openstackdocstheme')

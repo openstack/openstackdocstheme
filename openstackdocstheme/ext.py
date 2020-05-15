@@ -25,6 +25,7 @@ from pbr import packaging
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
+from . import version
 from openstackdocstheme import paths
 
 _series = None
@@ -308,7 +309,11 @@ def _get_project_name(srcdir):
 
 def _builder_inited(app):
     theme_dir = paths.get_html_theme_path()
-    logger.info('Using openstackdocstheme Sphinx theme from %s' % theme_dir)
+    logger.info(
+        '[openstackdocstheme] using theme from %s (version %s)',
+        theme_dir,
+        version.version_info.version_string(),
+    )
 
     if app.config.openstack_projects is not None:
         logger.info(
@@ -449,4 +454,5 @@ def setup(app):
     return {
         'parallel_read_safe': True,
         'parallel_write_safe': True,
+        'version': version.version_info.version_string(),
     }
