@@ -34,3 +34,6 @@ texlive-capt-of [platform:rpm]
 texlive-needspace [platform:rpm]
 texlive-polyglossia [platform:rpm]
 latexmk [platform:rpm]
+
+# For nova cross testing
+graphviz [doc test]

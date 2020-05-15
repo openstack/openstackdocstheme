@@ -1,9 +1,22 @@
 - job:
-    name: openstack-tox-docs-starlingxdocs
+    name: openstackdocstheme-openstack-tox-docs-starlingxdocs
     parent: openstack-tox-docs
     vars:
       tox_envlist: docs-starlingxdocs
       tox_pdf_envlist: pdf-docs-starlingxdocs
+
+- job:
+    name: openstackdocstheme-cross-nova-tox-docs
+    parent: openstack-tox-docs
+    description: |
+      Run cross-project tests on nova with
+      openstack-tox-docs.
+    vars:
+      zuul_work_dir: src/opendev.org/openstack/nova
+      sphinx_pdf_files: doc-nova.pdf
+    required-projects:
+      - openstack/nova
+      - openstack/openstackdocstheme
 
 - project:
     templates:
@@ -24,7 +37,8 @@
               - ^.*\.txt$
               - ^.*\.rst$
         # Run the docs build using the starlingxdocs theme
-        - openstack-tox-docs-starlingxdocs
+        - openstackdocstheme-openstack-tox-docs-starlingxdocs
+        - openstackdocstheme-cross-nova-tox-docs
     gate:
       jobs:
         - openstack-tox-pep8
@@ -36,7 +50,8 @@
               - ^openstackdocstheme/.*$
               - ^.*\.txt$
               - ^.*\.rst$
-        - openstack-tox-docs-starlingxdocs
+        - openstackdocstheme-openstack-tox-docs-starlingxdocs
+        - openstackdocstheme-cross-nova-tox-docs
     post:
       jobs:
         - publish-openstack-python-branch-tarball
