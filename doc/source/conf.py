@@ -10,9 +10,9 @@
 extensions = ['openstackdocstheme']
 
 # openstackdocstheme options
-repository_name = 'openstack/openstackdocstheme'
-bug_project = 'openstack-doc-tools'
-bug_tag = 'openstackdocstheme'
+openstackdocs_repo_name = 'openstack/openstackdocstheme'
+openstackdocs_bug_project = 'openstack-doc-tools'
+openstackdocs_bug_tag = 'openstackdocstheme'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
