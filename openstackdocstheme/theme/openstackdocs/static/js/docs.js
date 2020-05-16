@@ -61,7 +61,23 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, 
         bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
         lineFeed + currentURL;
     }
-    document.getElementById("logABugLink1").href=bugLink;
-    document.getElementById("logABugLink2").href=bugLink;
-    document.getElementById("logABugLink3").href=bugLink;
+    document.getElementById("logABugLink1").href = bugLink;
+    document.getElementById("logABugLink2").href = bugLink;
+    document.getElementById("logABugLink3").href = bugLink;
+}
+
+function pdfLink(currentSourceFile, pdfFileName) {
+    /* Create link to PDF file which is in top-level of document.  */
+
+    /* We know the local path of the html page, so substitute that in
+       the URL with the path to the PDF file. */
+    /* We do not want any #subanchors, so do not use window.location.href. */
+    var currentLink = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
+    if (currentLink.endsWith("/")) {
+        currentLink = currentLink + "index.html";
+    }
+    var file = currentSourceFile + ".html";
+    var pdfLink = currentLink.replace(file, pdfFileName);
+    document.getElementById("pdfLink1").href = pdfLink;
+    document.getElementById("pdfLink2").href = pdfLink;
 }

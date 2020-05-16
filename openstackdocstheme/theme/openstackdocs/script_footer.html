@@ -77,4 +77,8 @@
                        lineFeed + encodeURI(gitURL) ;
 
     logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+
+    var currentSourceFile = "{{ pagename }}";
+    var pdfFileName = "{{ pdf_filename }}";
+    pdfLink(currentSourceFile, pdfFileName);
 </script>

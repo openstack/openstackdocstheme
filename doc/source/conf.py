@@ -13,6 +13,7 @@ extensions = ['openstackdocstheme']
 openstackdocs_repo_name = 'openstack/openstackdocstheme'
 openstackdocs_bug_project = 'openstack-doc-tools'
 openstackdocs_bug_tag = 'openstackdocstheme'
+openstackdocs_pdf_link = True
 
 # The suffix of source filenames.
 source_suffix = '.rst'
