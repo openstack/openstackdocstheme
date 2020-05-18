@@ -111,6 +111,25 @@ Using the theme
    ``openstackdocs_auto_name`` option to ``false`` and configuring the
    ``project`` option to the name you wish to use.
 
+#. (Optional) Link to the PDF file.
+
+   If you build a PDF file as well, the theme can create a link to it.
+   Set ``openstack_pdf_link`` to ``True`` to generate the link.
+   The file is expected to be named ``doc-<shortname>.pdf`` and placed
+   in the top-level directory where ``<shortname>`` is the
+   ``openstackdocs_repo_name``. For example with::
+
+     openstackdocs_repo_name = "openstack/python-glanceclient"
+
+   the shortname is ``python-glanceclient`` and the filename will be
+   ``doc-python-glanceclient.pdf``. Use the variable
+   ``openstackdocs_pdf_filename`` to override the generated file name.
+
+.. versionchanged:: 2.2.0
+
+   The config options ``openstack_pdf_link`` and
+   ``openstackdocs_pdf_filename`` were introduced.
+
 .. versionchanged:: 2.1.0
 
    The ``repository_name``, ``bug_project``, ``bug_tag`` and ``use_storyboard``

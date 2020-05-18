@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    The theme can now include links on each page to a PDF file. Set
+    the new config option ``openstackdocs_pdf_link`` to enable it
+    and configure the file name if needed with the new config
+    option ``openstackdocs_pdf_filename``.

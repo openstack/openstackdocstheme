@@ -197,6 +197,19 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             _html_context_data['bug_tag'] = bug_tag
             logger.debug('[openstackdocstheme] bug_tag %r', bug_tag)
 
+        _html_context_data['pdf_link'] = app.config.openstackdocs_pdf_link
+        logger.info('[openstackdocstheme] pdf_link %r',
+                    _html_context_data['pdf_link'])
+        if app.config.openstackdocs_pdf_filename:
+            _html_context_data['pdf_filename'] = (
+                app.config.openstackdocs_pdf_filename)
+        else:
+            short_repo_name = repo_name.split('/')[-1]
+            _html_context_data['pdf_filename'] = f'doc-{short_repo_name}.pdf'
+        if _html_context_data['pdf_link']:
+            logger.info('[openstackdocstheme] pdf_filename %r',
+                        _html_context_data['pdf_filename'])
+
         _html_context_data['series'] = _get_series_name()
         logger.debug(
             '[openstackdocstheme] series %r', _html_context_data['series'],
@@ -468,6 +481,8 @@ def setup(app):
     app.add_config_value('openstackdocs_use_storyboard', False, 'env')
     app.add_config_value('openstackdocs_auto_version', None, 'env')
     app.add_config_value('openstackdocs_auto_name', True, 'env')
+    app.add_config_value('openstackdocs_pdf_link', False, 'env')
+    app.add_config_value('openstackdocs_pdf_filename', None, 'env')
 
     # legacy config options
     app.add_config_value('repository_name', None, 'env')

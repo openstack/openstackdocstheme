@@ -650,6 +650,14 @@ a.docs-sidebar-section-title:hover {
 .docs-actions .fa-bug:hover {
   color: #9A201D; }
 
+.docs-actions .fa-file-pdf-o {
+  border-left: 1px solid #dae5ee;
+  color: #DA422F;
+  padding: 0 10px; }
+
+.docs-actions .fa-file-pdf-o:hover {
+  color: #9A201D; }
+
 .docs-actions .fa-angle-double-left {
   border-left: 1px solid #dae5ee;
   color: #DA422F;
