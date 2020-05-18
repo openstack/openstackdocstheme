@@ -12,10 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-try:
-    import configparser
-except ImportError:
-    import ConfigParser as configparser
+import configparser
 import os
 import subprocess
 import textwrap
