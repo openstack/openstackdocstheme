@@ -18,6 +18,9 @@ import time
 
 from sphinx.util import logging
 
+from . import version
+
+
 LOG = logging.getLogger(__name__)
 
 _timeint = int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
@@ -99,4 +102,5 @@ def setup(app):
     return {
         'parallel_read_safe': True,
         'parallel_write_safe': True,
+        'version': version.version_info.version_string(),
     }
