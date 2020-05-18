@@ -422,8 +422,9 @@ def _builder_inited(app):
             auto_version = True
 
     if auto_version:
+        real_project_name = _get_project_name(app.srcdir)
         try:
-            project_version = packaging.get_version(project_name)
+            project_version = packaging.get_version(real_project_name)
         except Exception:
             project_version = None
 
