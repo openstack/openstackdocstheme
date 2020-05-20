@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    PDF files will now automatically display the version number
+    like HTML files do already if ``openstackdocs_auto_version``
+    is ``True`` (default value).

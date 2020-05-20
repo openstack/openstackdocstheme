@@ -352,57 +352,46 @@ def _get_project_name(srcdir):
     return _project
 
 
-def _builder_inited(app):
-    theme_dir = paths.get_html_theme_path()
-    logger.info(
-        '[openstackdocstheme] using theme from %s (version %s)',
-        theme_dir,
-        version.version_info.version_string(),
-    )
+def _config_inited(app, config):
 
-    if app.config.openstack_projects is not None:
+    if config.openstack_projects is not None:
         logger.info(
             "[openstackdocstheme] "
             "the 'openstack_projects' config option has been deprecated and "
             "replaced by the 'openstackdocs_projects' option; support "
             "for the former will be dropped in a future release"
         )
-        app.config.openstackdocs_projects = app.config.openstack_projects
-
-    _setup_link_roles(app)
+        config.openstackdocs_projects = config.openstack_projects
 
     # we only override configuration if the theme has been configured, meaning
     # users are using these features
-    if app.config.html_theme not in ['openstackdocs', 'starlingxdocs']:
+    if config.html_theme not in ['openstackdocs', 'starlingxdocs']:
         return
 
-    # TODO(stephenfin): Once Sphinx 1.8 is released, we should move the below
-    # to a 'config-inited' handler
-
-    if app.config.openstackdocs_auto_name:
+    if config.openstackdocs_auto_name:
         project_name = _get_project_name(app.srcdir)
 
-        if app.config.project and project_name:
+        if config.project and project_name:
             logger.info(
                 "[openstackdocstheme] "
                 "overriding configured project name (%s) with name extracted "
                 "from the package (%s); you can disable this behavior with "
                 "the 'openstackdocs_auto_name' option",
-                app.config.project, project_name,
+                config.project, project_name,
             )
 
         if project_name:
-            app.config.project = project_name
+            config.project = project_name
 
-    app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
+    config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
-    if app.config.openstackdocs_auto_version is False:
+    if config.openstackdocs_auto_version is False:
         logger.debug(
             '[openstackdocstheme] auto-versioning disabled (configured by '
             'user)'
         )
         auto_version = False
-    elif app.config.openstackdocs_auto_version is True:
+    elif config.openstackdocs_auto_version is True:
         logger.debug(
             '[openstackdocstheme] auto-versioning enabled (configured by user)'
         )
@@ -434,8 +423,21 @@ def _builder_inited(app):
                 'project; defaulting to unversioned'
             )
 
-        app.config.version = project_version
-        app.config.release = project_version
+        config.version = project_version
+        config.release = project_version
+
+
+def _builder_inited(app):
+
+    theme_dir = paths.get_html_theme_path()
+    logger.info('[openstackdocstheme] using theme from %s', theme_dir)
+
+    _setup_link_roles(app)
+
+    # we only override configuration if the theme has been configured, meaning
+    # users are using these features
+    if app.config.html_theme not in ['openstackdocs', 'starlingxdocs']:
+        return
 
     # Override default setting
     app.config.latex_engine = 'xelatex'
@@ -468,9 +470,14 @@ def _builder_inited(app):
 
 
 def setup(app):
+    logger.info(
+        '[openstackdocstheme] version: %s',
+        version.version_info.version_string(),
+    )
     logger.debug('[openstackdocstheme] connecting events')
 
     # extensions
+    app.connect('config-inited', _config_inited)
     app.connect('builder-inited', _builder_inited)
     app.connect('html-page-context', _html_page_context)
 
