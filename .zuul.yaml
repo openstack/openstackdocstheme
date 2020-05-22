@@ -18,6 +18,19 @@
       - openstack/nova
       - openstack/openstackdocstheme
 
+- job:
+    name: openstackdocstheme-cross-octaviaclient-tox-docs
+    parent: openstack-tox-docs
+    description: |
+      Run cross-project tests on nova with
+      openstack-tox-docs.
+    vars:
+      zuul_work_dir: src/opendev.org/openstack/python-octaviaclient
+      sphinx_pdf_files: doc-python-octaviaclient.pdf
+    required-projects:
+      - openstack/python-octaviaclient
+      - openstack/openstackdocstheme
+
 - project:
     templates:
       - check-requirements
@@ -39,6 +52,7 @@
         # Run the docs build using the starlingxdocs theme
         - openstackdocstheme-openstack-tox-docs-starlingxdocs
         - openstackdocstheme-cross-nova-tox-docs
+        - openstackdocstheme-cross-octaviaclient-tox-docs
     gate:
       jobs:
         - openstack-tox-pep8
@@ -52,6 +66,7 @@
               - ^.*\.rst$
         - openstackdocstheme-openstack-tox-docs-starlingxdocs
         - openstackdocstheme-cross-nova-tox-docs
+        - openstackdocstheme-cross-octaviaclient-tox-docs
     post:
       jobs:
         - publish-openstack-python-branch-tarball
