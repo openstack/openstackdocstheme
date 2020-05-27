@@ -84,9 +84,13 @@ def _get_last_updated(app, pagename):
                 '[openstackdocstheme] Last updated for %s is %s',
                 pagename, last_updated)
             return last_updated
-    LOG.info(
-        '[openstackdocstheme] could not determine last_updated for %r',
-        pagename)
+
+    if pagename not in ('genindex', 'search'):
+        LOG.info(
+            '[openstackdocstheme] could not determine last_updated for %r',
+            pagename,
+        )
+
     return _default_last_updated
 
 
