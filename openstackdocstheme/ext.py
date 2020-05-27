@@ -198,17 +198,22 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             logger.debug('[openstackdocstheme] bug_tag %r', bug_tag)
 
         _html_context_data['pdf_link'] = app.config.openstackdocs_pdf_link
-        logger.info('[openstackdocstheme] pdf_link %r',
-                    _html_context_data['pdf_link'])
+        logger.debug(
+            '[openstackdocstheme] pdf_link %r', _html_context_data['pdf_link'],
+        )
+
         if app.config.openstackdocs_pdf_filename:
             _html_context_data['pdf_filename'] = (
                 app.config.openstackdocs_pdf_filename)
         else:
             short_repo_name = repo_name.split('/')[-1]
             _html_context_data['pdf_filename'] = f'doc-{short_repo_name}.pdf'
+
         if _html_context_data['pdf_link']:
-            logger.info('[openstackdocstheme] pdf_filename %r',
-                        _html_context_data['pdf_filename'])
+            logger.debug(
+                '[openstackdocstheme] pdf_filename %r',
+                _html_context_data['pdf_filename'],
+            )
 
         _html_context_data['series'] = _get_series_name()
         logger.debug(
