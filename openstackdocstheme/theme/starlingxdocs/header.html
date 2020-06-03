@@ -3,7 +3,7 @@
 {% else %}{# a template was rendered directly #}
 <!-- TEMPLATE_NAME: {{pagename}} -->
 {% endif %}
- {% include 'os_search_install.html' %}
+ {% include 'stx_search_install.html' %}
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,9 +19,9 @@
       </div>
       <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {% include 'os_search.html' %}
+      {% include 'stx_search.html' %}
       <ul class="nav navbar-nav navbar-main show">
-        {% include 'os_search_mobile.html' %}
+        {% include 'stx_search_mobile.html' %}
         <li>
           <a href="https://docs.starlingx.io/">Docs</a>
         </li>
