@@ -4,4 +4,3 @@ features:
     for repositories that have ``stable/`` branches. The badge is not
     displayed for api-ref, api-guide and releasenotes documents. It
     can be disabled with the ``display_badge`` html theme option.
-    
