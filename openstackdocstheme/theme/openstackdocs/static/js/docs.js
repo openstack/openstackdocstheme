@@ -44,7 +44,6 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, 
         "input and output. " + lineFeed + lineFeed +
         "If you have a troubleshooting or support issue, use the following " +
         " resources:" + lineFeed + lineFeed +
-        " - Ask OpenStack: https://ask.openstack.org" + lineFeed +
         " - The mailing list: https://lists.openstack.org" + lineFeed +
         " - IRC: 'openstack' channel on Freenode"+ lineFeed;
 
