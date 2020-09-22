@@ -420,7 +420,7 @@ def _config_inited(app, config):
         try:
             project_version = packaging.get_version(real_project_name)
         except Exception:
-            project_version = None
+            project_version = ''
 
         if not project_version:
             logger.warning(
