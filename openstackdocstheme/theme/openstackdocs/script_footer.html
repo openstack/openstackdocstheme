@@ -34,6 +34,7 @@
    build time and the project's launchpad bug tag. Set the HREF of the bug
    buttons */
 
+{%- if bug_project %}
     var lineFeed = "%0A";
     var gitURL = "Source: Can't derive source file URL";
 
@@ -52,9 +53,7 @@
     /* gitsha, project and bug_tag rely on variables in conf.py */
     var gitSha = "SHA: {{ gitsha }}";
     var repositoryName = "{{ repository_name }}";
-    {%- if bug_project %}
-        var bugProject = "{{ bug_project }}";
-    {%- endif %}
+    var bugProject = "{{ bug_project }}";
     {%- if bug_title %}
         var bugTitle = "{{ bug_title }}";
     {%- else %}
@@ -78,8 +77,11 @@
                        lineFeed + encodeURI(gitURL) ;
 
     logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard);
+{%- endif %}
 
+{%- if pdf_link %}
     var currentSourceFile = "{{ pagename }}";
     var pdfFileName = "{{ pdf_filename }}";
     pdfLink(currentSourceFile, pdfFileName);
+{%- endif %}
 </script>
