@@ -149,6 +149,6 @@ a new database instance.
 #. Click the :guilabel:`Restore From Database` tab and make sure that this
    new instance is based on the correct backup.
 
-#. Click :guilabel:`Launch`. 
+#. Click :guilabel:`Launch`.
 
    The new instance appears in the database instances list.
