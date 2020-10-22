@@ -3,7 +3,7 @@
 =========================
 
 *openstackdocstheme* is a Sphinx documentation extension that includes
-theme support for OpenStack Foundation projects.
+theme support for Open Infrastructure Foundation projects.
 
 The *openstackdocs* theme is used for documentation that is published
 to docs.openstack.org and developer.openstack.org. It is intended for

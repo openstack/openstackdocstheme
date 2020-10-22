@@ -7,11 +7,11 @@ Team and repository tags
 
 .. Change things from this point on
 
-OpenStack Foundation Sphinx Themes
-==================================
+Open Infrastructure Projects Sphinx Themes
+==========================================
 
 Theme and extension support for Sphinx documentation that is published by
-OpenStack Foundation projects.
+Open Infrastructure Foundation projects.
 
 OpenStack docs.openstack.org Sphinx Theme
 -----------------------------------------
