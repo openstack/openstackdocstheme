@@ -936,3 +936,10 @@ img.align-right,
 /* for search result highlighting */
 span.highlighted {
     background-color: #fbe54e; }
+
+/* handle rst rubric directives */
+p.rubric {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
