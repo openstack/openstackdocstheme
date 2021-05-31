@@ -1,24 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-{% block header %}{% endblock %}
-    <title>{{ theme_root_title|striptags }}: {{ title|striptags }}</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-{{ metatags }}
+{% extends "basic/layout.html" %}
+
+{% block extrahead %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% include 'css.html' %}
-{%- for cssfile in css_files %}
-<link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
-{%- endfor %}
-{%- for js in script_files %}
-<script type="text/javascript" src="{{ pathto(js, 1) }}"></script>
-{%- endfor %}
-  {# FAVICON #}
-{% if favicon %}
-    <link rel="shortcut icon" href="{{ pathto('_static/favicon.ico') }}"/>
-{% endif %}
 {% if theme_analytics_tracking_code %}
 <!-- Google Analytics -->
 <script>
@@ -32,9 +16,15 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 {% endif %}
-  </head>
-  <body>
+{% endblock %}
+
+{%- block header %}
 {% include 'header.html' %}
+{% endblock %}
+
+{%- block relbar1 %}{% endblock %}
+
+{%- block content %}
     <div class="container docs-book-wrapper">
       <div class="row">
         <div class="col-lg-9 col-md-8 col-sm-8 col-lg-push-3 col-md-push-4 col-sm-push-4">
@@ -80,6 +70,11 @@ ga('send', 'pageview');
 {% include 'sidebartoc.html' %}
       </div>
     </div>
+{%- endblock %}
+
+{%- block relbar2 %}{% endblock %}
+
+{%- block footer %}
 {% include 'footer.html' %}
 {% include 'script_footer.html' %}
 {% block script_footer %}{% endblock %}
@@ -99,5 +94,4 @@ ga('send', 'pageview');
 </script>
 <div id="deprecated-badge-container"></div>
 {% endif %}
-  </body>
-</html>
+{%- endblock %}
