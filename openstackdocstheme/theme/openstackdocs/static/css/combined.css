@@ -374,31 +374,31 @@ footer {
 /*Docs Version Dropdown*/
 
 .version-dropdown {
-    font-size: 10px;
-    color: #9eb5c3;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
-    margin-bottom: 6px;
-    border: solid 1px;
-    padding: 3px 5px 3px 5px; }
+  font-size: 10px;
+  color: #9eb5c3;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 6px;
+  border: solid 1px;
+  padding: 3px 5px 3px 5px; }
 
 .version-dropdown-content {
-    display: none;
-    text-align: left;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 12px 16px;
-    top: 25px;
-    right: 5px;
-    z-index: 1; }
+  display: none;
+  text-align: left;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  top: 25px;
+  right: 5px;
+  z-index: 1; }
 
 .version-dropdown:hover .version-dropdown-content {
-    display: block; }
+  display: block; }
 
 /*Docs Book View*/
 .docs-book-wrapper {
@@ -722,7 +722,6 @@ pre {
   margin: 0 0 10px;
   padding: 20px 30px; }
 
-/* TODO(stephenfin): Did this change in Sphinx 2.0? */
 pre code,
 pre .line-number {
   font-family: "Courier New", Courier, Monospace;
@@ -742,15 +741,15 @@ pre .line-number span {
   padding: 0 0.5em 0 1em; }
 
 div.sidebar {
-    margin: 0 0 0.5em 1em;
-    border: 1px solid #ddb;
-    padding: 7px 7px 0 7px;
-    background-color: #ffe;
-    width: 40%;
-    float: right; }
+  margin: 0 0 0.5em 1em;
+  border: 1px solid #ddb;
+  padding: 7px 7px 0 7px;
+  background-color: #ffe;
+  width: 40%;
+  float: right; }
 
 p.sidebar-title {
-    font-weight: bold; }
+  font-weight: bold; }
 
 .admonition {
   background: #eee;
@@ -907,7 +906,7 @@ input[type="radio"] {
   display: inline-block; }
 
 div.tooltip-inner {
-    max-width: 350px; }
+  max-width: 350px; }
 
 table.highlighttable {
   width: 100%; }
@@ -935,11 +934,10 @@ img.align-right,
 
 /* for search result highlighting */
 span.highlighted {
-    background-color: #fbe54e; }
+  background-color: #fbe54e; }
 
 /* handle rst rubric directives */
 p.rubric {
-    margin-top: 30px;
-    font-weight: bold;
+  margin-top: 30px;
+  font-weight: bold;
 }
-
