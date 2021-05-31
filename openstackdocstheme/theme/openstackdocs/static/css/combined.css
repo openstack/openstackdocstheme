@@ -740,6 +740,10 @@ pre .line-number span {
   display: block;
   padding: 0 0.5em 0 1em; }
 
+.pre {
+  font-family: "Courier New", Courier, Monospace;
+}
+
 div.sidebar {
   margin: 0 0 0.5em 1em;
   border: 1px solid #ddb;
