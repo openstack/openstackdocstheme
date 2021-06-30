@@ -918,6 +918,8 @@ table.highlighttable {
 /* TODO(stephenfin): Group this */
 .docs-body .section h1 {
   display: none; }
+.docs-body section h1 {
+  display: none; }
 
 img.align-left,
 .figure.align-left {
