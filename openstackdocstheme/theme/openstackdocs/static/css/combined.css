@@ -205,6 +205,17 @@ ul.navbar-main {
   font-weight: 400;
   text-transform: uppercase; }
 
+.navbar-default ul.navbar-main > li > a.sign-in-btn {
+  background: #2A4E68;
+  padding: 7px 25px;
+  border-radius: 2px;
+  color: #fff;
+  margin-top: 7px; }
+
+.navbar-default ul.navbar-main > li > a.sign-in-btn:hover {
+  background: #286A9D;
+  color: #fff; }
+
 @media (min-width: 768px) and (max-width: 1025px) {
   ul.navbar-main {
     margin-top: 1px; }
