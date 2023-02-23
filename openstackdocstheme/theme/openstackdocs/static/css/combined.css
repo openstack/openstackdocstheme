@@ -927,9 +927,9 @@ table.highlighttable {
   width: 100%; }
 
 /* TODO(stephenfin): Group this */
-.docs-body .section h1 {
+.docs-body .section:first-of-type h1 {
   display: none; }
-.docs-body section h1 {
+.docs-body section:first-of-type h1 {
   display: none; }
 
 img.align-left,
