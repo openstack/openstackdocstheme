@@ -14,10 +14,9 @@
 {% endblock %}
 {% block body %}
   <div id="fallback" class="admonition warning">
-  <script type="text/javascript">document.getElementById('fallback').style.display = 'none';</script>
+  <script>document.getElementById('fallback').style.display = 'none';</script>
   <p>
-    {% trans %}Please activate JavaScript to enable the search
-    functionality.{% endtrans %}
+    {% trans %}Please activate JavaScript to enable the search functionality.{% endtrans %}
   </p>
   </div>
   <p>
@@ -35,9 +34,9 @@
 {% endblock %}
 
 {% block script_footer %}
-  <script type="text/javascript">
+  <script>
     jQuery(function() { Search.loadIndex("searchindex.js"); });
   </script>
 
-  <script type="text/javascript" id="searchindexloader"></script>
+  <script id="searchindexloader"></script>
 {% endblock %}
