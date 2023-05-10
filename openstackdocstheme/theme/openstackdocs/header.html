@@ -20,9 +20,9 @@
       </div>
       <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      {% include 'os_search.html' %}
+{% include 'os_search.html' %}
       <ul class="nav navbar-nav navbar-main show">
-        {% include 'os_search_mobile.html' %}
+{% include 'os_search_mobile.html' %}
         <li> <!--Software -->
           <a href="{{osf_base_url}}/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
@@ -94,18 +94,16 @@
         <li><!-- Docs -->
           <a href="http://docs.openstack.org/">Docs</a>
         </li>
-        <li> <!-- Join -->
-            <li class="join-nav-section">
-              <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
-              <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="{{osf_base_url}}/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
-            </li>
+        <li class="join-nav-section"> <!-- Join -->
+          <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
+          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+          </ul>
+        </li>
+        <li> <!-- Login -->
+          <a href="{{osf_base_url}}/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
         </li>
       </ul>
     </div>
