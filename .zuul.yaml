@@ -1,4 +1,19 @@
 - job:
+    name: openstackdocstheme-tox-docs-tips
+    parent: openstack-tox-docs
+    description: |
+      Build documentation for openstackdocstheme with main branch of important
+      libs. Takes advantage of the base tox job's install-siblings feature.
+    # The job only tests the latest and shouldn't be run on the stable branches
+    branches: ^(?!stable)
+    required-projects:
+      - name: github.com/sphinx-doc/sphinx
+    vars:
+      # Set work dir to openstackdocstheme so that if it's triggered by one of
+      # the other repos the tests will run in the same place
+      zuul_work_dir: src/opendev.org/openstack/openstackdocstheme
+
+- job:
     name: openstackdocstheme-openstack-tox-docs-starlingxdocs
     parent: openstack-tox-docs
     vars:
@@ -49,7 +64,7 @@
               - ^openstackdocstheme/.*$
               - ^.*\.txt$
               - ^.*\.rst$
-        # Run the docs build using the starlingxdocs theme
+        - openstackdocstheme-tox-docs-tips
         - openstackdocstheme-openstack-tox-docs-starlingxdocs
         - openstackdocstheme-cross-nova-tox-docs
         - openstackdocstheme-cross-octaviaclient-tox-docs
