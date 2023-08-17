@@ -67,7 +67,7 @@ def _get_last_updated(app, pagename):
 
     # Strip the prefix from the filename so the git command recognizes
     # the file as part of the current repository.
-    src_file = full_src_file[len(app.builder.env.srcdir):].lstrip('/')
+    src_file = full_src_file[len(str(app.builder.env.srcdir)):].lstrip('/')
     candidates.append(src_file)
 
     if not os.path.exists(src_file):
