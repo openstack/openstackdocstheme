@@ -62,7 +62,8 @@ def _get_other_versions(app):
     refs = repo.get_refs()
     for ref in refs.keys():
         ref = ref.decode('utf-8')
-        if ref.startswith('refs/remotes/origin/stable'):
+        if (ref.startswith('refs/remotes/origin/stable') or
+           ref.startswith('refs/remotes/origin/unmaintained')):
             series = ref.rpartition('/')[-1]
             all_series.append(series)
         elif ref.startswith('refs/tags/') and ref.endswith('-eol'):
