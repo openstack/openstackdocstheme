@@ -49,6 +49,13 @@ def _has_stable_branches():
     return False
 
 
+def _ref_sort_key(ref):
+    # note(frickler): make sure to sort series like 2023.1 after zed
+    if ref.startswith("2"):
+        return "zzz" + ref
+    return ref
+
+
 def _get_other_versions(app):
     if not app.config.html_theme_options.get('show_other_versions', False):
         return []
@@ -69,7 +76,8 @@ def _get_other_versions(app):
         elif ref.startswith('refs/tags/') and ref.endswith('-eol'):
             series = ref.rpartition('/')[-1][:-4]
             all_series.append(series)
-    all_series.sort()
+    all_series = list(set(all_series))
+    all_series.sort(key=_ref_sort_key)
 
     # NOTE(dhellmann): Given when this feature was implemented, we
     # assume that the earliest version we can link to is for
