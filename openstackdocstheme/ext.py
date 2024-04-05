@@ -79,14 +79,14 @@ def _get_other_versions(app):
     all_series = list(set(all_series))
     all_series.sort(key=_ref_sort_key)
 
-    # NOTE(dhellmann): Given when this feature was implemented, we
-    # assume that the earliest version we can link to is for
-    # mitaka. Projects that have older docs online can set the option
+    # NOTE(frickler): Since older versions are now unmaintained,
+    # assume that the earliest version we want to link to is for
+    # zed. Projects that have older docs online can set the option
     # to indicate another start point. Projects that come later should
     # automatically include everything they actually have available
     # because the start point is not present in the list.
     earliest_desired = app.config.html_theme_options.get(
-        'earliest_published_series', 'mitaka')
+        'earliest_published_series', 'zed')
     if earliest_desired and earliest_desired in all_series:
         interesting_series = all_series[all_series.index(earliest_desired):]
     else:
