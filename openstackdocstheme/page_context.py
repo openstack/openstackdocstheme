@@ -31,13 +31,21 @@ def _get_last_updated_file(src_file):
     if not os.path.exists(src_file):
         return None
     try:
-        last_updated_t = subprocess.check_output(
-            [
-                'git', 'log', '-n1', '--format=%ad',
-                '--date=format:%Y-%m-%d %H:%M:%S',
-                '--', src_file,
-            ]
-        ).decode('utf-8').strip()
+        last_updated_t = (
+            subprocess.check_output(
+                [
+                    'git',
+                    'log',
+                    '-n1',
+                    '--format=%ad',
+                    '--date=format:%Y-%m-%d %H:%M:%S',
+                    '--',
+                    src_file,
+                ]
+            )
+            .decode('utf-8')
+            .strip()
+        )
     # NOTE: we catch any exception here (instead of
     # subprocess.CalledProcessError and OSError) because some projects (eg.
     # neutron) do import eventlet in docs/source/conf.py which will patch
@@ -45,17 +53,22 @@ def _get_last_updated_file(src_file):
     except Exception as err:
         LOG.info(
             '[openstackdocstheme] Could not get modification time of %s: %s',
-            src_file, err)
+            src_file,
+            err,
+        )
     else:
         if last_updated_t:
             try:
-                return datetime.datetime.strptime(last_updated_t,
-                                                  '%Y-%m-%d %H:%M:%S')
+                return datetime.datetime.strptime(
+                    last_updated_t, '%Y-%m-%d %H:%M:%S'
+                )
             except ValueError:
                 LOG.info(
                     '[openstackdocstheme] '
                     'Could not parse modification time of %s: %r',
-                    src_file, last_updated_t)
+                    src_file,
+                    last_updated_t,
+                )
     return None
 
 
@@ -67,7 +80,7 @@ def _get_last_updated(app, pagename):
 
     # Strip the prefix from the filename so the git command recognizes
     # the file as part of the current repository.
-    src_file = full_src_file[len(str(app.builder.env.srcdir)):].lstrip('/')
+    src_file = full_src_file[len(str(app.builder.env.srcdir)) :].lstrip('/')
     candidates.append(src_file)
 
     if not os.path.exists(src_file):
@@ -82,7 +95,9 @@ def _get_last_updated(app, pagename):
         if last_updated:
             LOG.debug(
                 '[openstackdocstheme] Last updated for %s is %s',
-                pagename, last_updated)
+                pagename,
+                last_updated,
+            )
             return last_updated
 
     if pagename not in ('genindex', 'search'):

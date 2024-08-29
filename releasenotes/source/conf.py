@@ -52,8 +52,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenStackdocstheme Release Notes'
-copyright = u'2017, OpenStack Documentation team'
+project = 'OpenStackdocstheme Release Notes'
+copyright = '2017, OpenStack Documentation team'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.
@@ -193,10 +193,8 @@ htmlhelp_basename = 'OpenStackDocsThemeReleaseNotesdoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     # 'papersize': 'letterpaper',
-
     # The font size ('10pt', '11pt' or '12pt').
     # 'pointsize': '10pt',
-
     # Additional stuff for the LaTeX preamble.
     # 'preamble': '',
 }
@@ -205,9 +203,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'OpenStackdocstheme-ReleaseNotes.tex',
-     u'OpenStackdocstheme Release Notes Documentation',
-     u'Documentation Team', 'manual'),
+    (
+        'index',
+        'OpenStackdocstheme-ReleaseNotes.tex',
+        'OpenStackdocstheme Release Notes Documentation',
+        'Documentation Team',
+        'manual',
+    ),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -236,9 +238,13 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'openstackdocstheme-releasenotes',
-     u'OpenStackdocstheme Release Notes Documentation',
-     [u'Documentation team'], 1)
+    (
+        'index',
+        'openstackdocstheme-releasenotes',
+        'OpenStackdocstheme Release Notes Documentation',
+        ['Documentation team'],
+        1,
+    )
 ]
 
 # If true, show URL addresses after external links.
@@ -251,11 +257,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'OpenStackDocsTheme-ReleaseNotes',
-     u'OpenStackDocsTheme Release Notes Documentation',
-     u'Documentation Team', 'OpenStackDocsTheme-ReleaseNotes',
-     'One line description of project.',
-     'Miscellaneous'),
+    (
+        'index',
+        'OpenStackDocsTheme-ReleaseNotes',
+        'OpenStackDocsTheme Release Notes Documentation',
+        'Documentation Team',
+        'OpenStackDocsTheme-ReleaseNotes',
+        'One line description of project.',
+        'Miscellaneous',
+    ),
 ]
 
 # Documents to append as an appendix to all manuals.

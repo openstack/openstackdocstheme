@@ -69,8 +69,9 @@ def _get_other_versions(app):
     refs = repo.get_refs()
     for ref in refs.keys():
         ref = ref.decode('utf-8')
-        if (ref.startswith('refs/remotes/origin/stable') or
-           ref.startswith('refs/remotes/origin/unmaintained')):
+        if ref.startswith('refs/remotes/origin/stable') or ref.startswith(
+            'refs/remotes/origin/unmaintained'
+        ):
             series = ref.rpartition('/')[-1]
             all_series.append(series)
         elif ref.startswith('refs/tags/') and ref.endswith('-eol'):
@@ -86,9 +87,10 @@ def _get_other_versions(app):
     # automatically include everything they actually have available
     # because the start point is not present in the list.
     earliest_desired = app.config.html_theme_options.get(
-        'earliest_published_series', 'zed')
+        'earliest_published_series', 'zed'
+    )
     if earliest_desired and earliest_desired in all_series:
-        interesting_series = all_series[all_series.index(earliest_desired):]
+        interesting_series = all_series[all_series.index(earliest_desired) :]
     else:
         interesting_series = all_series
 
@@ -127,7 +129,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 "[openstackdocstheme] "
                 "the 'repository_name' config option has been deprecated and "
                 "replaced by the 'openstackdocs_repo_name' option; support "
-                "for the former will be dropped in a future release")
+                "for the former will be dropped in a future release"
+            )
             app.config.openstackdocs_repo_name = app.config.repository_name
 
         if app.config.use_storyboard is not None:
@@ -135,7 +138,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 "[openstackdocstheme] "
                 "the 'use_storyboard' config option has been deprecated and "
                 "replaced by the 'openstackdocs_use_storyboard' option; "
-                "support for the former will be dropped in a future release")
+                "support for the former will be dropped in a future release"
+            )
             app.config.openstackdocs_use_storyboard = app.config.use_storyboard
 
         if app.config.bug_project is not None:
@@ -143,7 +147,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 "[openstackdocstheme] "
                 "the 'bug_project' config option has been deprecated and "
                 "replaced by the 'openstackdocs_bug_project' option; support "
-                "for the former will be dropped in a future release")
+                "for the former will be dropped in a future release"
+            )
             app.config.openstackdocs_bug_project = app.config.bug_project
 
         if app.config.bug_tag is not None:
@@ -151,14 +156,19 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 "[openstackdocstheme] "
                 "the 'bug_tag' config option has been deprecated and "
                 "replaced by the 'openstackdocs_bug_tag' option; support "
-                "for the former will be dropped in a future release")
+                "for the former will be dropped in a future release"
+            )
             app.config.openstackdocs_bug_project = app.config.bug_project
 
         _html_context_data = {}
         try:
-            _html_context_data['gitsha'] = subprocess.check_output(
-                ['git', 'rev-parse', 'HEAD'],
-            ).decode('utf-8').strip()
+            _html_context_data['gitsha'] = (
+                subprocess.check_output(
+                    ['git', 'rev-parse', 'HEAD'],
+                )
+                .decode('utf-8')
+                .strip()
+            )
         except Exception:
             logger.warning(
                 '[openstackdocstheme] cannot get gitsha from git repository'
@@ -172,7 +182,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
             logger.debug(
-                '[openstackdocstheme] giturl %r', _html_context_data['giturl'],
+                '[openstackdocstheme] giturl %r',
+                _html_context_data['giturl'],
             )
 
         use_storyboard = app.config.openstackdocs_use_storyboard
@@ -181,7 +192,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         bug_project = app.config.openstackdocs_bug_project
         if bug_project:
             logger.debug(
-                '[openstackdocstheme] bug_project (from user) %r', bug_project,
+                '[openstackdocstheme] bug_project (from user) %r',
+                bug_project,
             )
         elif use_storyboard:
             bug_project = repo_name
@@ -209,12 +221,14 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         _html_context_data['pdf_link'] = app.config.openstackdocs_pdf_link
         logger.debug(
-            '[openstackdocstheme] pdf_link %r', _html_context_data['pdf_link'],
+            '[openstackdocstheme] pdf_link %r',
+            _html_context_data['pdf_link'],
         )
 
         if app.config.openstackdocs_pdf_filename:
             _html_context_data['pdf_filename'] = (
-                app.config.openstackdocs_pdf_filename)
+                app.config.openstackdocs_pdf_filename
+            )
         else:
             short_repo_name = repo_name.split('/')[-1]
             _html_context_data['pdf_filename'] = f'doc-{short_repo_name}.pdf'
@@ -227,7 +241,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         _html_context_data['series'] = _get_series_name()
         logger.debug(
-            '[openstackdocstheme] series %r', _html_context_data['series'],
+            '[openstackdocstheme] series %r',
+            _html_context_data['series'],
         )
 
         # Do not show the badge in these cases:
@@ -262,7 +277,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
     logger.debug(
-        '[openstackdocstheme] other_versions %s', context['other_versions'],
+        '[openstackdocstheme] other_versions %s',
+        context['other_versions'],
     )
 
 
@@ -271,9 +287,13 @@ def _get_series_name():
     global _series
     if _series is None:
         try:
-            git_root_dir = subprocess.check_output(
-                ['git', 'rev-parse', '--show-toplevel'],
-            ).decode('utf-8').strip()
+            git_root_dir = (
+                subprocess.check_output(
+                    ['git', 'rev-parse', '--show-toplevel'],
+                )
+                .decode('utf-8')
+                .strip()
+            )
         except Exception:
             logger.info(
                 '[openstackdocstheme] cannot find git top directory, '
@@ -301,7 +321,8 @@ def _setup_link_roles(app):
     series = _get_series_name()
     for project_name in app.config.openstackdocs_projects:
         url = 'https://docs.openstack.org/{}/{}/%s'.format(
-            project_name, series)
+            project_name, series
+        )
         role_name = '{}-doc'.format(project_name)
         logger.debug(
             '[openstackdocstheme] adding role %s to link to %s',
@@ -327,8 +348,9 @@ def _find_setup_cfg(srcdir):
     # an sdist or wheel? Perhaps we should check for 'PKG-INFO' or
     # 'METADATA' files, a la 'pbr.packaging._get_version_from_pkg_metadata'
     for path in [
-            os.path.join(srcdir, os.pardir, 'setup.cfg'),
-            os.path.join(srcdir, os.pardir, os.pardir, 'setup.cfg')]:
+        os.path.join(srcdir, os.pardir, 'setup.cfg'),
+        os.path.join(srcdir, os.pardir, os.pardir, 'setup.cfg'),
+    ]:
         if os.path.exists(path):
             return path
 
@@ -374,7 +396,6 @@ def _get_project_name(srcdir):
 
 
 def _config_inited(app, config):
-
     if config.openstack_projects is not None:
         logger.info(
             "[openstackdocstheme] "
@@ -398,7 +419,8 @@ def _config_inited(app, config):
                 "overriding configured project name (%s) with name extracted "
                 "from the package (%s); you can disable this behavior with "
                 "the 'openstackdocs_auto_name' option",
-                config.project, project_name,
+                config.project,
+                project_name,
             )
 
         if project_name:
@@ -449,7 +471,6 @@ def _config_inited(app, config):
 
 
 def _builder_inited(app):
-
     theme_dir = paths.get_html_theme_path()
     logger.info('[openstackdocstheme] using theme from %s', theme_dir)
 

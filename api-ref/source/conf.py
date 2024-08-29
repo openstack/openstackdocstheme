@@ -28,10 +28,7 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-extensions = [
-    'os_api_ref',
-    'openstackdocstheme'
-]
+extensions = ['os_api_ref', 'openstackdocstheme']
 
 
 # The suffix of source filenames.
@@ -44,8 +41,8 @@ master_doc = 'index'
 # 'security guide' or 'network guide'
 # It's used by the "log-a-bug" button on each page
 # and should ultimately be set automatically by the build process
-project = u'Test API Reference'
-copyright = u'2018, OpenStack Contributors'
+project = 'Test API Reference'
+copyright = '2018, OpenStack Contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -84,6 +81,8 @@ html_theme = 'openstackdocs'
 # variable, sidebar_dropdown, should be set to `api_ref`.
 # Otherwise, the list of links for the User and Ops docs
 # appear in the sidebar dropdown menu.
-html_theme_options = {"sidebar_dropdown": "api_ref",
-                      "display_badge": False,
-                      "sidebar_mode": "toc"}
+html_theme_options = {
+    "sidebar_dropdown": "api_ref",
+    "display_badge": False,
+    "sidebar_mode": "toc",
+}
