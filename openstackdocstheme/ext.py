@@ -19,7 +19,6 @@ import textwrap
 
 import dulwich.repo
 from pbr import packaging
-import sphinx
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
@@ -330,10 +329,7 @@ def _setup_link_roles(app):
             url,
         )
 
-        if sphinx.version_info >= (4, 0, 0):
-            role = extlinks.make_link_role(project_name, url, project_name)
-        else:
-            role = extlinks.make_link_role(url, project_name)
+        role = extlinks.make_link_role(project_name, url, project_name)
 
         app.add_role(role_name, role)
 
