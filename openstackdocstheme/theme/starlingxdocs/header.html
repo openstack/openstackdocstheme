@@ -4,46 +4,35 @@
 <!-- TEMPLATE_NAME: {{pagename}} -->
 {% endif %}
  {% include 'stx_search_install.html' %}
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-expand-md" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="brand-wrapper">
-        <a class="navbar-brand" href="https://www.starlingx.io/"></a>
-      </div>
-      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="brand-wrapper">
+      <a class="navbar-brand" href="https://www.starlingx.io/"></a>
+      <img src="{{ pathto('_static/images/logo-full.svg', 1) }}" width="135px" height="35px"/>
+    </div>
+    <button class="navbar-toggler" data-bs-target="#navbar-main-1" data-bs-toggle="collapse" type="button" aria-controls="navbar-main-1" type="button">
+      <span class="navbar-toggler-icon"></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+    <div class="search-icon show"><i class="fa fa-search"></i> Search</div>
+    <div class="collapse navbar-collapse" id="navbar-main-1">
       {% include 'stx_search.html' %}
-      <ul class="nav navbar-nav navbar-main show">
+      <ul class="nav navbar-nav navbar-main ms-auto mb-lg-0 justify-content-end show" role="navigation">
         {% include 'stx_search_mobile.html' %}
-        <li>
-          <a href="https://docs.starlingx.io/">Docs</a>
+        <li class="nav-item">
+          <a href="https://docs.starlingx.io/" class="nav-link">Docs</a>
         </li>
-        <li>
-
-</li>
-
-
-            <li>
-
-                <li class="join-nav-section">
-                    <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
-                    <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
-                </li>
-
-            </li>
+        <li class="nav-item dropdown join-nav-section">
+          <a href="https://openinfra.dev/join/" class="nav-link dropdown-toggle" role="button" id="dropdownMenuJoin">Join</a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="dropdown-item" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+            <li><a class="dropdown-item" href="https://openinfra.dev">More about the Foundation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="https://www.openstack.org/Security/login/?BackURL=/home/" class="nav-link">Log In</a>
+        </li>
       </ul>
     </div>
   </div>

@@ -5,8 +5,12 @@ $(".docs-sidebar-section-title").click(function () {
 });
 
 // Bootstrap stuff
-$('.docs-actions i').tooltip();
+/*$('.docs-actions i').tooltip();
 $('.docs-sidebar-home').tooltip();
+*/
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
 
 /* BB 150310
  *
@@ -77,6 +81,12 @@ function pdfLink(currentSourceFile, pdfFileName) {
     }
     var file = currentSourceFile + ".html";
     var pdfLink = currentLink.replace(file, pdfFileName);
-    document.getElementById("pdfLink1").href = pdfLink;
-    document.getElementById("pdfLink2").href = pdfLink;
+    var link1_el = document.getElementById("pdfLink1");
+    if (!!link1_el) {
+        link1_el.href = pdfLink;
+    }
+    var link2_el = document.getElementById("pdfLink2");
+    if (!!link2_el) {
+        link2_el.href = pdfLink;
+    }
 }

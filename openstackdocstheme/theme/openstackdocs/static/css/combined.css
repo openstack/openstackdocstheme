@@ -1,3 +1,8 @@
+:root {
+  /* Bootstrap 3.x used 14px as default */
+  --bs-body-font-size: 14px;
+}
+
 html {
   overflow-y: scroll; }
 
@@ -149,20 +154,20 @@ a, a:visited {
   float: left;
   border-right: 1px solid #eee;
   min-width: 135px; }
-
+/*
 a.navbar-brand {
   background: url('../images/logo-full.svg') left no-repeat;
   height: 35px;
   width: 135px; }
-
+*/
 @media (min-width: 768px) and (max-width: 1025px) {
   .brand-wrapper {
     width: 75px;
     min-width: 75px;
     margin-top: 0; }
 
-  a.navbar-brand {
-    background: url('../images/logo-vert.svg') left no-repeat;
+  a.navbar-brand img {
+    content: url('../images/logo-vert.svg');
     margin-left: 0px !important;
     height: 54px;
     width: 59px; } }
@@ -177,27 +182,28 @@ a.navbar-brand {
   background: #fff;
   margin-bottom: 0;
   padding: 20px 0; }
-
+/*
 .navbar-default .container {
   background-color: white; }
 
 @media (min-width: 768px) and (max-width: 1200px) {
   .navbar-default .container {
     width: 98%; } }
-
+*/
 ul.navbar-main {
   display: none;
   float: right; }
 
 @media (min-width: 768px) and (max-width: 1097px) {
   ul.navbar-main {
-    display: block; } }
+    display: flex; } }
 
 @media (max-width: 767px) {
   ul.navbar-main {
-    display: block;
+    display: flex;
     margin-right: 30px;
     width: 90%; } }
+
 
 .navbar-default ul.navbar-main > li > a {
   color: #8a959e;
@@ -286,9 +292,10 @@ i.fa-caret-right {
   outline: none; }
 
 @media (max-width: 767px) {
-  .navbar-default ul.navbar-main > li > a i.fa-caret-down {
-    display: none; } }
-
+  .navbar-default .dropdown-toggle::after {
+    display: none; }
+  }
+/*
 .navbar-default .navbar-toggle {
   border: none; }
 
@@ -300,14 +307,20 @@ i.fa-caret-right {
   background-color: #5A5A5A;
   height: 3px;
   border-radius: 3px; }
+*/
+ul.nav.show {
+  display: flex !important;
+}
 
 .show {
-  display: block; }
+  display: block !important;
+}
 
 @media (max-width: 767px), only screen and (max-device-width: 1024px) {
   .show {
     display: none; }
 }
+
 /*End Header Navigation*/
 
 @media (max-width: 767px) {

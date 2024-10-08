@@ -5,104 +5,103 @@
 {% endif %}
 {% include 'os_search_install.html' %}
 {% set osf_base_url = 'https://www.openstack.org' %}
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-expand-md" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <div class="brand-wrapper">
-        <a class="navbar-brand" href="https://www.openstack.org/"></a>
+        <a class="navbar-brand" href="https://www.openstack.org/">
+        <img src="{{ pathto('_static/images/logo-full.svg', 1) }}" width="135px" height="35px"/>
+        </a>
       </div>
-      <div class="search-icon show"><i class="fa fa-search"></i> Search</div></div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <button class="navbar-toggler" data-bs-target="#navbar-main-1" aria-controls="navbar-main-1" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <div class="search-icon show"><i class="fa fa-search"></i> Search</div>
+      <div class="collapse navbar-collapse" id="navbar-main-1">
 {% include 'os_search.html' %}
-      <ul class="nav navbar-nav navbar-main show">
+      <ul class="nav navbar-nav navbar-main ms-auto mb-2 mb-lg-0 justify-content-end show" role="navigation">
 {% include 'os_search_mobile.html' %}
-        <li> <!--Software -->
-          <a href="{{osf_base_url}}/software/" class="drop" id="dropdownMenuSoftware">Software <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSoftware">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/software/">Overview</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/software/project-navigator/openstack-components">OpenStack Components</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/software/project-navigator/sdks">SDKs</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/software/project-navigator/deployment-tools">Deployment Tools</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/software/sample-configs/">Sample Configs</a></li>
+        <li class="nav-item dropdown"> <!--Software -->
+          <a href="{{osf_base_url}}/software/" class="nav-link dropdown-toggle" aria-expanded="false">Software</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{osf_base_url}}/software/">Overview</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/software/project-navigator/openstack-components">OpenStack Components</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/software/project-navigator/sdks">SDKs</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/software/project-navigator/deployment-tools">Deployment Tools</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/assets/software/projectmap/openstack-map.pdf" target="_blank">OpenStack Map</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/software/sample-configs/">Sample Configs</a></li>
           </ul>
         </li>
-        <li> <!-- Use Cases -->
-          <a href="{{osf_base_url}}/use-cases/" class="drop" id="dropdownMenuUsers">Use Cases <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuUsers">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/">Users in Production</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/bare-metal/">Ironic Bare Metal</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/edge-computing/">Edge Computing</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/telecoms-and-nfv/">Telecom &amp; NFV</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/science/">Science and HPC</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/containers/">Containers</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/use-cases/enterprise/">Enterprise</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/surveys/landing">User Survey</a></li>
+        <li class="nav-item drop-down"> <!-- Use Cases -->
+          <a href="{{osf_base_url}}/use-cases/" class="nav-link dropdown-toggle" role="button">Use Cases</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/">Users in Production</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/bare-metal/">Ironic Bare Metal</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/edge-computing/">Edge Computing</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/telecoms-and-nfv/">Telecom &amp; NFV</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/science/">Science and HPC</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/containers/">Containers</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/use-cases/enterprise/">Enterprise</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/surveys/landing">User Survey</a></li>
           </ul>
         </li>
-        <li> <!-- Events -->
-          <a href="https://openinfra.dev/summit" class="drop" id="dropdownMenuEvents">Events <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuEvents">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/summit">OpenInfra Summit</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/ptg/">Project Teams Gathering</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/events/opendev-2020/">OpenDev</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/events/community-events/">Community Events</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/events/openstackdays">OpenStack &amp; OpenInfra Days</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/videos/">Summit Videos</a></li>
+        <li class="nav-item dropdown"> <!-- Events -->
+          <a href="https://openinfra.dev/summit" class="nav-link dropdown-toggle" role="button" id="dropdownMenuEvents">Events</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://openinfra.dev/summit">OpenInfra Summit</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/ptg/">Project Teams Gathering</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/events/opendev-2020/">OpenDev</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/events/community-events/">Community Events</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/events/openstackdays">OpenStack &amp; OpenInfra Days</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/videos/">Summit Videos</a></li>
           </ul>
         </li>
-        <li><!-- Community -->
-          <a href="{{osf_base_url}}/community/" class="drop" id="dropdownMenuCommunity">Community <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuCommunity">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/community/">Welcome! Start Here</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/community/tech-committee">OpenStack Technical Committee</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/community/speakers/">Speakers Bureau</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/coa/">Get Certified (COA)</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/community/jobs/">Jobs</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketing/">Marketing Resources</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/news/">Community News</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="http://superuser.openstack.org">Superuser Magazine</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">OpenInfra Foundation</a></li>
+        <li class="nav-item dropdown"><!-- Community -->
+          <a href="{{osf_base_url}}/community/" class="nav-link dropdown-toggle" role="button">Community</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{osf_base_url}}/community/">Welcome! Start Here</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/community/tech-committee">OpenStack Technical Committee</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/community/speakers/">Speakers Bureau</a></li>
+            <li><a class="dropdown-item" href="http://wiki.openstack.org">OpenStack Wiki</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/coa/">Get Certified (COA)</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/community/jobs/">Jobs</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketing/">Marketing Resources</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/news/">Community News</a></li>
+            <li><a class="dropdown-item" href="http://superuser.openstack.org">Superuser Magazine</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/community/supporting-organizations/">OpenInfra Foundation Supporting Organizations</a></li>
+            <li><a class="dropdown-item" href="https://openinfra.dev">OpenInfra Foundation</a></li>
           </ul>
         </li>
-        <li><!-- Marketplace -->
-          <a href="{{osf_base_url}}/marketplace/" class="drop" id="dropdownMenuLearn">Marketplace <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuEvents">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/training/">Training</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/distros/">Distros &amp; Appliances</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/public-clouds/">Public Clouds</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/consulting/">Consulting &amp; Integrators</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{osf_base_url}}/marketplace/drivers/">Drivers</a></li>
+        <li class="nav-item dropdown"><!-- Marketplace -->
+          <a href="{{osf_base_url}}/marketplace/" class="nav-link dropdown-toggle" role="button">Marketplace</a>
+          <ul class="dropdown-menu dropdown-hover">
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/training/">Training</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/distros/">Distros &amp; Appliances</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/public-clouds/">Public Clouds</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/hosted-private-clouds/">Hosted Private Clouds</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/remotely-managed-private-clouds/">Remotely Managed Private Clouds</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/consulting/">Consulting &amp; Integrators</a></li>
+            <li><a class="dropdown-item" href="{{osf_base_url}}/marketplace/drivers/">Drivers</a></li>
           </ul>
         </li>
-        <li><!-- Blog -->
-          <a href="{{osf_base_url}}/blog/">Blog</a>
+        <li class="nav-item"><!-- Blog -->
+          <a class="nav-link" href="{{osf_base_url}}/blog/">Blog</a>
         </li>
-        <li><!-- Docs -->
-          <a href="http://docs.openstack.org/">Docs</a>
+        <li class="nav-item"><!-- Docs -->
+          <a class="nav-link" href="http://docs.openstack.org/">Docs</a>
         </li>
-        <li class="join-nav-section"> <!-- Join -->
-          <a href="https://openinfra.dev/join/" id="dropdownMenuJoin">Join <i class="fa fa-caret-down"></i></a>
-          <ul class="dropdown-menu dropdown-hover" role="menu" aria-labelledby="dropdownMenuJoin" style="display: none;">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://openinfra.dev">More about the Foundation</a></li>
+        <li class="nav-item dropdown join-nav-section"> <!-- Join -->
+          <a href="https://openinfra.dev/join/" class="nav-link dropdown-toggle" role="button">Join</a>
+          <ul class="dropdown-menu" style="display: none;">
+            <li><a class="dropdown-item" href="https://openinfra.dev/join/">Sign up for Foundation Membership</a></li>
+            <li><a class="dropdown-item" href="https://openinfra.dev/join/">Sponsor the Foundation</a></li>
+            <li><a class="dropdown-item" href="https://openinfra.dev">More about the Foundation</a></li>
           </ul>
         </li>
-        <li> <!-- Login -->
+        <li class="nav-item"> <!-- Login -->
           <a href="{{osf_base_url}}/Security/login/?BackURL=/home/" class="sign-in-btn">Log In</a>
         </li>
       </ul>

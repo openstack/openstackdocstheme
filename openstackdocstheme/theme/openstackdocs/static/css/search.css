@@ -1,12 +1,12 @@
 .search-container-mobile
 {
   display: none !important;
-  position: relative !important;
+  /* position: relative !important; */
   width: 100% !important;
 }
 
 .search-container {
-  position: relative;
+  /* position: relative; */
   display: none;
   float: left;
   width: 84%;
