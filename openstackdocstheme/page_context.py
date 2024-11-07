@@ -80,9 +80,11 @@ def _get_last_updated(app, pagename):
 
     # Strip the prefix from the filename so the git command recognizes
     # the file as part of the current repository.
-    if sphinx.version_info >= (7, 0):
+    # NOTE(sean-k-mooney): on python 3.9 we clamp sphinx to <8
+    # app.builder.env.srcdir is a string on py39
+    if sphinx.version_info >= (8, 0):
         src_file = str(full_src_file.relative_to(app.builder.env.srcdir))
-    else:  # Sphinx < 7.0
+    else:  # Sphinx < 8.0
         src_file = full_src_file[len(str(app.builder.env.srcdir)) :].lstrip(
             '/'
         )
