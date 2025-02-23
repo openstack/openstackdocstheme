@@ -11,6 +11,7 @@
 {% set title = _('Search') %}
 {% block extrahead %}
 {{ super() }}
+<script src="{{ pathto('searchindex.js', 1) }}" defer="defer"></script>
 {% endblock %}
 {% block body %}
   <div id="fallback" class="admonition warning">
@@ -34,9 +35,7 @@
 {% endblock %}
 
 {% block script_footer %}
-  <script>
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-
-  <script id="searchindexloader"></script>
+{{ super() }}
+<script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+<script src="{{ pathto('_static/language_data.js', 1) }}"></script>
 {% endblock %}
