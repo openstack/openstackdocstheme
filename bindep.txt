@@ -35,3 +35,4 @@ latexmk [platform:rpm]
 
 # For nova cross testing
 graphviz [doc test]
+libpcre3-dev [platform:dpkg test]
