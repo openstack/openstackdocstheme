@@ -24,7 +24,7 @@
     {% trans %}To search the documentation for {{ project }}, type your query into the
     box below and press Enter.{% endtrans %}
   </p>
-    <form action="" method="get">
+  <form action="" method="get">
     <input type="text" name="q" value="" />
     <input type="submit" value="search" />
     <span id="search-progress" style="padding-left: 10px"></span>
@@ -32,6 +32,7 @@
     <div id="search-results">
 
     </div>
+  </form>
 {% endblock %}
 
 {% block script_footer %}
