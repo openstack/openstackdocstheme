@@ -170,6 +170,15 @@ navigation in the ``html_theme_options`` in the ``conf.py`` file::
         # ...
     }
 
+The search bar in the sidebar is disabled by default. To enable it, set
+the ``sidebar_search`` option to ``True`` for project-scoped search::
+
+    html_theme_options = {
+        # ...
+        "sidebar_search": True,
+        # ...
+    }
+
 If you are using this theme for documentation you want to release based on git
 tags on your repository, set the release dropdown menu option in the
 ``html_theme_options`` in the ``conf.py`` file. By default it is set to

@@ -1,0 +1,4 @@
+---
+features:
+  - Add an optional project-scoped search bar to the sidebar. Updated OpenStack/StarlingX
+    wide search placeholder to "Global Search" for clarity.

@@ -12,6 +12,12 @@
   {%- if theme_display_global_toc_section %}
     <div class="docs-sidebar-section" id="table-of-contents">
       <a href="{{ pathto(master_doc) }}" class="docs-sidebar-section-title"><h4>{{project}} {{version}}</h4></a>
+      {%- if theme_sidebar_search|tobool %}
+      <form action="{{ pathto('search') }}" method="get" class="input-group input-group-sm ps-3 pe-2 pb-3">
+        <input class="form-control" type="text" name="q" value="" placeholder="{% trans %}Search in {{project}}{% endtrans %}" aria-label="{% trans %}Search{% endtrans %}">
+        <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+      {%- endif %}
       {%- if theme_sidebar_mode == 'toc' %}
       {{ toc }}
       {%- elif theme_sidebar_mode == 'toctree' %}
