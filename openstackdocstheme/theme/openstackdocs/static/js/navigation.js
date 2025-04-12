@@ -37,20 +37,3 @@ jQuery(window).resize(function () {
         $('ul.navbar-main li ul.dropdown-menu').removeClass('dropdown-hover');
     }
 });
-
-// Remove Search text in smaller browser windows
-jQuery(document).ready(function(){
-    if (jQuery(window).width() < 1050) {
-        $('#search-label').text('');
-    } else {
-        $('#search-label').text('Search');
-    }
-});
-jQuery(window).resize(function () {
-    if (jQuery(window).width() < 1050) {
-        $('#search-label').text('');
-    } else {
-        $('#search-label').text('Search');
-    }
-});
-
