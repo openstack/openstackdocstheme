@@ -1,14 +1,10 @@
-========================
-Team and repository tags
-========================
-
-.. image:: https://governance.openstack.org/tc/badges/openstackdocstheme.svg
-    :target: https://governance.openstack.org/tc/reference/tags/index.html
-
-.. Change things from this point on
-
+==========================================
 Open Infrastructure Projects Sphinx Themes
 ==========================================
+
+.. image:: https://governance.openstack.org/tc/badges/openstackdocstheme.svg
+
+.. Change things from this point on
 
 Theme and extension support for Sphinx documentation that is published by
 Open Infrastructure Foundation projects.
