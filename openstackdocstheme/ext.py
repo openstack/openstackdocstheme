@@ -16,53 +16,58 @@ import configparser
 import os
 import subprocess
 import textwrap
+from typing import Any
 
+from docutils import nodes
+import dulwich.errors
 import dulwich.repo
 from pbr import packaging
+from sphinx import application
+from sphinx.config import Config
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
 from . import version
 from openstackdocstheme import paths
 
-_series = None
-_project = None
+_series: str | None = None
+_project: str | None = None
 _giturl = 'https://opendev.org/{}/src/{}'
-_html_context_data = None
+_html_context_data: dict[str, Any] | None = None
 
 logger = logging.getLogger(__name__)
 
 
-def _has_stable_branches():
+def _has_stable_branches() -> bool:
     try:
-        repo = dulwich.repo.Repo.discover()
-    except dulwich.repo.NotGitRepository:
+        repo = dulwich.repo.Repo.discover()  # type: ignore[no-untyped-call]
+    except dulwich.errors.NotGitRepository:
         return False
 
     refs = repo.get_refs()
-    for ref in refs.keys():
-        ref = ref.decode('utf-8')
+    for ref_bytes in refs.keys():
+        ref = ref_bytes.decode('utf-8')
         if ref.startswith('refs/remotes/origin/stable'):
             return True
 
     return False
 
 
-def _ref_sort_key(ref):
+def _ref_sort_key(ref: str) -> str:
     # note(frickler): make sure to sort series like 2023.1 after zed
     if ref.startswith("2"):
         return "zzz" + ref
     return ref
 
 
-def _get_other_versions(app):
+def _get_other_versions(app: application.Sphinx) -> list[str]:
     if not app.config.html_theme_options.get('show_other_versions', False):
         return []
 
-    all_series = []
+    all_series: list[str] = []
     try:
-        repo = dulwich.repo.Repo.discover()
-    except dulwich.repo.NotGitRepository:
+        repo = dulwich.repo.Repo.discover()  # type: ignore[no-untyped-call]
+    except dulwich.errors.NotGitRepository:
         return []
 
     refs = repo.get_refs()
@@ -101,7 +106,7 @@ def _get_other_versions(app):
     return interesting_series
 
 
-def _get_doc_path(app):
+def _get_doc_path(app: application.Sphinx) -> str | None:
     # Handle 'doc/{docType}/source' paths
     doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-3:]
     if doc_parts[0] == 'doc' and doc_parts[2] == 'source':
@@ -115,10 +120,16 @@ def _get_doc_path(app):
     logger.info(
         "[openstackdocstheme] cannot identify project's root directory."
     )
-    return
+    return None
 
 
-def _html_page_context(app, pagename, templatename, context, doctree):
+def _html_page_context(
+    app: application.Sphinx,
+    pagename: str,
+    templatename: str,
+    context: dict[str, Any],
+    doctree: nodes.document | None,
+) -> None:
     global _html_context_data
     if _html_context_data is None:
         logger.debug('[openstackdocstheme] building html context')
@@ -281,7 +292,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     )
 
 
-def _get_series_name():
+def _get_series_name() -> str:
     "Return string name of release series, or 'latest'"
     global _series
     if _series is None:
@@ -316,7 +327,7 @@ def _get_series_name():
     return _series
 
 
-def _setup_link_roles(app):
+def _setup_link_roles(app: application.Sphinx) -> None:
     series = _get_series_name()
     for project_name in app.config.openstackdocs_projects:
         url = f'https://docs.openstack.org/{project_name}/{series}/%s'
@@ -332,7 +343,7 @@ def _setup_link_roles(app):
         app.add_role(role_name, role)
 
 
-def _find_setup_cfg(srcdir):
+def _find_setup_cfg(srcdir: str | os.PathLike[str]) -> str | None:
     """Find the 'setup.cfg' file, if it exists.
 
     This assumes we're using 'doc/source' for documentation, but also allows
@@ -351,7 +362,7 @@ def _find_setup_cfg(srcdir):
     return None
 
 
-def _get_project_name(srcdir):
+def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
     """Return string name of project name, or None.
 
     This assumes every project is using 'pbr' and, therefore, the metadata can
@@ -389,7 +400,7 @@ def _get_project_name(srcdir):
     return _project
 
 
-def _config_inited(app, config):
+def _config_inited(app: application.Sphinx, config: Config) -> None:
     if config.openstack_projects is not None:
         logger.info(
             "[openstackdocstheme] "
@@ -465,7 +476,7 @@ def _config_inited(app, config):
         config.release = project_version
 
 
-def _builder_inited(app):
+def _builder_inited(app: application.Sphinx) -> None:
     theme_dir = paths.get_html_theme_path()
     logger.info('[openstackdocstheme] using theme from %s', theme_dir)
 
@@ -506,7 +517,7 @@ def _builder_inited(app):
     app.config.latex_elements = latex_elements
 
 
-def setup(app):
+def setup(app: application.Sphinx) -> dict[str, Any]:
     logger.info(
         '[openstackdocstheme] version: %s',
         version.version_info.version_string(),

@@ -12,6 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import pbr.version
+from pbr import version as pbr_version
 
-version_info = pbr.version.VersionInfo('openstackdocstheme')
+version_info: pbr_version.VersionInfo = pbr_version.VersionInfo(
+    'openstackdocstheme'
+)

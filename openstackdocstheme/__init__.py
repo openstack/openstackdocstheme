@@ -12,6 +12,10 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from typing import Any
+
+from sphinx import application
+
 from . import ext
 from . import page_context
 from .paths import *  # noqa
@@ -21,7 +25,7 @@ from .version import version_info
 __version__ = version_info.version_string()
 
 
-def setup(app):
+def setup(app: application.Sphinx) -> dict[str, Any]:
     ext.setup(app)
     page_context.setup(app)
     return {

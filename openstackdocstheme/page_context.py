@@ -15,7 +15,10 @@ import os
 import os.path
 import subprocess
 import time
+from typing import Any
 
+from docutils import nodes
+from sphinx import application
 from sphinx.util import logging
 
 from . import version
@@ -28,7 +31,7 @@ _default_last_updated = datetime.datetime.fromtimestamp(
 ).replace(tzinfo=None)
 
 
-def _get_last_updated_file(src_file):
+def _get_last_updated_file(src_file: str) -> datetime.datetime | None:
     if not os.path.exists(src_file):
         return None
     try:
@@ -73,11 +76,13 @@ def _get_last_updated_file(src_file):
     return None
 
 
-def _get_last_updated(app, pagename):
+def _get_last_updated(
+    app: application.Sphinx, pagename: str
+) -> datetime.datetime:
     last_updated = None
     full_src_file = app.builder.env.doc2path(pagename)
 
-    candidates = []
+    candidates: list[str] = []
 
     # Strip the prefix from the filename so the git command recognizes
     # the file as part of the current repository.
@@ -110,13 +115,19 @@ def _get_last_updated(app, pagename):
     return _default_last_updated
 
 
-def html_page_context(app, pagename, templatename, context, doctree):
+def html_page_context(
+    app: application.Sphinx,
+    pagename: str,
+    templatename: str,
+    context: dict[str, Any],
+    doctree: nodes.document | None,
+) -> None:
     # Use the last modified date from git instead of applying a single
     # value to the entire site.
     context['last_updated'] = _get_last_updated(app, pagename)
 
 
-def setup(app):
+def setup(app: application.Sphinx) -> dict[str, Any]:
     LOG.info('[openstackdocstheme] connecting html-page-context event handler')
     app.connect('html-page-context', html_page_context)
     return {
