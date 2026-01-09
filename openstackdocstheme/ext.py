@@ -319,10 +319,8 @@ def _get_series_name():
 def _setup_link_roles(app):
     series = _get_series_name()
     for project_name in app.config.openstackdocs_projects:
-        url = 'https://docs.openstack.org/{}/{}/%s'.format(
-            project_name, series
-        )
-        role_name = '{}-doc'.format(project_name)
+        url = f'https://docs.openstack.org/{project_name}/{series}/%s'
+        role_name = f'{project_name}-doc'
         logger.debug(
             '[openstackdocstheme] adding role %s to link to %s',
             role_name,
@@ -439,8 +437,9 @@ def _config_inited(app, config):
         doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
         if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
             logger.debug(
-                f'[openstackdocstheme] auto-versioning disabled (doc name '
-                f'contains {doc_parts[0]}'
+                '[openstackdocstheme] auto-versioning disabled (doc name '
+                'contains %s)',
+                doc_parts[0],
             )
             auto_version = False
         else:
