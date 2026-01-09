@@ -16,7 +16,6 @@ import os.path
 import subprocess
 import time
 
-import sphinx
 from sphinx.util import logging
 
 from . import version
@@ -82,14 +81,7 @@ def _get_last_updated(app, pagename):
 
     # Strip the prefix from the filename so the git command recognizes
     # the file as part of the current repository.
-    # NOTE(sean-k-mooney): on python 3.9 we clamp sphinx to <8
-    # app.builder.env.srcdir is a string on py39
-    if sphinx.version_info >= (8, 0):
-        src_file = str(full_src_file.relative_to(app.builder.env.srcdir))
-    else:  # Sphinx < 8.0
-        src_file = full_src_file[len(str(app.builder.env.srcdir)) :].lstrip(
-            '/'
-        )
+    src_file = str(full_src_file.relative_to(app.builder.env.srcdir))
     candidates.append(src_file)
 
     if not os.path.exists(src_file):
