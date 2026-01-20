@@ -4,8 +4,6 @@ Open Infrastructure Projects Sphinx Themes
 
 .. image:: https://governance.openstack.org/tc/badges/openstackdocstheme.svg
 
-.. Change things from this point on
-
 Theme and extension support for Sphinx documentation that is published by
 Open Infrastructure Foundation projects.
 
@@ -20,7 +18,7 @@ Intended for use by OpenStack `projects governed by the Technical Committee`_.
 .. _`projects governed by the Technical Committee`: https://governance.openstack.org/tc/reference/projects/index.html
 
 StarlingX docs.starlingx.io Sphinx Theme
------------------------------------------
+----------------------------------------
 
 Theme support for Sphinx documentation that is published to
 docs.starlingx.io.
