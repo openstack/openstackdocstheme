@@ -40,7 +40,7 @@ logger = logging.getLogger(__name__)
 
 def _has_stable_branches() -> bool:
     try:
-        repo = dulwich.repo.Repo.discover()  # type: ignore[no-untyped-call]
+        repo = dulwich.repo.Repo.discover()
     except dulwich.errors.NotGitRepository:
         return False
 
@@ -66,13 +66,13 @@ def _get_other_versions(app: application.Sphinx) -> list[str]:
 
     all_series: list[str] = []
     try:
-        repo = dulwich.repo.Repo.discover()  # type: ignore[no-untyped-call]
+        repo = dulwich.repo.Repo.discover()
     except dulwich.errors.NotGitRepository:
         return []
 
     refs = repo.get_refs()
-    for ref in refs.keys():
-        ref = ref.decode('utf-8')
+    for ref_b in refs.keys():
+        ref = ref_b.decode('utf-8')
         if ref.startswith('refs/remotes/origin/stable') or ref.startswith(
             'refs/remotes/origin/unmaintained'
         ):
