@@ -971,3 +971,7 @@ p.rubric {
   margin-top: 30px;
   font-weight: bold;
 }
+
+/* highlight the current page in the left menu */
+.current.reference.internal {
+  font-weight: bold; }
