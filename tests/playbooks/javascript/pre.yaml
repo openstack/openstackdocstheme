@@ -1,0 +1,9 @@
+- name: Prepare a Javascript Dev Env
+  hosts: all
+  roles:
+    - bindep
+    - test-setup
+    - ensure-nodejs
+    - ensure-yarn
+    - revoke-sudo
+    - ensure-javascript-packages

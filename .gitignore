@@ -29,3 +29,7 @@ releasenotes/build
 /build/
 RELEASENOTES.rst
 releasenotes/notes/reno.cache
+
+# Files created by jest
+/node_modules
+/package-lock.json

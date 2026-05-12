@@ -76,16 +76,15 @@ gtag('config', '{{ theme_analytics_tracking_code }}');
 {% include 'script_footer.html' %}
 {% block script_footer %}{% endblock %}
 {% if display_badge %}
+<script src="{{pathto('_static/js/badge.js', 1)}}"></script>
 <script>
     $(document).ready(function(){
-
-          $.ajax({
+        var repoName = "{{ repository_name }}".split('/').pop();
+        $.ajax({
             context: this,
             dataType : "html",
             url : "https://docs.openstack.org/{{ series }}/badge.html",
-            success : function(results) {
-                $('#deprecated-badge-container').html(results);
-            }
+            success : function(results) { showBadge(results, repoName); }
         });
     });
 </script>

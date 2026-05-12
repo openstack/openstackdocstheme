@@ -65,6 +65,13 @@
       # the other repos the tests will run in the same place
       zuul_work_dir: src/opendev.org/openstack/openstackdocstheme
 
+- job:
+    name: openstackdocstheme-openstack-tox-js-test
+    parent: openstack-tox
+    pre-run: tests/playbooks/javascript/pre.yaml
+    vars:
+      tox_envlist: js-test
+      node_version: 26
 
 - project:
     templates:
@@ -89,6 +96,7 @@
         - openstackdocstheme-cross-nova-tox-docs
         - openstackdocstheme-cross-octaviaclient-tox-docs
         - openstackdocstheme-api-ref-tips
+        - openstackdocstheme-openstack-tox-js-test
     gate:
       jobs:
         - openstack-tox-pep8
