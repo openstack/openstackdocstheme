@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 
 _timeint = int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
 _default_last_updated = datetime.datetime.fromtimestamp(
-    _timeint, tz=datetime.timezone.utc
+    _timeint, tz=datetime.UTC
 ).replace(tzinfo=None)
 
 
