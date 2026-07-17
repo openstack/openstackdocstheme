@@ -39,7 +39,7 @@
     name: openstackdocstheme-cross-octaviaclient-tox-docs
     parent: openstack-tox-docs
     description: |
-      Run cross-project tests on nova with
+      Run cross-project tests on python-octaviaclient with
       openstack-tox-docs.
     vars:
       zuul_work_dir: src/opendev.org/openstack/python-octaviaclient
