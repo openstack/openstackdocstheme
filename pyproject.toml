@@ -10,7 +10,7 @@ authors = [
 ]
 readme = {file = "README.rst", content-type = "text/x-rst"}
 license = "Apache-2.0"
-dynamic = ["version", "dependencies"]
+dynamic = ["version"]
 requires-python = ">=3.11"
 classifiers = [
     "Environment :: OpenStack",
@@ -26,6 +26,21 @@ classifiers = [
     "Programming Language :: Python :: 3.15",
     "Topic :: Documentation",
     "Typing :: Typed",
+]
+dependencies = [
+    "dulwich>=0.15.0", # Apache-2.0
+    "pbr!=2.1.0,>=2.0.0", # Apache-2.0
+    "sphinx>=8.0.0", # BSD
+]
+
+[dependency-groups]
+doc = [
+    "os-api-ref>=1.4.0", # Apache-2.0
+    "reno>=3.1.0", # Apache-2.0
+]
+types = [
+    "mypy",
+    "types-docutils",
 ]
 
 [project.urls]
