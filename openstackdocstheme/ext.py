@@ -16,6 +16,7 @@ import configparser
 import os
 import subprocess
 import textwrap
+import tomllib
 from typing import Any
 
 from docutils import nodes
@@ -343,18 +344,22 @@ def _setup_link_roles(app: application.Sphinx) -> None:
         app.add_role(role_name, role)
 
 
-def _find_setup_cfg(srcdir: str | os.PathLike[str]) -> str | None:
-    """Find the 'setup.cfg' file, if it exists.
+def _find_packaging_conf(
+    srcdir: str | os.PathLike[str], file: str
+) -> str | None:
+    """Find the packaging configuration file, if it exists.
 
-    This assumes we're using 'doc/source' for documentation, but also allows
-    for single level 'doc' paths.
+    Expected to be called with ``pyproject.toml`` or ``setup.cfg``.
+
+    This assumes we're using ``doc/source`` for documentation, but it also
+    allows for single level ``doc`` paths.
     """
     # TODO(stephenfin): Are we sure that this will always exist, e.g. for
     # an sdist or wheel? Perhaps we should check for 'PKG-INFO' or
     # 'METADATA' files, a la 'pbr.packaging._get_version_from_pkg_metadata'
     for path in [
-        os.path.join(srcdir, os.pardir, 'setup.cfg'),
-        os.path.join(srcdir, os.pardir, os.pardir, 'setup.cfg'),
+        os.path.join(srcdir, os.pardir, file),
+        os.path.join(srcdir, os.pardir, os.pardir, file),
     ]:
         if os.path.exists(path):
             return path
@@ -372,14 +377,26 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
     the package simply to build docs.
     """
     global _project
-    if _project is None:
-        parser = configparser.ConfigParser()
+    if _project is not None:
+        return _project
 
-        path = _find_setup_cfg(srcdir)
-        if not path or not parser.read(path):
+    # prefer pyproject.toml
+    path = _find_packaging_conf(srcdir, 'pyproject.toml')
+    if path:
+        with open(path, 'rb') as f:
+            pyproject = tomllib.load(f)
+        project = pyproject.get('project', {}).get('name')
+        if project:
+            _project = project
+            return _project
+
+    path = _find_packaging_conf(srcdir, 'setup.cfg')
+    if path:
+        parser = configparser.ConfigParser()
+        if not parser.read(path):
             logger.info(
-                '[openstackdocstheme] could not find a setup.cfg to extract '
-                'project name from'
+                '[openstackdocstheme] could not extract project metadata from '
+                'setup.cfg'
             )
             return None
 
@@ -396,8 +413,15 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
                 'setup.cfg'
             )
             return None
+
         _project = project
-    return _project
+        return project
+
+    logger.info(
+        '[openstackdocstheme] could not find a project.toml or setup.cfg to '
+        'extract project name from'
+    )
+    return None
 
 
 def _config_inited(app: application.Sphinx, config: Config) -> None:
