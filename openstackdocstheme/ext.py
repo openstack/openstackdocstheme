@@ -26,6 +26,7 @@ from pbr import packaging
 from sphinx import application
 from sphinx.config import Config
 from sphinx.ext import extlinks
+from sphinx.util import console
 from sphinx.util import logging
 
 from . import version
@@ -119,7 +120,11 @@ def _get_doc_path(app: application.Sphinx) -> str | None:
         return '/'.join(doc_parts)
 
     logger.info(
-        "[openstackdocstheme] cannot identify project's root directory."
+        "%s",
+        console.colorize(
+            'bold',
+            "[openstackdocstheme] cannot identify project's root directory",
+        ),
     )
     return None
 
@@ -137,37 +142,45 @@ def _html_page_context(
 
         if app.config.repository_name is not None:
             logger.info(
-                "[openstackdocstheme] "
-                "the 'repository_name' config option has been deprecated and "
-                "replaced by the 'openstackdocs_repo_name' option; support "
-                "for the former will be dropped in a future release"
+                "%s; use 'openstackdocs_repo_name' instead. Support for "
+                "the old option will be dropped in a future release",
+                console.colorize(
+                    'bold',
+                    "[openstackdocstheme] 'repository_name' is deprecated",
+                ),
             )
             app.config.openstackdocs_repo_name = app.config.repository_name
 
         if app.config.use_storyboard is not None:
             logger.info(
-                "[openstackdocstheme] "
-                "the 'use_storyboard' config option has been deprecated and "
-                "replaced by the 'openstackdocs_use_storyboard' option; "
-                "support for the former will be dropped in a future release"
+                "%s; use 'openstackdocs_use_storyboard' instead. Support for "
+                "the old option will be dropped in a future release",
+                console.colorize(
+                    'bold',
+                    "[openstackdocstheme] 'use_storyboard' is deprecated",
+                ),
             )
             app.config.openstackdocs_use_storyboard = app.config.use_storyboard
 
         if app.config.bug_project is not None:
             logger.info(
-                "[openstackdocstheme] "
-                "the 'bug_project' config option has been deprecated and "
-                "replaced by the 'openstackdocs_bug_project' option; support "
-                "for the former will be dropped in a future release"
+                "%s; use 'openstackdocs_bug_project' "
+                "instead. Support for the old option will be dropped in a "
+                "future release",
+                console.colorize(
+                    'bold', "[openstackdocstheme] 'bug_project' is deprecated"
+                ),
             )
             app.config.openstackdocs_bug_project = app.config.bug_project
 
         if app.config.bug_tag is not None:
             logger.info(
-                "[openstackdocstheme] "
-                "the 'bug_tag' config option has been deprecated and "
-                "replaced by the 'openstackdocs_bug_tag' option; support "
-                "for the former will be dropped in a future release"
+                "%s; use 'openstackdocs_bug_tag' "
+                "instead. Support for the old option will be dropped in a "
+                "future release",
+                console.colorize(
+                    'bold', "[openstackdocstheme] 'bug_tag' is deprecated"
+                ),
             )
             app.config.openstackdocs_bug_project = app.config.bug_project
 
@@ -289,7 +302,7 @@ def _html_page_context(
     context['other_versions'] = _get_other_versions(app)
     logger.debug(
         '[openstackdocstheme] other_versions %s',
-        context['other_versions'],
+        ', '.join(context['other_versions']),
     )
 
 
@@ -307,8 +320,11 @@ def _get_series_name() -> str:
             )
         except Exception:
             logger.info(
-                '[openstackdocstheme] cannot find git top directory, '
-                'assuming "."'
+                '%s; assuming "."',
+                console.colorize(
+                    'bold',
+                    '[openstackdocstheme] cannot find git top directory',
+                ),
             )
             git_root_dir = '.'
 
@@ -316,7 +332,13 @@ def _get_series_name() -> str:
         in_file = os.path.join(git_root_dir, '.gitreview')
         parsed = parser.read(in_file)
         if not parsed:
-            logger.info('[openstackdocstheme] no %s found', in_file)
+            logger.info(
+                '%s: %s',
+                console.colorize(
+                    'bold', '[openstackdocstheme] file not found'
+                ),
+                in_file,
+            )
 
         try:
             branch = parser.get('gerrit', 'defaultbranch')
@@ -380,6 +402,16 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
     if _project is not None:
         return _project
 
+    def _error(msg: str) -> None:
+        logger.info(
+            '%s: %s',
+            console.colorize(
+                'bold',
+                '[openstackdocstheme] cannot determine project name',
+            ),
+            msg,
+        )
+
     # prefer pyproject.toml
     path = _find_packaging_conf(srcdir, 'pyproject.toml')
     if path:
@@ -394,10 +426,7 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
     if path:
         parser = configparser.ConfigParser()
         if not parser.read(path):
-            logger.info(
-                '[openstackdocstheme] could not extract project metadata from '
-                'setup.cfg'
-            )
+            _error('could not extract metadata from setup.cfg')
             return None
 
         try:
@@ -408,18 +437,15 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
             if len(project.split()) == 1 and len(project) > 32:
                 project = parser.get('metadata', 'summary')
         except configparser.Error:
-            logger.info(
-                '[openstackdocstheme] could not extract project metadata from '
-                'setup.cfg'
-            )
+            _error('could not extract metadata from setup.cfg')
             return None
 
         _project = project
         return project
 
-    logger.info(
-        '[openstackdocstheme] could not find a project.toml or setup.cfg to '
-        'extract project name from'
+    _error(
+        'could not find a project.toml or setup.cfg to extract project '
+        'name from'
     )
     return None
 
@@ -427,10 +453,12 @@ def _get_project_name(srcdir: str | os.PathLike[str]) -> str | None:
 def _config_inited(app: application.Sphinx, config: Config) -> None:
     if config.openstack_projects is not None:
         logger.info(
-            "[openstackdocstheme] "
-            "the 'openstack_projects' config option has been deprecated and "
-            "replaced by the 'openstackdocs_projects' option; support "
-            "for the former will be dropped in a future release"
+            "%s; use 'openstackdocs_projects' instead. "
+            "Support for the old option will be dropped in a future release",
+            console.colorize(
+                'bold',
+                "[openstackdocstheme] 'openstack_projects' is deprecated",
+            ),
         )
         config.openstackdocs_projects = config.openstack_projects
 
@@ -444,10 +472,13 @@ def _config_inited(app: application.Sphinx, config: Config) -> None:
 
         if config.project and project_name:
             logger.info(
-                "[openstackdocstheme] "
-                "overriding configured project name (%s) with name extracted "
-                "from the package (%s); you can disable this behavior with "
-                "the 'openstackdocs_auto_name' option",
+                "%s: %s -> %s (extracted from the "
+                "package); you can disable this behavior with the "
+                "'openstackdocs_auto_name' option",
+                console.colorize(
+                    'bold',
+                    '[openstackdocstheme] overriding configured project name',
+                ),
                 config.project,
                 project_name,
             )
@@ -502,7 +533,11 @@ def _config_inited(app: application.Sphinx, config: Config) -> None:
 
 def _builder_inited(app: application.Sphinx) -> None:
     theme_dir = paths.get_html_theme_path()
-    logger.info('[openstackdocstheme] using theme from %s', theme_dir)
+    logger.info(
+        '%s %s',
+        console.colorize('bold', '[openstackdocstheme] using theme from'),
+        theme_dir,
+    )
 
     _setup_link_roles(app)
 
@@ -543,7 +578,8 @@ def _builder_inited(app: application.Sphinx) -> None:
 
 def setup(app: application.Sphinx) -> dict[str, Any]:
     logger.info(
-        '[openstackdocstheme] version: %s',
+        '%s %s',
+        console.colorize('bold', '[openstackdocstheme] version:'),
         version.version_info.version_string(),
     )
     logger.debug('[openstackdocstheme] connecting events')
