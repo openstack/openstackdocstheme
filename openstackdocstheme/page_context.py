@@ -107,7 +107,7 @@ def _get_last_updated(
             return last_updated
 
     if pagename not in ('genindex', 'search'):
-        LOG.info(
+        LOG.debug(
             '[openstackdocstheme] could not determine last_updated for %r',
             pagename,
         )
@@ -128,7 +128,9 @@ def html_page_context(
 
 
 def setup(app: application.Sphinx) -> dict[str, Any]:
-    LOG.info('[openstackdocstheme] connecting html-page-context event handler')
+    LOG.debug(
+        '[openstackdocstheme] connecting html-page-context event handler'
+    )
     app.connect('html-page-context', html_page_context)
     return {
         'parallel_read_safe': True,
